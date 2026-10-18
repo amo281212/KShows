@@ -50,7 +50,8 @@ main{max-width:1440px;margin:auto;padding:24px 5% 60px}
   z-index:1;pointer-events:none;
   background:linear-gradient(90deg,#101014a8 0%,#10101478 34%,#10101432 62%,#10101408 100%),linear-gradient(0deg,#10101480,transparent 58%)
 }
-.hero-content{position:relative;padding:clamp(24px,5vw,54px);max-width:690px;z-index:2;padding-bottom:72px}
+.hero-content{position:relative;padding:clamp(24px,5vw,54px);max-width:690px;z-index:2;padding-bottom:72px;flex:0 0 auto}
+.hero-kicker,.hero h1,.hero p,.hero-content .actions{position:relative;z-index:2}
 .hero h1{max-width:590px}
 .hero p{color:#f0edf6;line-height:1.7;max-width:490px;text-shadow:0 1px 10px #0007}
 .hero-controls{position:absolute;z-index:3;right:24px;bottom:22px;display:flex;align-items:center;gap:9px}
@@ -160,7 +161,6 @@ textarea:focus{border-color:var(--accent)}
 @media(max-width:390px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}.brand{font-size:17px}}
 </style>
 </head>
-
 <body>
 <header>
   <div class="brand"><span class="k">K</span>SHOWS Y <span class="r">R</span>EALITIES <span class="c">C</span>OREANOS</div>
@@ -172,7 +172,6 @@ textarea:focus{border-color:var(--accent)}
   </nav>
   <input id="search" class="search" placeholder="⌕ Buscar..." aria-label="Buscar programas">
 </header>
-
 <main>
   <section id="hero" class="hero" aria-label="Programas destacados">
     <div id="heroSlides" class="hero-slides" aria-hidden="true"></div>
@@ -192,7 +191,6 @@ textarea:focus{border-color:var(--accent)}
       <button class="hero-arrow" id="heroNext" aria-label="Programa siguiente">›</button>
     </div>
   </section>
-
   <section id="homeView">
     <div class="section" id="continueSection">
       <div class="section-head">
@@ -200,7 +198,6 @@ textarea:focus{border-color:var(--accent)}
       </div>
       <div id="continueGrid" class="row-scroller"></div>
     </div>
-
     <div class="section">
       <div class="section-head">
         <div><h2 id="popularHeading"></h2><span class="muted">Una selección para empezar</span></div>
@@ -208,9 +205,7 @@ textarea:focus{border-color:var(--accent)}
       </div>
       <div id="popularGrid" class="row-scroller"></div>
     </div>
-
     <div id="homeCategories"></div>
-
     <div class="section">
       <div class="section-head">
         <div><h2 id="comingHeading"></h2><span class="muted">Nuevos proyectos en preparación</span></div>
@@ -218,7 +213,6 @@ textarea:focus{border-color:var(--accent)}
       <div class="empty">Aquí aparecerán los próximos programas que incorporemos al catálogo.</div>
     </div>
   </section>
-
   <section id="catalogView" class="hidden">
     <h2 id="viewTitle">Explorar catálogo</h2>
     <p class="muted" id="catalogIntro">Todos tus programas en un solo lugar.</p>
@@ -231,21 +225,17 @@ textarea:focus{border-color:var(--accent)}
     </div>
     <div id="catalogGrid" class="catalog"></div>
   </section>
-
   <section id="favoritesView" class="hidden">
     <h2>Mi lista</h2><p class="muted">Los programas que guardaste para volver a ellos.</p>
     <div id="favoritesGrid" class="catalog" style="margin-top:20px"></div>
   </section>
-
   <section id="activityView" class="hidden">
     <h2>Mi actividad</h2><p class="muted">Tu pequeño diario de K-shows.</p>
     <div class="catalog" id="statsGrid" style="margin-top:20px"></div>
     <div class="section"><h2>Mis puntuaciones</h2><div id="ratedGrid" class="catalog" style="margin-top:16px"></div></div>
   </section>
 </main>
-
 <footer>KShows y Realities Coreanos · Hecho para disfrutar cada historia.</footer>
-
 <dialog id="showDialog">
   <div class="modal-top">
     <button class="close" id="closeDialog" aria-label="Cerrar">×</button>
@@ -270,7 +260,6 @@ textarea:focus{border-color:var(--accent)}
     </div>
   </div>
 </dialog>
-
 <script>
 /* ============================================================
    CONFIGURACIÓN GENERAL DE KSHOWS
@@ -278,12 +267,9 @@ textarea:focus{border-color:var(--accent)}
    El resto del código utiliza los datos que se escriben aquí.
    ============================================================ */
 
-
 /* ------------------------------------------------------------
    1. NOMBRES DE LAS SECCIONES DE INICIO
-   Cambia los textos entre comillas para cambiar los encabezados.
    ------------------------------------------------------------ */
-
 const SECCIONES = {
   continuarViendo: "Continuar viendo",
   populares: "Populares en tu catálogo",
@@ -291,13 +277,9 @@ const SECCIONES = {
   proximamente: "Próximamente"
 };
 
-
 /* ------------------------------------------------------------
    2. NOMBRES DE LAS CATEGORÍAS
-   Puedes cambiar los nombres sin modificar la lógica.
-   Mantén cada nombre entre comillas.
    ------------------------------------------------------------ */
-
 const CATEGORIAS = [
   "Citas y romance",
   "Competencia y supervivencia",
@@ -310,19 +292,9 @@ const CATEGORIAS = [
   "Otros realities"
 ];
 
-
 /* ------------------------------------------------------------
    3. CARRUSEL PRINCIPAL
-   Imágenes HORIZONTALES para el banner grande de Inicio.
-
-   fotoBackground: URL de la imagen horizontal.
-   descripcion: texto descriptivo del programa.
-   fraseSubtitulo: frase breve que aparece sobre el título.
-   posicion: permite ajustar qué parte de la imagen se ve.
-
-   Para agregar otro destacado, copia una ficha completa.
    ------------------------------------------------------------ */
-
 const CARRUSEL = [
   {
     titulo: "Running Man",
@@ -361,18 +333,9 @@ const CARRUSEL = [
   }
 ];
 
-
 /* ------------------------------------------------------------
    4. POSTERS VERTICALES DE LOS KSHOWS
-   Aquí va la URL de la imagen VERTICAL de cada programa.
-
-   Ejemplo:
-   "Running Man": "https://sitio.com/running-man.jpg",
-
-   Deja "" mientras no tengas la imagen.
-   Los programas sin póster conservarán su fondo de color.
    ------------------------------------------------------------ */
-
 const POSTERS = {
   "19/20 Nineteen to Twenty": "https://image.tmdb.org/t/p/original/do5GXnBOctIBuyNR2LguGimveYc.jpg",
   "60 Minutes to Love": "https://image.tmdb.org/t/p/original/aqGjGdoB8oB9YHW4knomxvPEbcd.jpg",
@@ -446,27 +409,16 @@ const POSTERS = {
   "YOO Got a Minute?": ""
 };
 
-
 /* ------------------------------------------------------------
    5. LOGOTIPOS OFICIALES PARA LAS FICHAS
-   Añade aquí la URL del logo de cada programa cuando encuentres uno.
-   Si no hay logo, la ficha mostrará el nombre escrito normalmente.
    ------------------------------------------------------------ */
-
 const LOGOS = {
   /* Ejemplo: "Running Man": "https://sitio.com/logo-running-man.png", */
 };
 
-
 /* ------------------------------------------------------------
    6. DESCRIPCIONES DE LOS KSHOWS
-   Cada título tiene su propio texto, que se muestra al abrirlo.
-
-   Las descripciones son borradores de trabajo. En los títulos
-   menos conocidos, comprueba la sinopsis antes de publicar.
-   Puedes reemplazar cualquier texto sin tocar otras funciones.
    ------------------------------------------------------------ */
-
 const DESCRIPCIONES = {
   "19/20 Nineteen to Twenty": "Un grupo de jóvenes comparte los últimos días de su adolescencia y el comienzo de la adultez. Entre nuevas responsabilidades, amistades y primeras experiencias románticas, descubren cómo quieren vivir esta nueva etapa.",
   "60 Minutes to Love": "Un reality centrado en las citas y las primeras conexiones. Sus participantes tienen un tiempo limitado para conocerse y descubrir si existe una conexión que merezca una segunda oportunidad.",
@@ -498,37 +450,37 @@ const DESCRIPCIONES = {
   "Fresh off the Sea in Calape": "Una entrega relacionada con Fresh off the Sea, ambientada en Calape. La experiencia combina convivencia, entorno costero y actividades cotidianas; los detalles de esta edición deben verificarse.",
   "GBRB: Farm Operation - Go Go Farm": "Un programa de variedades en el que sus participantes se involucran en actividades agrícolas y en la gestión de una granja, con trabajo en equipo y situaciones espontáneas.",
   "GBRB: Joy Pops Laugh Pops": "Un programa de variedades relacionado con el universo GBRB. La descripción concreta de esta entrega está pendiente de verificación para completar la ficha con información precisa.",
-  "Guardian: The Lonely and Great God 10th Anniversary": "Especial conmemorativo relacionado con Guardian, conocido también como Goblin. Celebra el aniversario de la serie y está pensado para quienes desean volver a disfrutar de su universo.",
-  "Heart Pairing": "Un reality de citas que reúne a participantes interesados en encontrar una conexión sentimental. Las conversaciones, la convivencia y las decisiones personales guían el desarrollo de las relaciones.",
-  "Jae-seok's B&B Rules!": "Un programa de variedades que gira en torno a la convivencia y a las actividades de un alojamiento gestionado por Yoo Jae-suk. Las reglas y situaciones del lugar generan encuentros y momentos de humor.",
-  "Kian's Bizarre B&B": "Kian84 recibe huéspedes en un alojamiento poco convencional. La convivencia, las actividades compartidas y su particular manera de atender a los visitantes dan forma al programa.",
-  "Kumusta": "Programa de entretenimiento cuyo formato y premisa necesitan confirmación. La ficha queda preparada para incorporar la sinopsis correcta y los detalles de esta producción.",
-  "Love Against Time": "Una historia de temática romántica en la que el tiempo y las relaciones tienen un papel central. La sinopsis argumental exacta está pendiente de confirmar.",
-  "Love in the Moonlight: Redrawn": "Especial o proyecto relacionado con Love in the Moonlight. La trama y el formato concreto de esta versión deben confirmarse antes de publicar una sinopsis definitiva.",
-  "Match to Marry: With Parents": "Un reality de citas que incorpora la perspectiva familiar al proceso de buscar pareja. Los participantes exploran posibles relaciones mientras el matrimonio y la opinión de sus familias forman parte de la experiencia.",
-  "Mind the Noona Gap": "Un programa de citas centrado en relaciones en las que existe una diferencia de edad entre la mujer y el hombre. Los participantes exploran sus afinidades y expectativas sentimentales.",
-  "Mr. Eo's Food World Tour": "Un recorrido gastronómico en el que la comida y los viajes se convierten en la forma de descubrir distintos lugares y culturas. Los destinos y el formato específico están pendientes de confirmar.",
-  "Murder Club: Liar's Table": "Un programa de misterio y deducción en el que los participantes deben interpretar pistas, descubrir engaños y averiguar quién está diciendo la verdad. La mecánica exacta debe verificarse.",
-  "My AI Partner: Strange Love": "Un programa de temática romántica que explora la relación entre las personas y la inteligencia artificial. La premisa y las dinámicas concretas están pendientes de confirmar.",
-  "My Grumpy Secretary": "Una historia de ficción centrada en la relación entre un superior y su secretaria, marcada por personalidades difíciles, situaciones laborales y posibles sentimientos románticos.",
-  "My Name is Gabriel": "Celebridades experimentan una vida diferente al asumir la identidad y la rutina de otra persona en un lugar nuevo. El programa combina inmersión cultural, convivencia y experiencias cotidianas.",
-  "NANA bnb with SEVENTEEN": "Los integrantes de SEVENTEEN comparten actividades y momentos de convivencia en un alojamiento organizado por Na Young-seok. Los juegos, las conversaciones y el humor muestran la dinámica del grupo.",
-  "Perfect Glow": "Un programa relacionado con la belleza, el cuidado personal o la transformación de imagen. Su formato exacto y sus participantes están pendientes de verificación.",
-  "Pink Lie": "Solteros conviven y buscan el amor mientras cada uno guarda una verdad personal que puede influir en las relaciones. La confianza y las revelaciones ponen a prueba las conexiones que se forman.",
-  "Reply 1988 10th Anniversary": "Especial conmemorativo dedicado a Reply 1988, que celebra el aniversario de la serie y reúne contenido relacionado con su legado y sus recuerdos.",
-  "Reply High School": "Un programa de entretenimiento relacionado con la vida escolar y las experiencias de jóvenes. La premisa exacta y el formato deben confirmarse.",
-  "Running Man": "Uno de los programas de variedades más conocidos de Corea. Sus integrantes y sus invitados participan en juegos, misiones, carreras y desafíos impredecibles llenos de humor.",
-  "Single's Inferno": "Solteros llegan a una isla aislada donde deben conocerse y formar conexiones románticas. Solo quienes encuentran una pareja pueden disfrutar de una escapada juntos fuera de la isla.",
-  "Single's Inferno Reunion": "Reencuentro relacionado con Single's Inferno, centrado en sus participantes y en las conversaciones sobre las conexiones que surgieron durante el programa. Los detalles de esta edición deben verificarse.",
-  "Six Singles under One Roof": "Seis solteros comparten un mismo espacio mientras se conocen y exploran posibles relaciones. La convivencia permite observar afinidades, tensiones y nuevas conexiones.",
-  "Space Rice Cake Shop": "Un programa de variedades ambientado en un local de comida con una temática espacial. La propuesta específica y las actividades de sus participantes están pendientes de confirmación.",
-  "Stand BI Me": "Programa de entretenimiento cuya premisa exacta está pendiente de verificar. La ficha está preparada para añadir información confirmada sobre sus participantes y su formato.",
-  "Street Restaurant Fighter": "Un programa gastronómico centrado en restaurantes y desafíos culinarios. Los participantes exploran sabores, técnicas y propuestas de comida; el formato específico debe confirmarse.",
-  "Street World Fighter: Director's War": "Proyecto relacionado con el universo de competencias de baile de Street Woman Fighter y Street Man Fighter. La descripción exacta de esta edición debe verificarse.",
-  "Take a Hike!": "Un programa de viajes y aventura en el que sus participantes salen a explorar rutas y paisajes, compartiendo caminatas y experiencias fuera de la rutina cotidiana.",
-  "The Love Lab": "Un reality de temática romántica que explora la compatibilidad y las relaciones entre sus participantes. Las reglas y la premisa específica están pendientes de confirmar.",
-  "The Manager": "Programa de variedades que muestra el día a día de celebridades desde la perspectiva de sus representantes y equipos de trabajo, con momentos espontáneos detrás de cámaras.",
-  "The Secret Friends Club": "Un programa de entretenimiento centrado en la amistad, los encuentros y las actividades compartidas. Su formato exacto está pendiente de confirmar.",
+  "Guardian: The Lonely and Great God 10th Anniversary": "Especial conmemorativo relacionado con Guardian, que reúne contenido vinculado con la serie y su aniversario. Los detalles de esta edición especial están pendientes de confirmar.",
+  "Heart Pairing": "Un reality de citas en el que los participantes buscan una conexión sentimental y exploran sus preferencias, compatibilidad y expectativas de pareja.",
+  "Jae-seok's B&B Rules!": "Un programa de variedades centrado en la convivencia y las reglas de un alojamiento, con interacciones espontáneas y situaciones de humor.",
+  "Kian's Bizarre B&B": "Kian84 recibe huéspedes en un alojamiento con una propuesta poco convencional. La convivencia y las ocurrencias que surgen durante la estadía dan forma al programa.",
+  "Kumusta": "Un programa de variedades cuyo concepto específico está pendiente de confirmar. La ficha queda preparada para incorporar una sinopsis basada en la información oficial.",
+  "Love Against Time": "Un drama romántico que combina sentimientos y circunstancias relacionadas con el tiempo. La premisa detallada está pendiente de verificar.",
+  "Love in the Moonlight: Redrawn": "Una propuesta especial relacionada con Love in the Moonlight. Los detalles de la historia y el formato de esta entrega están pendientes de confirmar.",
+  "Match to Marry: With Parents": "Un reality de citas en el que las familias participan u observan el proceso de conocer posibles parejas. Las afinidades y las expectativas familiares forman parte de la experiencia.",
+  "Mind the Noona Gap": "Un programa centrado en relaciones en las que existe una diferencia de edad entre los participantes. Las conversaciones y la compatibilidad permiten explorar sus vínculos.",
+  "Mr. Eo's Food World Tour": "Un recorrido gastronómico en el que la comida y los destinos son protagonistas. Los detalles específicos del viaje y sus participantes están pendientes de confirmar.",
+  "Murder Club: Liar's Table": "Un juego de estrategia social en el que los participantes deben interpretar comportamientos, detectar mentiras y tomar decisiones para avanzar.",
+  "My AI Partner: Strange Love": "Una propuesta romántica que explora la relación entre las personas y la inteligencia artificial. Los detalles del formato están pendientes de confirmar.",
+  "My Grumpy Secretary": "Un drama centrado en la relación entre un jefe y su secretaria, con conflictos cotidianos y situaciones que pueden transformar su vínculo.",
+  "My Name is Gabriel": "Celebridades viven durante un tiempo como otras personas y experimentan una rutina distinta, con nuevas responsabilidades, relaciones y desafíos cotidianos.",
+  "NANA bnb with SEVENTEEN": "Na PD recibe a los integrantes de SEVENTEEN en una experiencia de convivencia con juegos, comida y actividades que muestran su química y sentido del humor.",
+  "Perfect Glow": "Un programa de belleza que explora el maquillaje, el cuidado personal y las transformaciones de imagen. Los detalles del formato están pendientes de confirmar.",
+  "Pink Lie": "Solteros conviven mientras intentan descubrir si pueden construir una relación auténtica. Los secretos personales y las primeras impresiones influyen en sus decisiones.",
+  "Reply 1988 10th Anniversary": "Especial de aniversario vinculado con Reply 1988, que celebra la serie y reúne contenido relacionado con sus personajes y su legado.",
+  "Reply High School": "Un programa de variedades con una propuesta centrada en el ambiente escolar. El concepto concreto y sus participantes están pendientes de confirmar.",
+  "Running Man": "Un clásico de las variedades coreanas en el que sus integrantes y sus invitados se enfrentan a juegos, misiones y desafíos llenos de humor.",
+  "Single's Inferno": "Solteros conviven en una isla y buscan conectar románticamente. Para salir del lugar y disfrutar de citas, deben formar parejas mientras lidian con la competencia y las emociones.",
+  "Single's Inferno Reunion": "Una reunión relacionada con Single's Inferno que retoma a sus participantes y sus experiencias sentimentales. Los detalles de esta edición deben verificarse.",
+  "Six Singles under One Roof": "Seis solteros comparten un mismo espacio y exploran posibles relaciones mientras descubren afinidades, diferencias y nuevas atracciones.",
+  "Space Rice Cake Shop": "Un programa de variedades con una propuesta centrada en la comida y la convivencia. Los detalles específicos del concepto están pendientes de confirmar.",
+  "Stand BI Me": "Un programa de variedades cuyo concepto exacto está pendiente de verificación. La ficha queda lista para añadir una sinopsis precisa cuando se confirme la información oficial.",
+  "Street Restaurant Fighter": "Un programa gastronómico en el que la comida y los desafíos culinarios ocupan el centro de la experiencia. Los detalles específicos deben confirmarse.",
+  "Street World Fighter: Director's War": "Una entrega relacionada con el universo de Street Woman Fighter, con foco en la competencia y la dirección artística. Los detalles exactos están pendientes de verificar.",
+  "Take a Hike!": "Un programa de viajes y aventura que lleva a sus participantes a recorrer distintos lugares y afrontar experiencias fuera de su rutina habitual.",
+  "The Love Lab": "Un reality de citas que explora las relaciones, la compatibilidad y las decisiones que toman los participantes al conocer posibles parejas.",
+  "The Manager": "Un programa de variedades que muestra aspectos cotidianos de celebridades y la relación con sus representantes, combinando observación y humor.",
+  "The Secret Friends Club": "Un programa de variedades centrado en la amistad, los encuentros y las dinámicas que surgen entre sus participantes.",
   "The Village Barber": "Un programa de convivencia ambientado en una barbería de pueblo, donde sus participantes atienden a los vecinos y comparten experiencias de la vida cotidiana.",
   "The Wedding War": "Parejas ponen a prueba su relación mediante retos físicos, emocionales y de convivencia relacionados con la preparación para el matrimonio. La competencia examina su compatibilidad y trabajo en equipo.",
   "This is Hyunmoo Road": "Un programa de viajes y variedades vinculado con Jun Hyun-moo. Las experiencias, los destinos y las actividades del recorrido conforman su propuesta; el formato exacto debe verificarse.",
@@ -539,16 +491,9 @@ const DESCRIPCIONES = {
   "X The League": "Un programa competitivo cuyo formato exacto está pendiente de confirmar. La ficha queda lista para completar los detalles de sus participantes, reglas y desafíos."
 };
 
-
-/* ------------------------------------------------------------
+  /* ------------------------------------------------------------
    7. CATÁLOGO COMPLETO
-   Para agregar un programa nuevo, añade una entrada aquí:
-   ["Nombre del programa", "Nombre de su categoría"]
-
-   Después agrega su URL en POSTERS y su sinopsis en
-   DESCRIPCIONES para completar su ficha.
    ------------------------------------------------------------ */
-
 const rawShows = [
   ["19/20 Nineteen to Twenty","Citas y romance"],
   ["60 Minutes to Love","Citas y romance"],
@@ -622,13 +567,9 @@ const rawShows = [
   ["YOO Got a Minute?","Variedades y entretenimiento"]
 ];
 
-
 /* ------------------------------------------------------------
    8. PROGRAMAS QUE APARECEN EN "POPULARES"
-   Cambia el orden o los títulos cuando quieras.
-   Los nombres deben coincidir con los del catálogo.
    ------------------------------------------------------------ */
-
 const POPULARES = [
   "Single's Inferno",
   "EXchange",
@@ -642,11 +583,8 @@ const POPULARES = [
   "Apartment 404"
 ];
 
-
 /* ============================================================
    FIN DE LA ZONA DE CONFIGURACIÓN
-   Desde aquí comienza la lógica de la página.
-   Normalmente no necesitas modificar nada de lo que sigue.
    ============================================================ */
 
 const palette=[
@@ -666,11 +604,15 @@ const shows=rawShows.map(([title,genre],i)=>({
   colors:palette[i%palette.length]
 }));
 
+/* CORRECCIÓN: los nombres del carrusel se convierten a los campos
+   que utiliza renderHeroSlide. Así reaparecen título y descripción. */
 let featuredSlides=CARRUSEL.map(item=>({
   ...item,
+  title:item.titulo||"",
+  description:item.descripcion||"",
   image:item.fotoBackground||"",
   kicker:item.fraseSubtitulo||"",
-  showTitle:item.titulo,
+  showTitle:item.titulo||"",
   position:item.posicion||"center 35%"
 }));
 
@@ -767,7 +709,7 @@ function card(show,hideGenre=false){
       <button class="fav ${fav?"on":""}" data-fav="${show.id}" aria-label="${fav?"Quitar de":"Añadir a"} Mi lista">${fav?"♥":"♡"}</button>
     </div>
     <div class="card-title">${esc(show.title)}</div>
-    ${hideGenre? "":`<div class="card-meta">${esc(show.genre)}</div>`}
+    ${hideGenre||show.poster?"":`<div class="card-meta">${esc(show.genre)}</div>`}
     ${rating?`<div class="card-meta">★ ${rating}/5</div>`:""}
     ${done&&done<total?`<div class="progress"><span style="width:${Math.round(done/total*100)}%"></span></div><div class="card-meta">${done} de ${total} episodios vistos</div>`:""}
   </article>`;
@@ -869,7 +811,7 @@ function render(){
   `).join("");
 }
 
-function setView(view){
+  function setView(view){
   currentView=view;
   if(view==="catalog"){currentFilter="all";currentCategory="all"}
   render();
