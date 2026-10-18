@@ -147,16 +147,32 @@ textarea:focus{border-color:var(--accent)}
   .hero{min-height:420px;border-radius:17px;background:#101014}
   /* En el teléfono se muestra la imagen completa, sin zoom ni recorte. */
   .hero-slide img,.hero-slide.active img{object-fit:contain;object-position:center center;transform:none}
-  .hero-content{padding:24px 20px 82px}
-  .hero-shade{background:linear-gradient(90deg,#10101460 0%,#10101430 48%,#10101408 100%),linear-gradient(0deg,#101014b8 0%,#10101465 36%,transparent 70%)}
-  .hero-controls{right:12px;bottom:14px;gap:6px}
-  .hero-arrow{width:32px;height:32px}.hero-dot{width:14px}.hero-dot.active{width:25px}
-  .catalog{grid-template-columns:repeat(3,minmax(0,1fr));gap:19px 10px}
-  .row-scroller{grid-auto-columns:minmax(112px,37vw);gap:10px}
-  .poster{border-radius:11px;padding:10px}
-  .fav{top:5px;right:5px;width:29px;height:29px}
-  .card-title{font-size:12px}.card-meta{font-size:11px}
-  .ep-actions{flex-direction:column;align-items:stretch}.small-btn{padding:7px 8px}
+    .hero-content{
+    padding:24px 16px 76px;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    overflow-wrap:anywhere;
+  }
+  .hero-kicker{font-size:10px;letter-spacing:1.4px}
+  .hero h1{
+    font-size:clamp(28px,8vw,38px);
+    line-height:1.05;
+    letter-spacing:-1px;
+    overflow-wrap:anywhere;
+  }
+  .hero p{
+    font-size:13px;
+    line-height:1.45;
+    max-width:100%;
+    margin:10px 0;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:4;
+    line-clamp:4;
+    overflow:hidden;
+    overflow-wrap:anywhere;
+    text-shadow:0 1px 8px #000;
 }
 @media(max-width:390px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}.brand{font-size:17px}}
 </style>
@@ -346,67 +362,67 @@ const POSTERS = {
   "Are You Sure?!": "https://image.tmdb.org/t/p/original/5NZzvgSnCBBxdDRmYJHRfBXVs43.jpg",
   "Bake Your Dream": "https://image.tmdb.org/t/p/original/bX8puPJrauyHBTD59oohHyuUf5e.jpg",
   "Battle of Fates": "https://image.tmdb.org/t/p/original/o4DOGStruvyfrfKhazBO9UbxRhR.jpg",
-  "Better Late Than Single": "",
-  "Bite Me Sweet": "",
-  "Bloody Game": "",
-  "Bloody Game X": "",
-  "Bonjour Bakery": "",
-  "BTS: THE COMEBACK LIVE | ARIRANG": "",
-  "BTS: THE RETURN": "",
-  "Cha's Family": "",
-  "Chef of Antarctica": "",
-  "Closet Battle": "",
-  "Country Life of Gen-Z": "",
-  "Culinary Class Wars": "",
-  "Curtain Up, Class!": "",
-  "Date My Friend": "",
-  "Deadly Tag": "",
-  "Director's Arena": "",
-  "EXchange": "",
-  "Fresh off the Sea": "",
-  "Fresh off the Sea in Calape": "",
-  "GBRB: Farm Operation - Go Go Farm": "",
-  "GBRB: Joy Pops Laugh Pops": "",
-  "Guardian: The Lonely and Great God 10th Anniversary": "",
-  "Heart Pairing": "",
-  "Jae-seok's B&B Rules!": "",
-  "Kian's Bizarre B&B": "",
-  "Kumusta": "",
-  "Love Against Time": "",
-  "Love in the Moonlight: Redrawn": "",
-  "Match to Marry: With Parents": "",
-  "Mind the Noona Gap": "",
-  "Mr. Eo's Food World Tour": "",
-  "Murder Club: Liar's Table": "",
-  "My AI Partner: Strange Love": "",
-  "My Grumpy Secretary": "",
-  "My Name is Gabriel": "",
-  "NANA bnb with SEVENTEEN": "",
-  "Perfect Glow": "",
-  "Pink Lie": "",
-  "Reply 1988 10th Anniversary": "",
-  "Reply High School": "",
-  "Running Man": "",
-  "Single's Inferno": "",
-  "Single's Inferno Reunion": "",
-  "Six Singles under One Roof": "",
-  "Space Rice Cake Shop": "",
-  "Stand BI Me": "",
-  "Street Restaurant Fighter": "",
-  "Street World Fighter: Director's War": "",
-  "Take a Hike!": "",
-  "The Love Lab": "",
-  "The Manager": "",
-  "The Secret Friends Club": "",
-  "The Village Barber": "",
-  "The Wedding War": "",
-  "This is Hyunmoo Road": "",
-  "Undercover Chef - Korea": "",
-  "Unplanned Trip: Limited Edition": "",
-  "When Our Kids Fall in Love": "",
-  "Whenever Possible": "",
-  "X The League": "",
-  "YOO Got a Minute?": ""
+  "Better Late Than Single": "https://image.tmdb.org/t/p/original/101Sutn63Tx2DO7ml7hX7epAzzV.jpg",
+  "Bite Me Sweet": "https://image.tmdb.org/t/p/original/3PkfnrHwJ8Wi5PqFRrdKVBrNtwY.jpg",
+  "Bloody Game": "https://image.tmdb.org/t/p/original/2P85gto9a1i87nwC9bWBaG54O9j.jpg",
+  "Bloody Game X": "https://image.tmdb.org/t/p/original/qQPhj3kXWTfscwsqduekqp5S2ap.jpg",
+  "Bonjour Bakery": "https://image.tmdb.org/t/p/original/v06dxTpPVKT3EIsnTik9VKld4L3.jpg",
+  "BTS: THE COMEBACK LIVE | ARIRANG": "https://image.tmdb.org/t/p/original/tztql23n2UCoM76KyCSKoZxVUL1.jpg",
+  "BTS: THE RETURN": "https://image.tmdb.org/t/p/original/9CNUWleZWN9EGMZjvaSTcxmAAGg.jpg",
+  "Cha's Family": "https://image.tmdb.org/t/p/original/dJP9oRskqd30mKmDonMzXB4nIAv.jpg",
+  "Chef of Antarctica": "https://image.tmdb.org/t/p/original/r19VI7xF1fDRLIgiZpWzYsv6r7Q.jpg",
+  "Closet Battle": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1YKAJ5yw5fIpKTC--LnEV9TJeQBYZbkhJz8VirX38Xw&s=10",
+  "Country Life of Gen-Z": "https://image.tmdb.org/t/p/original/aFyMV9NQbu8iTQLZ0rik1nBMQBo.jpg",
+  "Culinary Class Wars": "https://image.tmdb.org/t/p/original/idXvuHfEZfK6cTvOpvGLryX2mMk.jpg",
+  "Curtain Up, Class!": "https://image.tmdb.org/t/p/original/3XSIABxyxo0HTK5dk4L548tTk5g.jpg",
+  "Date My Friend": "https://image.tmdb.org/t/p/original/uAh5IGVa3RYFIUbqXyoeyJrxjpr.jpg",
+  "Deadly Tag": "https://image.tmdb.org/t/p/original/1zAyr7XTzeOIcjgUReuOob0DrjF.jpg",
+  "Director's Arena": "https://image.tmdb.org/t/p/original/4RqH7J55Q0AFiCkai264YZyynBI.jpg",
+  "EXchange": "https://m.media-amazon.com/images/M/MV5BNTEwY2E3ZWUtNmVmMy00Yjk5LWI5OWMtNjI4YmM0MDUyODQ4XkEyXkFqcGc@._V1_.jpg",
+  "Fresh off the Sea": "https://image.tmdb.org/t/p/original/8LvUpjNqMBvIg4JLCEBQakQdg3e.jpg",
+  "Fresh off the Sea in Calape": "https://image.tmdb.org/t/p/original/urzXydnZsqIG73lMCz9eWBfRY1p.jpg",
+  "GBRB: Farm Operation - Go Go Farm": "https://image.tmdb.org/t/p/original/eN0OXhb4gc6RLIdyE8S0imoKlwk.jpg",
+  "GBRB: Joy Pops Laugh Pops": "https://image.tmdb.org/t/p/original/xtQKx34TuxSoRWF20rq9ASvCmH7.jpg",
+  "Guardian: The Lonely and Great God 10th Anniversary": "https://image.tmdb.org/t/p/original/dJGjOMZUFSKtn4MZjscWMvvkaKv.jpg",
+  "Heart Pairing": "https://image.tmdb.org/t/p/original/uWJOlvkoFqxFt8lpCxMgzMvr7ES.jpg",
+  "Jae-seok's B&B Rules!": "https://image.tmdb.org/t/p/original/RcVRBQm5q2q4CuPTl4IUL2phUh.jpg",
+  "Kian's Bizarre B&B": "https://image.tmdb.org/t/p/original/tj4B2WgSctuLETG5QhsZEcQpCA5.jpg",
+  "Kumusta": "https://image.tmdb.org/t/p/original/xJ135sB0ErcfRGwkVDOXIwVfa8X.jpg",
+  "Love Against Time": "https://image.tmdb.org/t/p/original/pzHUgSRZ7yPfmluUJqA4K3cBbCO.jpg",
+  "Love in the Moonlight: Redrawn": "https://image.tmdb.org/t/p/original/wKUsBsYHvT5WORXzxknoiKHT1Jh.jpg",
+  "Match to Marry: With Parents": "https://image.tmdb.org/t/p/original/zKoEOX7MH3XauyKFWi91PzMDqyU.jpg",
+  "Mind the Noona Gap": "https://image.tmdb.org/t/p/original/lBzg9WuYcYi0WtJBJh96IMBhR8w.jpg",
+  "Mr. Eo's Food World Tour": "https://image.tmdb.org/t/p/original/44TADsoPckSib7y3azsXLzO53rS.jpg",
+  "Murder Club: Liar's Table": "https://image.tmdb.org/t/p/original/8GrVOoXDa7QPgaxyZTKYWQGp23a.jpg",
+  "My AI Partner: Strange Love": "https://image.tmdb.org/t/p/original/3lRms31DDI2NZEDSPQujebAOWVH.jpg",
+  "My Grumpy Secretary": "https://image.tmdb.org/t/p/original/7QzOtXhksu8ZXOlG4A8asju1By7.jpg",
+  "My Name is Gabriel": "https://image.tmdb.org/t/p/original/9fJKX8X3gk8wnLuGOSecO7coqbA.jpg",
+  "NANA bnb with SEVENTEEN": "https://image.tmdb.org/t/p/original/qGzmcGUiH0NQTTy9gpYFp6QTpUo.jpg",
+  "Perfect Glow": "https://image.tmdb.org/t/p/original/3uJ7tCVLUPOVBBxIWQmMsoTbsT8.jpg",
+  "Pink Lie": "https://image.tmdb.org/t/p/original/jmLj39flUKMfS2s4ScOWZuMytjY.jpg",
+  "Reply 1988 10th Anniversary": "https://image.tmdb.org/t/p/original/v2V8c3Qey8w24WhASFGRMHjX6zS.jpg",
+  "Reply High School": "https://image.tmdb.org/t/p/original/yDfSDmhcIKAHxjVX2V8DxHLSc6n.jpg",
+  "Running Man": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToGwt_lozGedH5rzH5pRjxsIdx4J5e4CvEA3HErrC5x9XHxJQxHZEJPaPB&s=10",
+  "Single's Inferno": "https://image.tmdb.org/t/p/original/vds90yMTsaTIQXgUgISgYUs7AZ3.jpg",
+  "Single's Inferno Reunion": "https://image.tmdb.org/t/p/original/xgM5WOEzr0Y7MUK0EnuozBw3CKZ.jpg",
+  "Six Singles under One Roof": "https://image.tmdb.org/t/p/original/xgjrcaYLBGYU3Je3EnAqBwDOEg1.jpg",
+  "Space Rice Cake Shop": "https://image.tmdb.org/t/p/original/fj6x2sGpndSZVvoPfA8KzRT4xt.jpg",
+  "Stand BI Me": "https://image.tmdb.org/t/p/original/3eA7AGSFYL8zH1o1P4YkNPfB5n6.jpg",
+  "Street Restaurant Fighter": "https://image.tmdb.org/t/p/original/7o7WmXOybRKxGm0ygwyzSA8isQa.jpg",
+  "Street World Fighter: Director's War": "https://image.tmdb.org/t/p/original/k4qGc0eVHcZyeTWPgXvM9SPsnME.jpg",
+  "Take a Hike!": "https://image.tmdb.org/t/p/original/ya3p0meUJJ92gjFRFcZ1C3TJ0nO.jpg",
+  "The Love Lab": "https://image.tmdb.org/t/p/original/av7518MjqRkYc8BDC8AYHlCmn4V.jpg",
+  "The Manager": "https://image.tmdb.org/t/p/original/jASfIetUKhrbqEEKBnjRjjgfuGK.jpg",
+  "The Secret Friends Club": "https://image.tmdb.org/t/p/original/dqMLM6PhkcPCzI3BM9OgiHxs9Vi.jpg",
+  "The Village Barber": "https://image.tmdb.org/t/p/original/nRRvRvX4arPeVJWD7bVijYVffeY.jpg",
+  "The Wedding War": "https://image.tmdb.org/t/p/original/sR2HzYamEJ5EnNQPOMlNCU7IrGW.jpg",
+  "This is Hyunmoo Road": "https://image.tmdb.org/t/p/original/2lFxOzrJMKsQewTeNRI7sKmlA2H.jpg",
+  "Undercover Chef - Korea": "https://image.tmdb.org/t/p/original/tAkKw3hrZrdLqT0Z73XuN7hRI25.jpg",
+  "Unplanned Trip: Limited Edition": "https://image.tmdb.org/t/p/original/z0PR0w4sKBZSZJF2Q5lYO5zIfWy.jpg",
+  "When Our Kids Fall in Love": "https://image.tmdb.org/t/p/original/7IT3mjN7ocRuYNyXynHjQAPvZBj.jpg",
+  "Whenever Possible": "https://image.tmdb.org/t/p/original/wK5oTGgz9UxxmegA05V4VhagzHy.jpg",
+  "X The League": "https://image.tmdb.org/t/p/original/mtGPXr4Isz5hDJ53Gppyd8JUXkR.jpg",
+  "YOO Got a Minute?": "https://image.tmdb.org/t/p/original/erjFiBVWOhRXf1uB7gcauR0fcJb.jpg"
 };
 
 /* ------------------------------------------------------------
@@ -709,7 +725,7 @@ function card(show,hideGenre=false){
       <button class="fav ${fav?"on":""}" data-fav="${show.id}" aria-label="${fav?"Quitar de":"Añadir a"} Mi lista">${fav?"♥":"♡"}</button>
     </div>
     <div class="card-title">${esc(show.title)}</div>
-    ${hideGenre||show.poster?"":`<div class="card-meta">${esc(show.genre)}</div>`}
+    ${hideGenre||show.poster||show.id===rawShows[0]?.id?"":`<div class="card-meta">${esc(show.genre)}</div>`}
     ${rating?`<div class="card-meta">★ ${rating}/5</div>`:""}
     ${done&&done<total?`<div class="progress"><span style="width:${Math.round(done/total*100)}%"></span></div><div class="card-meta">${done} de ${total} episodios vistos</div>`:""}
   </article>`;
