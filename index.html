@@ -4,469 +4,76 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101014">
-<title>KShows y Realities Coreanos</title>
+<title>Kshows y Realities Coreanos</title>
 <style>
-:root {
-  --bg:#101014; --panel:#19191f; --panel2:#22222b;
-  --text:#f6f5fa; --muted:#aaa9b7; --accent:#c6a5ff;
-  --pink:#ff8fc8; --border:#30303a; --green:#8ce4b1;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-header{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;gap:18px;background:#101014ed;border-bottom:1px solid #ffffff0d;position:sticky;top:0;z-index:5;backdrop-filter:blur(16px)}
-.brand{font-size:25px;font-weight:900;letter-spacing:-1.3px;white-space:nowrap}
-.brand span{color:var(--accent)}
-.nav{display:flex;gap:18px}
-.nav button,.icon-btn{background:none;border:0;color:var(--muted);padding:8px 4px}
-.nav button.active,.nav button:hover{color:white}
-.search{width:min(260px,34vw);background:var(--panel);border:1px solid var(--border);border-radius:12px;color:white;padding:10px 12px;outline:none}
-.search:focus{border-color:var(--accent)}
-main{max-width:1440px;margin:auto;padding:24px 5% 60px}
-.hero{min-height:350px;border-radius:22px;overflow:hidden;position:relative;display:flex;align-items:flex-end;background:linear-gradient(0deg,#15131deF,transparent 95%),linear-gradient(90deg,#211b31 0%,#443451 50%,#282331 100%);margin-bottom:36px}
-.hero-art{position:absolute;inset:0;background:radial-gradient(ellipse at 75% 25%,#f6b6d655,transparent 35%),radial-gradient(ellipse at 70% 90%,#9e77d977,transparent 45%)}
-.hero-content{position:relative;padding:clamp(24px,5vw,54px);max-width:650px}
-.eyebrow{font-size:11px;letter-spacing:2.5px;font-weight:800;color:var(--pink);text-transform:uppercase}
-h1{font-size:clamp(34px,5.5vw,64px);line-height:1.04;letter-spacing:-2px;margin:12px 0}
-.hero p{color:#d0ccd9;line-height:1.65;max-width:500px}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.btn{border:0;border-radius:10px;padding:11px 16px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:7px}
-.btn-primary{background:var(--accent);color:#191322}
-.btn-secondary{background:#ffffff15;color:white;border:1px solid #ffffff22}
-.btn:hover{filter:brightness(1.1)}
-.section{margin:34px 0}
-.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
-h2{font-size:21px;margin:0;letter-spacing:-.5px}
-.muted{color:var(--muted);font-size:13px}
-.catalog{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px 15px}
-.card{min-width:0;cursor:pointer;position:relative}
-.poster{aspect-ratio:2/3;border-radius:13px;overflow:hidden;position:relative;display:flex;align-items:flex-end;padding:14px;background:linear-gradient(145deg,var(--c1),var(--c2));isolation:isolate;transition:transform .2s}
-.poster:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 24%,#ffffff42,transparent 38%),linear-gradient(0deg,#09080ccf,transparent 75%);z-index:-1}
-.poster:after{content:"";position:absolute;width:70%;height:58%;left:15%;top:12%;border:1px solid #ffffff25;border-radius:48% 48% 10% 10%;transform:rotate(-8deg);z-index:-1}
-.card:hover .poster{transform:translateY(-4px)}
-.poster-word{font-size:clamp(18px,2vw,28px);font-weight:950;line-height:1;letter-spacing:-1px;text-shadow:0 3px 12px #0008;overflow-wrap:anywhere}
-.poster-label{position:absolute;top:10px;left:10px;background:#15131d99;border:1px solid #ffffff25;border-radius:6px;padding:5px 7px;font-size:9px;font-weight:800;letter-spacing:1px}
-.fav{position:absolute;top:9px;right:9px;width:32px;height:32px;border-radius:50%;border:1px solid #ffffff40;background:#15131d99;color:white;font-size:17px;z-index:2}
-.fav.on{color:var(--pink)}
-.card-title{font-weight:750;font-size:14px;margin-top:10px;line-height:1.35}
-.card-meta{color:var(--muted);font-size:12px;margin-top:4px}
-.progress{height:4px;background:#36333f;border-radius:9px;overflow:hidden;margin-top:9px}
-.progress span{display:block;height:100%;background:var(--accent)}
-.empty{padding:35px 16px;text-align:center;background:var(--panel);border:1px dashed var(--border);border-radius:14px;color:var(--muted)}
-.hidden{display:none!important}
-#viewTitle{margin-bottom:20px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.filter{background:var(--panel);border:1px solid var(--border);border-radius:9px;color:var(--muted);padding:9px 13px}
-.filter.active{background:var(--accent);color:#191322;border-color:var(--accent)}
-footer{text-align:center;color:#747280;font-size:12px;padding:25px;border-top:1px solid var(--border)}
-dialog{width:min(760px,94vw);max-height:90vh;overflow:auto;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:18px;padding:0}
-dialog::backdrop{background:#000b;backdrop-filter:blur(5px)}
-.modal-top{padding:24px;background:linear-gradient(135deg,#3c2c4c,#1c1b26);position:relative}
-.modal-top h2{font-size:29px;margin:8px 35px 8px 0}
-.close{position:absolute;right:15px;top:15px;border:0;border-radius:50%;width:36px;height:36px;background:#ffffff18;color:white;font-size:21px}
-.modal-body{padding:24px}
-.modal-desc{line-height:1.7;color:#c4c2cf;font-size:14px}
-.modal-controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:18px 0}
-.season-select{background:var(--panel2);border:1px solid var(--border);color:white;border-radius:9px;padding:10px}
-.episode{display:flex;align-items:center;gap:13px;padding:14px 0;border-bottom:1px solid var(--border)}
-.ep-num{width:35px;height:35px;flex-shrink:0;display:grid;place-items:center;background:var(--panel2);border-radius:8px;color:var(--muted);font-weight:800}
-.ep-info{flex:1;min-width:0}
-.ep-name{font-weight:700;font-size:14px}
-.ep-sub{font-size:12px;color:var(--muted);margin-top:4px}
-.ep-actions{display:flex;gap:7px;align-items:center}
-.small-btn{border:1px solid var(--border);background:var(--panel);color:white;border-radius:8px;padding:8px;font-size:12px}
-.small-btn.watched{color:var(--green);border-color:#8ce4b144}
-.rate{display:flex;gap:4px;margin:10px 0}
-.rate button{border:0;background:none;padding:2px;color:#555460;font-size:24px}
-.rate button.on{color:#f5c96a}
-textarea{width:100%;min-height:75px;resize:vertical;background:var(--panel);border:1px solid var(--border);border-radius:10px;color:white;padding:12px}
-@media(max-width:950px){.catalog{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:650px){
- header{height:auto;min-height:65px;padding:12px 4%;flex-wrap:wrap;gap:8px}
- .brand{font-size:22px}.nav{order:3;width:100%;justify-content:space-between;gap:6px}
- .nav button{font-size:12px}.search{margin-left:auto;width:42%}
- main{padding:18px 4% 45px}.hero{min-height:310px;border-radius:16px}
- .catalog{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 10px}
- .poster{border-radius:10px;padding:9px}.poster-label{font-size:8px;top:6px;left:6px}.fav{top:5px;right:5px;width:28px;height:28px}
- .card-title{font-size:12px}.card-meta{font-size:11px}
- .ep-actions{flex-direction:column;align-items:stretch}.small-btn{padding:7px 8px}
-}
-@media(max-width:390px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}}
+:root{--bg:#101014;--panel:#19191f;--panel2:#22222b;--text:#f6f5fa;--muted:#aaa9b7;--accent:#c6a5ff;--pink:#ff8fc8;--border:#30303a;--green:#8ce4b1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}
+header{min-height:72px;display:flex;align-items:center;justify-content:space-between;padding:12px 5%;gap:18px;background:#101014ed;border-bottom:1px solid #ffffff0d;position:sticky;top:0;z-index:5;backdrop-filter:blur(16px)}
+.brand{font-size:clamp(16px,2vw,25px);font-weight:900;letter-spacing:-1.1px;white-space:nowrap}.brand .pastel{color:var(--accent)}.brand .pink{color:var(--pink)}.brand .green{color:var(--green)}
+.nav{display:flex;gap:18px}.nav button,.icon-btn{background:none;border:0;color:var(--muted);padding:8px 4px}.nav button.active,.nav button:hover{color:white}.search{width:min(250px,24vw);background:var(--panel);border:1px solid var(--border);border-radius:12px;color:white;padding:10px 12px;outline:none}.search:focus{border-color:var(--accent)}
+main{max-width:1440px;margin:auto;padding:24px 5% 60px}.hero{min-height:340px;border-radius:22px;overflow:hidden;position:relative;display:flex;align-items:flex-end;background:linear-gradient(0deg,#15131def,transparent 95%),linear-gradient(110deg,#211b31 0%,#443451 50%,#282331 100%);margin-bottom:36px}.hero-art{position:absolute;inset:0;background:radial-gradient(ellipse at 75% 25%,#f6b6d655,transparent 35%),radial-gradient(ellipse at 70% 90%,#9e77d977,transparent 45%)}.hero-content{position:relative;padding:clamp(24px,5vw,54px);max-width:650px}.eyebrow{font-size:11px;letter-spacing:2.5px;font-weight:800;color:var(--pink);text-transform:uppercase}h1{font-size:clamp(34px,5.5vw,64px);line-height:1.04;letter-spacing:-2px;margin:12px 0}.hero p{color:#d0ccd9;line-height:1.65;max-width:500px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.btn{border:0;border-radius:10px;padding:11px 16px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn-primary{background:var(--accent);color:#191322}.btn-secondary{background:#ffffff15;color:white;border:1px solid #ffffff22}.btn:hover{filter:brightness(1.1)}
+.section{margin:34px 0}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}h2{font-size:21px;margin:0;letter-spacing:-.5px}.muted{color:var(--muted);font-size:13px}.text-link{border:0;background:none;color:var(--accent);font-size:13px;font-weight:750;padding:7px 0;white-space:nowrap}.catalog{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px 15px}.row-scroller{display:grid;grid-auto-columns:minmax(145px,1fr);grid-auto-flow:column;grid-template-rows:auto;gap:15px;overflow-x:auto;padding:3px 2px 12px;scrollbar-width:thin;scrollbar-color:#4a405b transparent}.card{min-width:0;cursor:pointer;position:relative}.poster{aspect-ratio:2/3;border-radius:13px;overflow:hidden;position:relative;display:flex;align-items:flex-end;padding:14px;background:linear-gradient(145deg,var(--c1),var(--c2));isolation:isolate;transition:transform .2s;box-shadow:0 8px 20px #0002}.poster:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 24%,#ffffff42,transparent 38%),linear-gradient(0deg,#09080ce8,transparent 75%);z-index:-1}.poster:after{content:"";position:absolute;width:70%;height:58%;left:15%;top:12%;border:1px solid #ffffff25;border-radius:48% 48% 10% 10%;transform:rotate(-8deg);z-index:-1}.card:hover .poster{transform:translateY(-4px)}.poster-word{font-size:clamp(17px,1.8vw,25px);font-weight:950;line-height:1.02;letter-spacing:-.8px;text-shadow:0 3px 12px #0008;overflow-wrap:anywhere}.poster-label{position:absolute;top:10px;left:10px;background:#15131d99;border:1px solid #ffffff25;border-radius:6px;padding:5px 7px;font-size:9px;font-weight:800;letter-spacing:.7px}.fav{position:absolute;top:9px;right:9px;width:32px;height:32px;border-radius:50%;border:1px solid #ffffff40;background:#15131d99;color:white;font-size:17px;z-index:2}.fav.on{color:var(--pink)}.card-title{font-weight:750;font-size:14px;margin-top:10px;line-height:1.35}.card-meta{color:var(--muted);font-size:12px;margin-top:4px}.progress{height:4px;background:#36333f;border-radius:9px;overflow:hidden;margin-top:9px}.progress span{display:block;height:100%;background:var(--accent)}.empty{padding:35px 16px;text-align:center;background:var(--panel);border:1px dashed var(--border);border-radius:14px;color:var(--muted)}.hidden{display:none!important}#viewTitle{margin-bottom:20px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.filter{background:var(--panel);border:1px solid var(--border);border-radius:9px;color:var(--muted);padding:9px 13px}.filter.active{background:var(--accent);color:#191322;border-color:var(--accent)}footer{text-align:center;color:#747280;font-size:12px;padding:25px;border-top:1px solid var(--border)}
+dialog{width:min(760px,94vw);max-height:90vh;overflow:auto;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:18px;padding:0}dialog::backdrop{background:#000b;backdrop-filter:blur(5px)}.modal-top{padding:24px;background:linear-gradient(135deg,#3c2c4c,#1c1b26);position:relative}.modal-top h2{font-size:29px;margin:8px 35px 8px 0}.close{position:absolute;right:15px;top:15px;border:0;border-radius:50%;width:36px;height:36px;background:#ffffff18;color:white;font-size:21px}.modal-body{padding:24px}.modal-desc{line-height:1.7;color:#c4c2cf;font-size:14px}.modal-controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:18px 0}.season-select{background:var(--panel2);border:1px solid var(--border);color:white;border-radius:9px;padding:10px}.episode{display:flex;align-items:center;gap:13px;padding:14px 0;border-bottom:1px solid var(--border)}.ep-num{width:35px;height:35px;flex-shrink:0;display:grid;place-items:center;background:var(--panel2);border-radius:8px;color:var(--muted);font-weight:800}.ep-info{flex:1;min-width:0}.ep-name{font-weight:700;font-size:14px}.ep-sub{font-size:12px;color:var(--muted);margin-top:4px}.ep-actions{display:flex;gap:7px;align-items:center}.small-btn{border:1px solid var(--border);background:var(--panel);color:white;border-radius:8px;padding:8px;font-size:12px}.small-btn.watched{color:var(--green);border-color:#8ce4b144}.rate{display:flex;gap:4px;margin:10px 0}.rate button{border:0;background:none;padding:2px;color:#555460;font-size:24px}.rate button.on{color:#f5c96a}textarea{width:100%;min-height:75px;resize:vertical;background:var(--panel);border:1px solid var(--border);border-radius:10px;color:white;padding:12px}
+@media(max-width:950px){.catalog{grid-template-columns:repeat(4,minmax(0,1fr))}.row-scroller{grid-auto-columns:minmax(135px,1fr)}}
+@media(max-width:650px){header{padding:12px 4%;flex-wrap:wrap;gap:8px}.brand{font-size:20px;white-space:normal;max-width:100%}.nav{order:3;width:100%;justify-content:space-between;gap:6px}.nav button{font-size:12px}.search{margin-left:auto;width:42%}main{padding:18px 4% 45px}.hero{min-height:300px;border-radius:16px}.catalog{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 10px}.row-scroller{grid-auto-columns:minmax(112px,37vw);gap:10px}.poster{border-radius:10px;padding:9px}.poster-label{font-size:8px;top:6px;left:6px}.fav{top:5px;right:5px;width:28px;height:28px}.card-title{font-size:12px}.card-meta{font-size:11px}.ep-actions{flex-direction:column;align-items:stretch}.small-btn{padding:7px 8px}}
+@media(max-width:390px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}.brand{font-size:17px}}
 </style>
 </head>
 <body>
 <header>
   <div class="brand"><span>K</span>SHOWS Y <span>R</span>EALITIES <span>C</span>OREANOS</div>
   <nav class="nav">
-    <button class="active" data-view="home">Inicio</button>
-    <button data-view="catalog">Explorar</button>
-    <button data-view="favorites">Mi lista</button>
-    <button data-view="activity">Mi actividad</button>
+    <button class="active" data-view="home">Inicio</button><button data-view="catalog">Explorar</button><button data-view="favorites">Mi lista</button><button data-view="activity">Mi actividad</button>
   </nav>
   <input id="search" class="search" placeholder="⌕ Buscar..." aria-label="Buscar programas">
 </header>
-
 <main>
-  <section id="hero" class="hero">
-    <div class="hero-art"></div>
-    <div class="hero-content">
-      <div class="eyebrow">Tu próximo maratón comienza aquí</div>
-      <h1>Tu mundo K.<br>Tu historia.</h1>
-      <p>Descubre programas, organiza tus episodios y lleva el registro de todo lo que ves. Todo tu universo K-show en un solo lugar.</p>
-      <div class="actions">
-        <button class="btn btn-primary" id="exploreBtn">⌕ Explorar catálogo</button>
-        <button class="btn btn-secondary" id="activityBtn">▤ Mi actividad</button>
-      </div>
-    </div>
-  </section>
-
+  <section id="hero" class="hero"><div class="hero-art"></div><div class="hero-content"><div class="eyebrow">Tu próximo maratón comienza aquí</div><h1>Tu mundo K.<br>Tu historia.</h1><p>Descubre programas, organiza tus episodios y lleva el registro de todo lo que ves. Todo tu universo K-show en un solo lugar.</p><div class="actions"><button class="btn btn-primary" id="exploreBtn">⌕ Explorar catálogo</button><button class="btn btn-secondary" id="activityBtn">▤ Mi actividad</button></div></div></section>
   <section id="homeView">
-    <div class="section">
-      <div class="section-head">
-        <h2>Continúa tu recorrido</h2>
-        <span class="muted">Tus episodios pendientes</span>
-      </div>
-      <div id="continueGrid" class="catalog"></div>
-    </div>
-    <div class="section">
-      <div class="section-head"><h2>Descubre K-shows</h2><span class="muted">Tu próximo favorito</span></div>
-      <div id="featuredGrid" class="catalog"></div>
-    </div>
+    <div class="section" id="continueSection"><div class="section-head"><div><h2>Continuar viendo</h2><span class="muted">Aparecen automáticamente según tu progreso</span></div></div><div id="continueGrid" class="row-scroller"></div></div>
+    <div class="section"><div class="section-head"><div><h2>Populares en tu catálogo</h2><span class="muted">Una selección para empezar</span></div><button class="text-link" data-explore-all>Ver todo →</button></div><div id="popularGrid" class="row-scroller"></div></div>
+    <div id="homeCategories"></div>
+    <div class="section"><div class="section-head"><div><h2>Próximamente</h2><span class="muted">Nuevos proyectos en preparación</span></div></div><div class="empty">Todavía no hay estrenos anunciados. Esta sección está preparada para tus próximos proyectos.</div></div>
   </section>
-
-  <section id="catalogView" class="hidden">
-    <h2 id="viewTitle">Explorar catálogo</h2>
-    <div class="filters">
-      <button class="filter active" data-filter="all">Todos</button>
-      <button class="filter" data-filter="watching">Viendo</button>
-      <button class="filter" data-filter="completed">Terminados</button>
-      <button class="filter" data-filter="planned">Pendientes</button>
-    </div>
-    <div id="catalogGrid" class="catalog"></div>
-  </section>
-
-  <section id="favoritesView" class="hidden">
-    <h2 id="viewTitle">Mi lista</h2>
-    <p class="muted">Los programas que guardaste para volver a ellos.</p>
-    <div id="favoritesGrid" class="catalog"></div>
-  </section>
-
-  <section id="activityView" class="hidden">
-    <h2>Mi actividad</h2>
-    <p class="muted">Tu pequeño diario de K-shows.</p>
-    <div class="catalog" id="statsGrid"></div>
-    <div class="section">
-      <h2>Mis puntuaciones</h2>
-      <div id="ratedGrid" class="catalog" style="margin-top:16px"></div>
-    </div>
-  </section>
+  <section id="catalogView" class="hidden"><h2 id="viewTitle">Explorar catálogo</h2><p class="muted" id="catalogIntro">Todos tus programas en un solo lugar.</p><div class="filters" id="categoryFilters"></div><div class="filters" id="statusFilters"><button class="filter active" data-filter="all">Todos</button><button class="filter" data-filter="watching">Continuar viendo</button><button class="filter" data-filter="completed">Terminados</button><button class="filter" data-filter="planned">Sin empezar</button></div><div id="catalogGrid" class="catalog"></div></section>
+  <section id="favoritesView" class="hidden"><h2>Mi lista</h2><p class="muted">Los programas que guardaste para volver a ellos.</p><div id="favoritesGrid" class="catalog"></div></section>
+  <section id="activityView" class="hidden"><h2>Mi actividad</h2><p class="muted">Tu pequeño diario de K-shows.</p><div class="catalog" id="statsGrid" style="margin-top:18px"></div><div class="section"><h2>Mis puntuaciones</h2><div id="ratedGrid" class="catalog" style="margin-top:16px"></div></div></section>
 </main>
-
-<footer>KShows y Realities Coreanos · Hecho para disfrutar cada historia.</footer>
-
-<dialog id="showDialog">
-  <div class="modal-top">
-    <button class="close" id="closeDialog" aria-label="Cerrar">×</button>
-    <div class="eyebrow" id="modalGenre">K-SHOW</div>
-    <h2 id="modalTitle"></h2>
-    <div id="modalMeta" class="muted"></div>
-  </div>
-  <div class="modal-body">
-    <p id="modalDesc" class="modal-desc"></p>
-    <div class="modal-controls">
-      <select id="seasonSelect" class="season-select" aria-label="Temporada"></select>
-      <button class="btn btn-secondary" id="modalFav">♡ Mi lista</button>
-      <button class="btn btn-secondary" id="statusBtn">+ Mi seguimiento</button>
-    </div>
-    <div><strong>Mi puntuación</strong></div>
-    <div class="rate" id="ratingStars"></div>
-    <div id="episodes"></div>
-    <div class="section">
-      <strong>Mi reseña</strong>
-      <p class="muted">Guarda tus impresiones para recordar qué te pareció.</p>
-      <textarea id="review" placeholder="¿Qué te pareció este programa?"></textarea>
-      <div class="actions">
-        <button class="btn btn-primary" id="saveReview">Guardar reseña</button>
-        <span id="reviewMsg" class="muted"></span>
-      </div>
-    </div>
-  </div>
-</dialog>
-
+<footer>Kshows y Realities Coreanos · Hecho para disfrutar cada historia.</footer>
+<dialog id="showDialog"><div class="modal-top"><button class="close" id="closeDialog" aria-label="Cerrar">×</button><div class="eyebrow" id="modalGenre">K-SHOW</div><h2 id="modalTitle"></h2><div id="modalMeta" class="muted"></div></div><div class="modal-body"><p id="modalDesc" class="modal-desc"></p><div class="modal-controls"><select id="seasonSelect" class="season-select" aria-label="Temporada" hidden></select><button class="btn btn-secondary" id="modalFav">♡ Mi lista</button><span class="muted">El progreso se actualiza al marcar episodios vistos.</span></div><div><strong>Mi puntuación</strong></div><div class="rate" id="ratingStars"></div><div id="episodes"></div><div class="section"><strong>Mi reseña</strong><p class="muted">Guarda tus impresiones para recordar qué te pareció.</p><textarea id="review" placeholder="¿Qué te pareció este programa?"></textarea><div class="actions"><button class="btn btn-primary" id="saveReview">Guardar reseña</button><span id="reviewMsg" class="muted"></span></div></div></div></dialog>
 <script>
-/*
- KSHOWS Y REALITIES COREANOS: CATÁLOGO DE EJEMPLO
- Sustituye estos datos por tus programas reales.
- Cada episodio admite su propio enlace de Telegram.
-*/
-const shows = [
- {
-  id:"demo1", title:"Nuestro primer K-show", genre:"Variedades",
-  year:"2025", seasons:[
-   {name:"Temporada 1",episodes:[
-    {id:"d1e1",name:"Un comienzo inesperado",url:"https://t.me/"},
-    {id:"d1e2",name:"Nuevos desafíos",url:"https://t.me/"},
-    {id:"d1e3",name:"Un día para recordar",url:"https://t.me/"},
-    {id:"d1e4",name:"La gran sorpresa",url:"https://t.me/"}
-   ]}
-  ],
-  description:"Este es un programa de ejemplo para que puedas probar KShows. Después podrás sustituirlo por la información real de tus programas.",
-  colors:["#694d87","#cf779c"],label:"NUEVO"
- },
- {
-  id:"demo2",title:"Corazones en juego",genre:"Reality romántico",
-  year:"2024",seasons:[
-   {name:"Temporada 1",episodes:[
-    {id:"d2e1",name:"Primer encuentro",url:"https://t.me/"},
-    {id:"d2e2",name:"Una nueva conexión",url:"https://t.me/"},
-    {id:"d2e3",name:"Decisiones difíciles",url:"https://t.me/"}
-   ]},
-   {name:"Temporada 2",episodes:[
-    {id:"d2e4",name:"Una segunda oportunidad",url:"https://t.me/"},
-    {id:"d2e5",name:"¿Amistad o amor?",url:"https://t.me/"}
-   ]}
-  ],
-  description:"Programa ficticio de ejemplo. Usa la ficha para probar temporadas, episodios vistos, favoritos y puntuaciones.",
-  colors:["#9a456c","#e3a2b8"],label:"REALITY"
- },
- {
-  id:"demo3",title:"La misión secreta",genre:"Competencia",
-  year:"2025",seasons:[
-   {name:"Temporada 1",episodes:[
-    {id:"d3e1",name:"La primera misión",url:"https://t.me/"},
-    {id:"d3e2",name:"Pistas ocultas",url:"https://t.me/"},
-    {id:"d3e3",name:"El desafío final",url:"https://t.me/"}
-   ]}
-  ],
-  description:"Otro título de demostración para explorar cómo se verá un catálogo con distintos géneros.",
-  colors:["#355e77","#75b6ba"],label:"COMPETENCIA"
- },
- {
-  id:"demo4",title:"Días extraordinarios",genre:"Entretenimiento",
-  year:"2023",seasons:[
-   {name:"Temporada 1",episodes:[
-    {id:"d4e1",name:"Una aventura inesperada",url:"https://t.me/"},
-    {id:"d4e2",name:"El día más divertido",url:"https://t.me/"}
-   ]}
-  ],
-  description:"Ficha de prueba para el catálogo KShows. Edita el título, la sinopsis y los episodios al incorporar tu contenido.",
-  colors:["#75603b","#d4a76b"],label:"VARIEDADES"
- },
- {
-  id:"demo5",title:"Bajo las estrellas",genre:"Reality",
-  year:"2024",seasons:[
-   {name:"Temporada 1",episodes:[
-    {id:"d5e1",name:"La llegada",url:"https://t.me/"},
-    {id:"d5e2",name:"Una noche especial",url:"https://t.me/"}
-   ]}
-  ],
-  description:"Quinto programa ficticio para mostrar cómo se distribuyen las tarjetas en pantallas grandes y móviles.",
-  colors:["#45466e","#9b89ca"],label:"DESTACADO"
- }
+const CATEGORIES=["Citas y romance","Competencia y supervivencia","Variedades y entretenimiento","Cocina y gastronomía","Viajes y convivencia","Familia y vida cotidiana","Dramas y especiales","Música y K-pop","Otros realities"];
+const palette=[["#694d87","#cf779c"],["#9a456c","#e3a2b8"],["#355e77","#75b6ba"],["#75603b","#d4a76b"],["#45466e","#9b89ca"],["#426b5a","#9cc9a7"],["#7a5367","#d7a1bb"],["#4b4c79","#b2a6ee"]];
+const rawShows=[
+["19/20 Nineteen to Twenty","Citas y romance"],["60 Minutes to Love","Citas y romance"],["Abra-ca Empty","Variedades y entretenimiento"],["Agents of Mystery","Competencia y supervivencia"],["ALL or NOTHING","Competencia y supervivencia"],["Apartment 404","Variedades y entretenimiento"],["Are You Sure?!","Viajes y convivencia"],["Bake Your Dream","Cocina y gastronomía"],["Battle of Fates","Competencia y supervivencia"],["Better Late Than Single","Citas y romance"],["Bite Me Sweet","Citas y romance"],["Bloody Game","Competencia y supervivencia"],["Bloody Game X","Competencia y supervivencia"],["Bonjour Bakery","Cocina y gastronomía"],["BTS: THE COMEBACK LIVE | ARIRANG","Música y K-pop"],["BTS: THE RETURN","Música y K-pop"],["Cha's Family","Familia y vida cotidiana"],["Chef of Antarctica","Cocina y gastronomía"],["Closet Battle","Variedades y entretenimiento"],["Country Life of Gen-Z","Viajes y convivencia"],["Culinary Class Wars","Cocina y gastronomía"],["Curtain Up, Class!","Variedades y entretenimiento"],["Date My Friend","Citas y romance"],["Deadly Tag","Competencia y supervivencia"],["Director's Arena","Variedades y entretenimiento"],["EXchange","Citas y romance"],["Fresh off the Sea","Viajes y convivencia"],["Fresh off the Sea in Calape","Viajes y convivencia"],["GBRB: Farm Operation - Go Go Farm","Viajes y convivencia"],["GBRB: Joy Pops Laugh Pops","Variedades y entretenimiento"],["Guardian: The Lonely and Great God 10th Anniversary","Dramas y especiales"],["Heart Pairing","Citas y romance"],["Jae-seok's B&B Rules!","Variedades y entretenimiento"],["Kian's Bizarre B&B","Viajes y convivencia"],["Kumusta","Variedades y entretenimiento"],["Love Against Time","Dramas y especiales"],["Love in the Moonlight: Redrawn","Dramas y especiales"],["Match to Marry: With Parents","Citas y romance"],["Mind the Noona Gap","Citas y romance"],["Mr. Eo's Food World Tour","Cocina y gastronomía"],["Murder Club: Liar's Table","Competencia y supervivencia"],["My AI Partner: Strange Love","Citas y romance"],["My Grumpy Secretary","Dramas y especiales"],["My Name is Gabriel","Variedades y entretenimiento"],["NANA bnb with SEVENTEEN","Música y K-pop"],["Perfect Glow","Variedades y entretenimiento"],["Pink Lie","Citas y romance"],["Reply 1988 10th Anniversary","Dramas y especiales"],["Reply High School","Variedades y entretenimiento"],["Running Man","Variedades y entretenimiento"],["Single's Inferno","Citas y romance"],["Single's Inferno Reunion","Citas y romance"],["Six Singles under One Roof","Citas y romance"],["Space Rice Cake Shop","Variedades y entretenimiento"],["Stand BI Me","Variedades y entretenimiento"],["Street Restaurant Fighter","Cocina y gastronomía"],["Street World Fighter: Director's War","Competencia y supervivencia"],["Take a Hike!","Viajes y convivencia"],["The Love Lab","Citas y romance"],["The Manager","Familia y vida cotidiana"],["The Secret Friends Club","Variedades y entretenimiento"],["The Village Barber","Familia y vida cotidiana"],["The Wedding War","Competencia y supervivencia"],["This is Hyunmoo Road","Viajes y convivencia"],["Undercover Chef - Korea","Cocina y gastronomía"],["Unplanned Trip: Limited Edition","Viajes y convivencia"],["When Our Kids Fall in Love","Citas y romance"],["Whenever Possible","Variedades y entretenimiento"],["X The League","Competencia y supervivencia"],["YOO Got a Minute?","Variedades y entretenimiento"]
 ];
-
-const STORE="kshows_progress_v1";
-let state={watched:[],favorites:[],ratings:{},reviews:{},statuses:{},lastOpened:{}};
-try {
- const saved=JSON.parse(localStorage.getItem(STORE)||"null");
- if(saved) state={...state,...saved};
-} catch(e) {}
-let currentShow=null, currentSeason=0, currentView="home", currentFilter="all", query="";
-
-function save(){
- try{localStorage.setItem(STORE,JSON.stringify(state));}
- catch(e){alert("No se pudo guardar en este navegador.");}
-}
-function allEpisodes(show){return show.seasons.flatMap(s=>s.episodes)}
-function watchedCount(show){return allEpisodes(show).filter(e=>state.watched.includes(e.id)).length}
-function showStatus(show){
- if(state.statuses[show.id])return state.statuses[show.id];
- const total=allEpisodes(show).length, watched=watchedCount(show);
- if(total&&watched===total)return "completed";
- if(watched>0)return "watching";
- return "planned";
-}
-function statusLabel(s){return {watching:"Viendo",completed:"Terminado",planned:"Pendiente"}[s]||"Pendiente"}
+const descriptions={"19/20 Nineteen to Twenty":"Un reality que sigue a jóvenes en el paso de la adolescencia a la adultez, entre nuevas experiencias, amistad y romance.","Running Man":"Un programa de variedades coreano con juegos, misiones, invitados y desafíos llenos de humor."};
+const shows=rawShows.map(([title,genre],i)=>({id:"show-"+(i+1),title,genre,year:"",seasons:[],description:descriptions[title]||"Ficha de "+title+". La sinopsis, las temporadas, los episodios y los enlaces se añadirán al completar esta ficha.",colors:palette[i%palette.length],label:genre.toUpperCase()}));
+const popularTitles=["Single's Inferno","EXchange","Running Man","Agents of Mystery","Bloody Game","Are You Sure?!","19/20 Nineteen to Twenty","Culinary Class Wars","NANA bnb with SEVENTEEN","Apartment 404"];
+const STORE="kshows_progress_v1";let state={watched:[],favorites:[],ratings:{},reviews:{},lastOpened:{}};
+try{const saved=JSON.parse(localStorage.getItem(STORE)||"null");if(saved)state={...state,...saved};}catch(e){}
+let currentShow=null,currentSeason=0,currentView="home",currentFilter="all",currentCategory="all",query="";
+function save(){try{localStorage.setItem(STORE,JSON.stringify(state));}catch(e){alert("No se pudo guardar en este navegador.");}}
+function allEpisodes(show){return show.seasons.flatMap(s=>s.episodes||[])}function watchedCount(show){return allEpisodes(show).filter(e=>state.watched.includes(e.id)).length}
+function showStatus(show){const total=allEpisodes(show).length,done=watchedCount(show);if(total>0&&done>=total)return"completed";if(done>0)return"watching";return"planned"}
+function statusLabel(s){return{watching:"Continuar viendo",completed:"Terminado",planned:"Sin empezar"}[s]||"Sin empezar"}
 function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function card(show){
- const total=allEpisodes(show).length, done=watchedCount(show);
- const fav=state.favorites.includes(show.id);
- const rating=state.ratings[show.id];
- return `<article class="card" data-open="${show.id}">
-  <div class="poster" style="--c1:${show.colors[0]};--c2:${show.colors[1]}">
-   <span class="poster-label">${esc(show.label||show.genre)}</span>
-   <button class="fav ${fav?"on":""}" data-fav="${show.id}" aria-label="Añadir a favoritos">${fav?"♥":"♡"}</button>
-   <div class="poster-word">${esc(show.title)}</div>
-  </div>
-  <div class="card-title">${esc(show.title)}</div>
-  <div class="card-meta">${esc(show.genre)} · ${show.year}</div>
-  ${rating?`<div class="card-meta">★ ${rating}/5</div>`:""}
-  ${done?`<div class="progress"><span style="width:${Math.round(done/Math.max(total,1)*100)}%"></span></div><div class="card-meta">${done} de ${total} episodios vistos</div>`:""}
- </article>`;
-}
-function empty(msg){return `<div class="empty" style="grid-column:1/-1">${esc(msg)}</div>`}
-function renderGrid(id,list,msg){
- const el=document.getElementById(id);
- el.innerHTML=list.length?list.map(card).join(""):empty(msg);
-}
-function matches(show){return (show.title+" "+show.genre+" "+show.description).toLowerCase().includes(query.toLowerCase())}
-function render(){
- const home=document.getElementById("homeView");
- const catalog=document.getElementById("catalogView");
- const favs=document.getElementById("favoritesView");
- const activity=document.getElementById("activityView");
- const hero=document.getElementById("hero");
- home.classList.toggle("hidden",currentView!=="home");
- catalog.classList.toggle("hidden",currentView!=="catalog");
- favs.classList.toggle("hidden",currentView!=="favorites");
- activity.classList.toggle("hidden",currentView!=="activity");
- hero.classList.toggle("hidden",currentView!=="home");
- document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===currentView));
- const found=shows.filter(matches);
- renderGrid("featuredGrid",found,"No encontramos programas con ese nombre.");
- const cont=found.filter(s=>showStatus(s)==="watching"||watchedCount(s)>0);
- renderGrid("continueGrid",cont,"Cuando marques episodios como vistos, tu recorrido aparecerá aquí.");
- let list=found;
- if(currentFilter!=="all")list=list.filter(s=>showStatus(s)===currentFilter);
- renderGrid("catalogGrid",list,"No hay programas que coincidan con tu búsqueda.");
- renderGrid("favoritesGrid",found.filter(s=>state.favorites.includes(s.id)),"Todavía no has guardado favoritos. Pulsa ♡ en una portada.");
- renderGrid("ratedGrid",found.filter(s=>state.ratings[s.id]),"Aún no has puntuado ningún programa.");
- document.getElementById("viewTitle").textContent=query?`Resultados para «${query}»`:"Explorar catálogo";
- const total=shows.reduce((n,s)=>n+allEpisodes(s).length,0);
- const seen=shows.reduce((n,s)=>n+watchedCount(s),0);
- document.getElementById("statsGrid").innerHTML=[
-  ["Programas vistos",shows.filter(s=>showStatus(s)==="completed").length],
-  ["Episodios vistos",seen],
-  ["Favoritos",state.favorites.length],
-  ["Progreso total",total?Math.round(seen/total*100)+"%":"0%"]
- ].map(([label,val])=>`<div style="background:var(--panel);padding:20px;border-radius:14px"><div class="muted">${label}</div><div style="font-size:30px;font-weight:850;margin-top:8px">${val}</div></div>`).join("");
-}
-function setView(view){
- currentView=view;
- if(view==="catalog")currentFilter="all";
- document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.filter===currentFilter));
- render();window.scrollTo({top:0,behavior:"smooth"});
-}
-function toggleFavorite(id){
- state.favorites=state.favorites.includes(id)?state.favorites.filter(x=>x!==id):[...state.favorites,id];
- save();render();
- if(currentShow&&currentShow.id===id)updateModalButtons();
-}
-function updateModalButtons(){
- if(!currentShow)return;
- const fav=state.favorites.includes(currentShow.id);
- document.getElementById("modalFav").textContent=fav?"♥ En mi lista":"♡ Mi lista";
- document.getElementById("statusBtn").textContent=statusLabel(showStatus(currentShow));
-}
-function openShow(id){
- const show=shows.find(s=>s.id===id);if(!show)return;
- currentShow=show;
- document.getElementById("modalTitle").textContent=show.title;
- document.getElementById("modalGenre").textContent=show.genre;
- document.getElementById("modalMeta").textContent=show.year+" · "+show.seasons.length+" temporada(s) · "+allEpisodes(show).length+" episodios";
- document.getElementById("modalDesc").textContent=show.description;
- document.getElementById("seasonSelect").innerHTML=show.seasons.map((s,i)=>`<option value="${i}">${esc(s.name)}</option>`).join("");
- currentSeason=0;
- document.getElementById("seasonSelect").value="0";
- document.getElementById("review").value=state.reviews[id]||"";
- document.getElementById("reviewMsg").textContent="";
- renderStars();renderEpisodes();updateModalButtons();
- document.getElementById("showDialog").showModal();
-}
-function renderStars(){
- const rating=state.ratings[currentShow.id]||0;
- document.getElementById("ratingStars").innerHTML=[1,2,3,4,5].map(n=>`<button class="${n<=rating?"on":""}" data-rate="${n}" aria-label="${n} estrellas">★</button>`).join("");
-}
-function renderEpisodes(){
- const episodes=currentShow.seasons[currentSeason].episodes;
- document.getElementById("episodes").innerHTML=`<h3 style="margin:22px 0 4px">${esc(currentShow.seasons[currentSeason].name)}</h3>`+
- episodes.map((ep,i)=>{
-  const seen=state.watched.includes(ep.id);
-  const valid=ep.url&&ep.url!=="https://t.me/";
-  return `<div class="episode">
-   <div class="ep-num">${seen?"✓":String(i+1).padStart(2,"0")}</div>
-   <div class="ep-info"><div class="ep-name">${esc(ep.name)}</div><div class="ep-sub">${seen?"Episodio visto":"Episodio "+(i+1)}</div></div>
-   <div class="ep-actions">
-    <button class="small-btn ${seen?"watched":""}" data-seen="${ep.id}">${seen?"✓ Visto":"Marcar visto"}</button>
-    <button class="small-btn" data-play="${ep.id}" ${valid?"":"title='Añade el enlace real en el código'"}>▶ Ver</button>
-   </div>
-  </div>`;
- }).join("");
-}
-function toggleWatched(id){
- state.watched=state.watched.includes(id)?state.watched.filter(x=>x!==id):[...state.watched,id];
- save();render();renderEpisodes();updateModalButtons();
-}
-function playEpisode(id){
- const ep=allEpisodes(currentShow).find(e=>e.id===id);
- if(!ep)return;
- if(!ep.url||ep.url==="https://t.me/"){
-  alert("Este es un enlace de ejemplo. Más adelante sustituye la URL del episodio por el enlace real de Telegram.");
-  return;
- }
- state.lastOpened[currentShow.id]=id;
- if(!state.watched.includes(id))state.statuses[currentShow.id]="watching";
- save();render();
- window.open(ep.url,"_blank","noopener,noreferrer");
-}
-document.body.addEventListener("click",e=>{
- const fav=e.target.closest("[data-fav]");
- if(fav){e.stopPropagation();toggleFavorite(fav.dataset.fav);return}
- const open=e.target.closest("[data-open]");
- if(open){openShow(open.dataset.open);return}
- const seen=e.target.closest("[data-seen]");
- if(seen){toggleWatched(seen.dataset.seen);return}
- const play=e.target.closest("[data-play]");
- if(play){playEpisode(play.dataset.play);return}
- const rate=e.target.closest("[data-rate]");
- if(rate&&currentShow){
-  state.ratings[currentShow.id]=Number(rate.dataset.rate);
-  save();renderStars();render();return;
- }
- const nav=e.target.closest("[data-view]");
- if(nav){setView(nav.dataset.view);return}
- const filter=e.target.closest("[data-filter]");
- if(filter){
-  currentFilter=filter.dataset.filter;
-  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===filter));
-  render();return;
- }
-});
-document.getElementById("search").addEventListener("input",e=>{
- query=e.target.value.trim();
- if(query&&currentView!=="catalog")currentView="catalog";
- render();
-});
-document.getElementById("exploreBtn").addEventListener("click",()=>setView("catalog"));
-document.getElementById("activityBtn").addEventListener("click",()=>setView("activity"));
-document.getElementById("closeDialog").addEventListener("click",()=>document.getElementById("showDialog").close());
-document.getElementById("seasonSelect").addEventListener("change",e=>{
- currentSeason=Number(e.target.value);renderEpisodes();
-});
-document.getElementById("modalFav").addEventListener("click",()=>{
- if(currentShow)toggleFavorite(currentShow.id);
-});
-document.getElementById("statusBtn").addEventListener("click",()=>{
- if(!currentShow)return;
- const options=["planned","watching","completed"];
- const next=options[(options.indexOf(showStatus(currentShow))+1)%options.length];
- state.statuses[currentShow.id]=next;
- if(next==="completed"){
-  const ids=allEpisodes(currentShow).map(e=>e.id);
-  state.watched=[...new Set([...state.watched,...ids])];
- }
- save();render();renderEpisodes();updateModalButtons();
-});
-document.getElementById("saveReview").addEventListener("click",()=>{
- if(!currentShow)return;
- state.reviews[currentShow.id]=document.getElementById("review").value.trim();
- save();document.getElementById("reviewMsg").textContent="Reseña guardada.";
-});
-document.getElementById("showDialog").addEventListener("click",e=>{
- if(e.target===document.getElementById("showDialog"))document.getElementById("showDialog").close();
-});
-render();
+function card(show){const total=allEpisodes(show).length,done=watchedCount(show),fav=state.favorites.includes(show.id),rating=state.ratings[show.id];return `<article class="card" data-open="${show.id}"><div class="poster" style="--c1:${show.colors[0]};--c2:${show.colors[1]}"><span class="poster-label">${esc(show.genre)}</span><button class="fav ${fav?"on":""}" data-fav="${show.id}" aria-label="${fav?"Quitar de":"Añadir a"} Mi lista">${fav?"♥":"♡"}</button><div class="poster-word">${esc(show.title)}</div></div><div class="card-title">${esc(show.title)}</div><div class="card-meta">${esc(show.genre)}</div>${rating?`<div class="card-meta">★ ${rating}/5</div>`:""}${done&&done<total?`<div class="progress"><span style="width:${Math.round(done/total*100)}%"></span></div><div class="card-meta">${done} de ${total} episodios vistos</div>`:""}</article>`}
+function empty(msg){return `<div class="empty" style="grid-column:1/-1">${esc(msg)}</div>`}function renderGrid(id,list,msg){const el=document.getElementById(id);el.innerHTML=list.length?list.map(card).join(""):empty(msg)}
+function matches(show){return(show.title+" "+show.genre+" "+show.description).toLowerCase().includes(query.toLowerCase())}
+function renderHomeCategories(found){const host=document.getElementById("homeCategories");host.innerHTML=CATEGORIES.map(category=>{const list=found.filter(s=>s.genre===category);if(list.length<2)return"";return `<section class="section"><div class="section-head"><div><h2>${esc(category)}</h2><span class="muted">${list.length} programas</span></div><button class="text-link" data-category-open="${esc(category)}">Ver todos →</button></div><div class="row-scroller">${list.map(card).join("")}</div></section>`}).join("")}
+function renderCategoryFilters(){const host=document.getElementById("categoryFilters");host.innerHTML=[`<button class="filter ${currentCategory==="all"?"active":""}" data-category="all">Todas las categorías</button>`,...CATEGORIES.map(c=>`<button class="filter ${currentCategory===c?"active":""}" data-category="${esc(c)}">${esc(c)}</button>`)].join("")}
+function render(){const home=document.getElementById("homeView"),catalog=document.getElementById("catalogView"),favs=document.getElementById("favoritesView"),activity=document.getElementById("activityView"),hero=document.getElementById("hero");home.classList.toggle("hidden",currentView!=="home");catalog.classList.toggle("hidden",currentView!=="catalog");favs.classList.toggle("hidden",currentView!=="favorites");activity.classList.toggle("hidden",currentView!=="activity");hero.classList.toggle("hidden",currentView!=="home");document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===currentView));const found=shows.filter(matches);const cont=found.filter(s=>{const total=allEpisodes(s).length,done=watchedCount(s);return total>0&&done>0&&done<total});renderGrid("continueGrid",cont,"Cuando marques tu primer episodio como visto, el programa aparecerá aquí automáticamente.");document.getElementById("continueSection").classList.toggle("hidden",cont.length===0);renderGrid("popularGrid",popularTitles.map(t=>shows.find(s=>s.title===t)).filter(s=>s&&matches(s)),"No hay resultados para esta búsqueda.");renderHomeCategories(found);let list=found;if(currentCategory!=="all")list=list.filter(s=>s.genre===currentCategory);if(currentFilter!=="all")list=list.filter(s=>showStatus(s)===currentFilter);renderGrid("catalogGrid",list,"No hay programas que coincidan con tu búsqueda.");renderGrid("favoritesGrid",found.filter(s=>state.favorites.includes(s.id)),"Todavía no has guardado programas. Pulsa ♡ en una portada.");renderGrid("ratedGrid",found.filter(s=>state.ratings[s.id]),"Aún no has puntuado ningún programa.");document.getElementById("viewTitle").textContent=query?`Resultados para «${query}»`:currentCategory!=="all"?currentCategory:"Explorar catálogo";renderCategoryFilters();document.querySelectorAll("[data-filter]").forEach(b=>b.classList.toggle("active",b.dataset.filter===currentFilter));const total=shows.reduce((n,s)=>n+allEpisodes(s).length,0),seen=shows.reduce((n,s)=>n+watchedCount(s),0);document.getElementById("statsGrid").innerHTML=[["Programas terminados",shows.filter(s=>showStatus(s)==="completed").length],["Episodios vistos",seen],["Mi lista",state.favorites.length],["Progreso registrado",total?Math.round(seen/total*100)+"%":"0%"]].map(([label,val])=>`<div style="background:var(--panel);padding:20px;border-radius:14px"><div class="muted">${label}</div><div style="font-size:30px;font-weight:850;margin-top:8px">${val}</div></div>`).join("")}
+function setView(view){currentView=view;if(view==="catalog"){currentFilter="all";currentCategory="all"}render();window.scrollTo({top:0,behavior:"smooth"})}
+function toggleFavorite(id){state.favorites=state.favorites.includes(id)?state.favorites.filter(x=>x!==id):[...state.favorites,id];save();render();if(currentShow&&currentShow.id===id)updateModalButtons()}
+function updateModalButtons(){if(!currentShow)return;document.getElementById("modalFav").textContent=state.favorites.includes(currentShow.id)?"♥ En Mi lista":"♡ Añadir a Mi lista"}
+function openShow(id){const show=shows.find(s=>s.id===id);if(!show)return;currentShow=show;document.getElementById("modalTitle").textContent=show.title;document.getElementById("modalGenre").textContent=show.genre;const count=allEpisodes(show).length;document.getElementById("modalMeta").textContent=show.seasons.length?`${show.seasons.length} temporada(s) · ${count} episodios`:"Ficha en preparación · Episodios por añadir";document.getElementById("modalDesc").textContent=show.description;const select=document.getElementById("seasonSelect");select.innerHTML=show.seasons.map((s,i)=>`<option value="${i}">${esc(s.name)}</option>`).join("");select.hidden=!show.seasons.length;currentSeason=0;select.value="0";document.getElementById("review").value=state.reviews[id]||"";document.getElementById("reviewMsg").textContent="";renderStars();renderEpisodes();updateModalButtons();document.getElementById("showDialog").showModal()}
+function renderStars(){const rating=state.ratings[currentShow.id]||0;document.getElementById("ratingStars").innerHTML=[1,2,3,4,5].map(n=>`<button class="${n<=rating?"on":""}" data-rate="${n}" aria-label="${n} estrellas">★</button>`).join("")}
+function renderEpisodes(){const host=document.getElementById("episodes");if(!currentShow.seasons.length){host.innerHTML=`<div class="empty" style="margin-top:20px">Estamos preparando esta ficha. Aquí aparecerán las temporadas, los episodios y sus enlaces de Telegram cuando añadamos los datos.</div>`;return}const season=currentShow.seasons[currentSeason];if(!season||!season.episodes.length){host.innerHTML=`<div class="empty" style="margin-top:20px">Todavía no se han añadido episodios a esta temporada.</div>`;return}host.innerHTML=`<h3 style="margin:22px 0 4px">${esc(season.name)}</h3>`+season.episodes.map((ep,i)=>{const seen=state.watched.includes(ep.id),valid=ep.url&&ep.url!=="https://t.me/";return `<div class="episode"><div class="ep-num">${seen?"✓":String(i+1).padStart(2,"0")}</div><div class="ep-info"><div class="ep-name">${esc(ep.name)}</div><div class="ep-sub">${seen?"Episodio visto":"Episodio "+(i+1)}</div></div><div class="ep-actions"><button class="small-btn ${seen?"watched":""}" data-seen="${ep.id}">${seen?"✓ Visto":"Marcar visto"}</button><button class="small-btn" data-play="${ep.id}" ${valid?"":"title='Enlace pendiente'"}>▶ Ver</button></div></div>`}).join("")}
+function toggleWatched(id){state.watched=state.watched.includes(id)?state.watched.filter(x=>x!==id):[...state.watched,id];save();render();renderEpisodes();updateModalButtons()}
+function playEpisode(id){const ep=allEpisodes(currentShow).find(e=>e.id===id);if(!ep)return;if(!ep.url||ep.url==="https://t.me/"){alert("Todavía falta añadir el enlace real de Telegram para este episodio.");return}state.lastOpened[currentShow.id]=id;save();render();window.open(ep.url,"_blank","noopener,noreferrer")}
+document.body.addEventListener("click",e=>{const fav=e.target.closest("[data-fav]");if(fav){e.stopPropagation();toggleFavorite(fav.dataset.fav);return}const open=e.target.closest("[data-open]");if(open){openShow(open.dataset.open);return}const seen=e.target.closest("[data-seen]");if(seen){toggleWatched(seen.dataset.seen);return}const play=e.target.closest("[data-play]");if(play){playEpisode(play.dataset.play);return}const rate=e.target.closest("[data-rate]");if(rate&&currentShow){state.ratings[currentShow.id]=Number(rate.dataset.rate);save();renderStars();render();return}const nav=e.target.closest("[data-view]");if(nav){setView(nav.dataset.view);return}const filter=e.target.closest("[data-filter]");if(filter){currentFilter=filter.dataset.filter;render();return}const cat=e.target.closest("[data-category]");if(cat){currentCategory=cat.dataset.category;currentView="catalog";currentFilter="all";render();window.scrollTo({top:0,behavior:"smooth"});return}const catOpen=e.target.closest("[data-category-open]");if(catOpen){currentCategory=catOpen.dataset.categoryOpen;currentView="catalog";currentFilter="all";render();window.scrollTo({top:0,behavior:"smooth"});return}if(e.target.closest("[data-explore-all]")){setView("catalog");return}});
+document.getElementById("search").addEventListener("input",e=>{query=e.target.value.trim();if(query)currentView="catalog";else if(currentView==="catalog"){currentCategory="all"}render()});document.getElementById("exploreBtn").addEventListener("click",()=>setView("catalog"));document.getElementById("activityBtn").addEventListener("click",()=>setView("activity"));document.getElementById("closeDialog").addEventListener("click",()=>document.getElementById("showDialog").close());document.getElementById("seasonSelect").addEventListener("change",e=>{currentSeason=Number(e.target.value);renderEpisodes()});document.getElementById("modalFav").addEventListener("click",()=>{if(currentShow)toggleFavorite(currentShow.id)});document.getElementById("saveReview").addEventListener("click",()=>{if(!currentShow)return;state.reviews[currentShow.id]=document.getElementById("review").value.trim();save();document.getElementById("reviewMsg").textContent="Reseña guardada."});document.getElementById("showDialog").addEventListener("click",e=>{if(e.target===document.getElementById("showDialog"))document.getElementById("showDialog").close()});render();
 </script>
 </body>
 </html>
