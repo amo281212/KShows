@@ -42,16 +42,18 @@ main{max-width:1440px;margin:auto;padding:24px 5% 60px}
 .hero-slides,.hero-slide,.hero-shade{position:absolute;inset:0}
 .hero-slide{opacity:0;visibility:hidden;transition:opacity .9s ease;overflow:hidden}
 .hero-slide.active{opacity:1;visibility:visible}
-.hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center 35%;transform:scale(1.04);transition:transform 7s ease}
-.hero-slide.active img{transform:scale(1.12)}
+.hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center 35%;transform:scale(1.01);transition:transform 7s ease}
+.hero-slide.active img{transform:scale(1.03)}
+/* Capas explícitas: la imagen queda detrás y los textos siempre por encima. */
+.hero-slides{z-index:0}
 .hero-shade{
-  z-index:0;
-  background:linear-gradient(90deg,#101014f5 0%,#101014d9 34%,#1010147a 62%,#10101425 100%),linear-gradient(0deg,#101014a8,transparent 55%)
+  z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,#101014a8 0%,#10101478 34%,#10101432 62%,#10101408 100%),linear-gradient(0deg,#10101480,transparent 58%)
 }
-.hero-content{position:relative;padding:clamp(24px,5vw,54px);max-width:690px;z-index:1;padding-bottom:72px}
+.hero-content{position:relative;padding:clamp(24px,5vw,54px);max-width:690px;z-index:2;padding-bottom:72px}
 .hero h1{max-width:590px}
 .hero p{color:#f0edf6;line-height:1.7;max-width:490px;text-shadow:0 1px 10px #0007}
-.hero-controls{position:absolute;z-index:2;right:24px;bottom:22px;display:flex;align-items:center;gap:9px}
+.hero-controls{position:absolute;z-index:3;right:24px;bottom:22px;display:flex;align-items:center;gap:9px}
 .hero-arrow{width:36px;height:36px;border-radius:50%;border:1px solid #ffffff55;background:#10101499;color:white;font-size:20px;display:grid;place-items:center;backdrop-filter:blur(8px)}
 .hero-arrow:hover,.hero-dot:hover{background:#ffffff35}
 .hero-dots{display:flex;gap:6px;align-items:center;margin:0 4px}
@@ -86,6 +88,7 @@ h2{font-size:21px;margin:0;letter-spacing:-.5px}
   background:radial-gradient(ellipse at 50% 24%,#ffffff48,transparent 38%),linear-gradient(0deg,#09080cf0 0%,#09080c18 72%);
   z-index:0;pointer-events:none
 }
+.poster.has-image:before{display:none}
 .poster:after{
   content:"";position:absolute;width:70%;height:58%;left:15%;top:12%;
   border:1px solid #ffffff30;border-radius:48% 48% 10% 10%;
@@ -111,6 +114,8 @@ footer{text-align:center;color:#747280;font-size:12px;padding:25px;border-top:1p
 dialog{width:min(760px,94vw);max-height:90vh;overflow:auto;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:18px;padding:0;box-shadow:0 25px 100px #0009}
 dialog::backdrop{background:#000b;backdrop-filter:blur(5px)}
 .modal-top{padding:26px;background:radial-gradient(ellipse at 90% 0%,#b58bda55,transparent 45%),linear-gradient(135deg,#3c2c4c,#1c1b26);position:relative}
+.modal-cover{display:block;width:calc(100% + 52px);height:clamp(160px,35vw,260px);object-fit:cover;margin:-26px -26px 22px;border-radius:17px 17px 0 0}
+.modal-logo{display:block;max-width:min(260px,75%);max-height:76px;object-fit:contain;object-position:left center;margin:10px 0}
 .modal-top h2{font-size:29px;margin:8px 35px 8px 0}
 .close{position:absolute;right:15px;top:15px;border:0;border-radius:50%;width:36px;height:36px;background:#ffffff18;color:white;font-size:21px}
 .modal-body{padding:24px}
@@ -138,9 +143,11 @@ textarea:focus{border-color:var(--accent)}
   .nav button{font-size:12px}.nav button.active:after{bottom:-9px}
   .search{margin-left:auto;width:42%}
   main{padding:18px 4% 45px}
-  .hero{min-height:420px;border-radius:17px}
+  .hero{min-height:420px;border-radius:17px;background:#101014}
+  /* En el teléfono se muestra la imagen completa, sin zoom ni recorte. */
+  .hero-slide img,.hero-slide.active img{object-fit:contain;object-position:center center;transform:none}
   .hero-content{padding:24px 20px 82px}
-  .hero-shade{background:linear-gradient(90deg,#101014ed 0%,#101014bf 48%,#10101445 100%),linear-gradient(0deg,#101014c7,transparent 65%)}
+  .hero-shade{background:linear-gradient(90deg,#10101460 0%,#10101430 48%,#10101408 100%),linear-gradient(0deg,#101014b8 0%,#10101465 36%,transparent 70%)}
   .hero-controls{right:12px;bottom:14px;gap:6px}
   .hero-arrow{width:32px;height:32px}.hero-dot{width:14px}.hero-dot.active{width:25px}
   .catalog{grid-template-columns:repeat(3,minmax(0,1fr));gap:19px 10px}
@@ -242,7 +249,9 @@ textarea:focus{border-color:var(--accent)}
 <dialog id="showDialog">
   <div class="modal-top">
     <button class="close" id="closeDialog" aria-label="Cerrar">×</button>
+    <img id="modalCover" class="modal-cover hidden" alt="" hidden>
     <div class="eyebrow" id="modalGenre">K-SHOW</div>
+    <img id="modalLogo" class="modal-logo hidden" alt="" hidden>
     <h2 id="modalTitle"></h2><div id="modalMeta" class="muted"></div>
   </div>
   <div class="modal-body">
@@ -439,7 +448,18 @@ const POSTERS = {
 
 
 /* ------------------------------------------------------------
-   5. DESCRIPCIONES DE LOS KSHOWS
+   5. LOGOTIPOS OFICIALES PARA LAS FICHAS
+   Añade aquí la URL del logo de cada programa cuando encuentres uno.
+   Si no hay logo, la ficha mostrará el nombre escrito normalmente.
+   ------------------------------------------------------------ */
+
+const LOGOS = {
+  /* Ejemplo: "Running Man": "https://sitio.com/logo-running-man.png", */
+};
+
+
+/* ------------------------------------------------------------
+   6. DESCRIPCIONES DE LOS KSHOWS
    Cada título tiene su propio texto, que se muestra al abrirlo.
 
    Las descripciones son borradores de trabajo. En los títulos
@@ -521,7 +541,7 @@ const DESCRIPCIONES = {
 
 
 /* ------------------------------------------------------------
-   6. CATÁLOGO COMPLETO
+   7. CATÁLOGO COMPLETO
    Para agregar un programa nuevo, añade una entrada aquí:
    ["Nombre del programa", "Nombre de su categoría"]
 
@@ -604,7 +624,7 @@ const rawShows = [
 
 
 /* ------------------------------------------------------------
-   7. PROGRAMAS QUE APARECEN EN "POPULARES"
+   8. PROGRAMAS QUE APARECEN EN "POPULARES"
    Cambia el orden o los títulos cuando quieras.
    Los nombres deben coincidir con los del catálogo.
    ------------------------------------------------------------ */
@@ -735,7 +755,7 @@ function moveHero(step){
 
 /* TARJETAS DEL CATÁLOGO */
 
-function card(show){
+function card(show,hideGenre=false){
   const total=allEpisodes(show).length;
   const done=watchedCount(show);
   const fav=state.favorites.includes(show.id);
@@ -743,12 +763,11 @@ function card(show){
 
   return `<article class="card" data-open="${show.id}">
     <div class="poster ${show.poster?"has-image":""}" style="--c1:${show.colors[0]};--c2:${show.colors[1]}">
-      ${show.poster?`<img src="${esc(show.poster)}" alt="Póster de ${esc(show.title)}" loading="lazy" onerror="this.remove();this.parentElement.classList.remove('has-image')">`:""}
+      ${show.poster?`<img src="${esc(show.poster)}" alt="Póster de ${esc(show.title)}" loading="lazy" onerror="this.remove();this.parentElement.classList.remove('has-image')">`:`<div class="poster-word">${esc(show.title)}</div>`}
       <button class="fav ${fav?"on":""}" data-fav="${show.id}" aria-label="${fav?"Quitar de":"Añadir a"} Mi lista">${fav?"♥":"♡"}</button>
-      <div class="poster-word">${esc(show.title)}</div>
     </div>
     <div class="card-title">${esc(show.title)}</div>
-    <div class="card-meta">${esc(show.genre)}</div>
+    ${hideGenre? "":`<div class="card-meta">${esc(show.genre)}</div>`}
     ${rating?`<div class="card-meta">★ ${rating}/5</div>`:""}
     ${done&&done<total?`<div class="progress"><span style="width:${Math.round(done/total*100)}%"></span></div><div class="card-meta">${done} de ${total} episodios vistos</div>`:""}
   </article>`;
@@ -775,7 +794,7 @@ function renderHomeCategories(found){
         <div><h2>${esc(category)}</h2><span class="muted">${list.length} programas</span></div>
         <button class="text-link" data-category-open="${esc(category)}">Ver todos →</button>
       </div>
-      <div class="row-scroller">${list.map(card).join("")}</div>
+      <div class="row-scroller">${list.map(s=>card(s,true)).join("")}</div>
     </section>`;
   }).join("");
 }
@@ -878,6 +897,23 @@ function openShow(id){
 
   document.getElementById("modalTitle").textContent=show.title;
   document.getElementById("modalGenre").textContent=show.genre;
+
+  /* Usa la imagen horizontal del carrusel como portada si existe. */
+  const cover=CARRUSEL.find(item=>item.titulo===show.title)?.fotoBackground||"";
+  const coverEl=document.getElementById("modalCover");
+  coverEl.hidden=!cover;
+  coverEl.classList.toggle("hidden",!cover);
+  if(cover){coverEl.src=cover;coverEl.alt="Portada de "+show.title;}
+  else{coverEl.removeAttribute("src");coverEl.alt="";}
+
+  /* Si hay un logo oficial configurado, reemplaza el título de texto. */
+  const logo=LOGOS[show.title]||"";
+  const logoEl=document.getElementById("modalLogo");
+  logoEl.hidden=!logo;
+  logoEl.classList.toggle("hidden",!logo);
+  if(logo){logoEl.src=logo;logoEl.alt="Logo de "+show.title;}
+  else{logoEl.removeAttribute("src");logoEl.alt="";}
+  document.getElementById("modalTitle").hidden=!!logo;
 
   const count=allEpisodes(show).length;
   document.getElementById("modalMeta").textContent=show.seasons.length
