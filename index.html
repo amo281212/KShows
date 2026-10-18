@@ -44,7 +44,6 @@ main{max-width:1440px;margin:auto;padding:24px 5% 60px}
 .hero-slide.active{opacity:1;visibility:visible}
 .hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center 35%;transform:scale(1.01);transition:transform 7s ease}
 .hero-slide.active img{transform:scale(1.03)}
-/* Capas explícitas: la imagen queda detrás y los textos siempre por encima. */
 .hero-slides{z-index:0}
 .hero-shade{
   z-index:1;pointer-events:none;
@@ -118,7 +117,7 @@ dialog::backdrop{background:#000b;backdrop-filter:blur(5px)}
 .modal-cover{display:block;width:calc(100% + 52px);height:clamp(160px,35vw,260px);object-fit:cover;margin:-26px -26px 22px;border-radius:17px 17px 0 0}
 .modal-logo{display:block;max-width:min(260px,75%);max-height:76px;object-fit:contain;object-position:left center;margin:10px 0}
 .modal-top h2{font-size:29px;margin:8px 35px 8px 0}
-.close{position:absolute;right:15px;top:15px;border:0;border-radius:50%;width:36px;height:36px;background:#ffffff18;color:white;font-size:21px}
+.close{position:absolute;right:15px;top:15px;border:0;border-radius:50%;width:36px;height:36px;background:#ffffff18;color:white;font-size:21px;z-index:2}
 .modal-body{padding:24px}
 .modal-desc{line-height:1.7;color:#c4c2cf;font-size:14px}
 .modal-controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:18px 0}
@@ -136,30 +135,38 @@ textarea:focus{border-color:var(--accent)}
 .rate{display:flex;gap:4px;margin:10px 0}
 .rate button{border:0;background:none;padding:2px;color:#555460;font-size:24px}
 .rate button.on{color:var(--gold)}
-@media(max-width:950px){.catalog{grid-template-columns:repeat(4,minmax(0,1fr))}.row-scroller{grid-auto-columns:minmax(135px,1fr)}}
+@media(max-width:950px){
+  .catalog{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .row-scroller{grid-auto-columns:minmax(135px,1fr)}
+}
 @media(max-width:650px){
   header{padding:12px 4%;flex-wrap:wrap;gap:8px}
   .brand{font-size:19px;white-space:normal;max-width:100%}
   .nav{order:3;width:100%;justify-content:space-between;gap:6px}
-  .nav button{font-size:12px}.nav button.active:after{bottom:-9px}
+  .nav button{font-size:12px}
+  .nav button.active:after{bottom:-9px}
   .search{margin-left:auto;width:42%}
   main{padding:18px 4% 45px}
   .hero{min-height:420px;border-radius:17px;background:#101014}
-  /* En el teléfono se muestra la imagen completa, sin zoom ni recorte. */
-  .hero-slide img,.hero-slide.active img{object-fit:contain;object-position:center center;transform:none}
-    .hero-content{
+  /* El fondo ocupa todo el carrusel en móvil, con recorte controlado. */
+  .hero-slide img,.hero-slide.active img{
+    object-fit:cover;
+    object-position:center center;
+    transform:none
+  }
+  .hero-content{
     padding:24px 16px 76px;
     width:100%;
     max-width:100%;
     min-width:0;
-    overflow-wrap:anywhere;
+    overflow-wrap:anywhere
   }
   .hero-kicker{font-size:10px;letter-spacing:1.4px}
   .hero h1{
     font-size:clamp(28px,8vw,38px);
     line-height:1.05;
     letter-spacing:-1px;
-    overflow-wrap:anywhere;
+    overflow-wrap:anywhere
   }
   .hero p{
     font-size:13px;
@@ -172,9 +179,25 @@ textarea:focus{border-color:var(--accent)}
     line-clamp:4;
     overflow:hidden;
     overflow-wrap:anywhere;
-    text-shadow:0 1px 8px #000;
+    text-shadow:0 1px 8px #000
+  }
+  .hero-controls{right:12px;bottom:12px;gap:6px}
+  .hero-arrow{width:32px;height:32px}
+  .hero-dots{gap:5px;margin:0 2px}
+  .hero-dot{width:14px}
+  .hero-dot.active{width:24px}
+  .modal-top{padding:20px}
+  .modal-cover{
+    width:calc(100% + 40px);
+    margin:-20px -20px 18px;
+    height:clamp(150px,48vw,240px)
+  }
+  .modal-body{padding:18px}
 }
-@media(max-width:390px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}.brand{font-size:17px}}
+@media(max-width:390px){
+  .catalog{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .brand{font-size:17px}
+}
 </style>
 </head>
 <body>
@@ -309,40 +332,37 @@ const CATEGORIAS = [
 ];
 
 /* ------------------------------------------------------------
-   3. CARRUSEL PRINCIPAL
+   3. DATOS DEL CARRUSEL PRINCIPAL
+   Los fondos se obtienen de BACKGROUNDS, no de esta lista.
+   Así cada imagen de fondo se configura una sola vez.
    ------------------------------------------------------------ */
 const CARRUSEL = [
   {
     titulo: "Running Man",
-    fotoBackground: "https://1.vikiplatform.com/c/21511c/19ffaff961.jpg",
     descripcion: "[DESDE EL EP.800] - Un clásico de las variedades coreanas en el que sus integrantes y sus invitados se enfrentan a juegos, misiones y desafíos llenos de humor.",
     fraseSubtitulo: "VARIEDADES · JUEGOS · HUMOR",
     posicion: "center 30%"
   },
   {
     titulo: "Single's Inferno",
-    fotoBackground: "https://image.tmdb.org/t/p/original/jcYlROkKUj8kmDciaDSPSxQ0Ceh.jpg",
     descripcion: "[CIELO PARA DOS] - Solteros se conocen en una isla y buscan conectar entre citas, decisiones difíciles y momentos de tensión romántica.",
     fraseSubtitulo: "CITAS · ROMANCE · TENSIÓN",
     posicion: "center 35%"
   },
   {
     titulo: "Battle of Fates",
-    fotoBackground: "https://image.tmdb.org/t/p/original/od9yjz5gPZrb0Dqm1ErwE3u35rY.jpg",
     descripcion: "[LA BATALLA DE LOS DESTINOS] - 49 de los videntes más famosos de Corea compiten por ser los mejores. ¿Qué técnica triunfará?",
     fraseSubtitulo: "MISTERIO · TENSIÓN",
     posicion: "center 35%"
   },
   {
     titulo: "EXchange",
-    fotoBackground: "https://image.tmdb.org/t/p/original/mQjLqbnGWOVZwh7sqbePog9KV5l.jpg",
     descripcion: "Exparejas que mantienen en secreto su relación pasada deciden convivir nuevamente en busca del amor. ¿Resurgirá la chispa o abrirán su corazón a nuevos amores?",
     fraseSubtitulo: "CITAS · ROMANCE · TENSIÓN",
     posicion: "center 35%"
   },
   {
     titulo: "The Wedding War",
-    fotoBackground: "https://image.idn.media/post/20230706/photogrid-1688543898941-d5e0ce2f37e61fb6a771270052d08f52-42475ff3f2d83180e76f94c8c6d738d9.jpg",
     descripcion: "Parejas ponen a prueba su relación y su compatibilidad mientras afrontan pruebas y desafíos vinculados con el matrimonio.",
     fraseSubtitulo: "PAREJAS · COMPETENCIA · AMOR",
     posicion: "center 35%"
@@ -350,7 +370,7 @@ const CARRUSEL = [
 ];
 
 /* ------------------------------------------------------------
-   4. POSTERS VERTICALES DE LOS KSHOWS
+   4. PÓSTERES VERTICALES
    ------------------------------------------------------------ */
 const POSTERS = {
   "19/20 Nineteen to Twenty": "https://image.tmdb.org/t/p/original/do5GXnBOctIBuyNR2LguGimveYc.jpg",
@@ -426,14 +446,29 @@ const POSTERS = {
 };
 
 /* ------------------------------------------------------------
-   5. LOGOTIPOS OFICIALES PARA LAS FICHAS
+   5. FONDOS HORIZONTALES DE LAS FICHAS
+   Cada KShow tiene su propio campo background.
+   El carrusel utiliza estos mismos fondos automáticamente.
+   Añade aquí la URL horizontal de cada programa.
+   ------------------------------------------------------------ */
+const BACKGROUNDS = {
+  "Running Man": "https://1.vikiplatform.com/c/21511c/19ffaff961.jpg",
+  "Single's Inferno": "https://image.tmdb.org/t/p/original/jcYlROkKUj8kmDciaDSPSxQ0Ceh.jpg",
+  "Battle of Fates": "https://image.tmdb.org/t/p/original/od9yjz5gPZrb0Dqm1ErwE3u35rY.jpg",
+  "EXchange": "https://image.tmdb.org/t/p/original/mQjLqbnGWOVZwh7sqbePog9KV5l.jpg",
+  "The Wedding War": "https://image.idn.media/post/20230706/photogrid-1688543898941-d5e0ce2f37e61fb6a771270052d08f52-42475ff3f2d83180e76f94c8c6d738d9.jpg"
+};
+
+/* ------------------------------------------------------------
+   6. LOGOTIPOS DE LAS FICHAS
+   Añade la URL del logo junto al nombre exacto del programa.
    ------------------------------------------------------------ */
 const LOGOS = {
   /* Ejemplo: "Running Man": "https://sitio.com/logo-running-man.png", */
 };
 
 /* ------------------------------------------------------------
-   6. DESCRIPCIONES DE LOS KSHOWS
+   7. DESCRIPCIONES DE LOS KSHOWS
    ------------------------------------------------------------ */
 const DESCRIPCIONES = {
   "19/20 Nineteen to Twenty": "Un grupo de jóvenes comparte los últimos días de su adolescencia y el comienzo de la adultez. Entre nuevas responsabilidades, amistades y primeras experiencias románticas, descubren cómo quieren vivir esta nueva etapa.",
@@ -507,8 +542,9 @@ const DESCRIPCIONES = {
   "X The League": "Un programa competitivo cuyo formato exacto está pendiente de confirmar. La ficha queda lista para completar los detalles de sus participantes, reglas y desafíos."
 };
 
-  /* ------------------------------------------------------------
-   7. CATÁLOGO COMPLETO
+/* ------------------------------------------------------------
+   8. CATÁLOGO COMPLETO
+   El orden se mantiene para proteger los identificadores de progreso.
    ------------------------------------------------------------ */
 const rawShows = [
   ["19/20 Nineteen to Twenty","Citas y romance"],
@@ -584,7 +620,7 @@ const rawShows = [
 ];
 
 /* ------------------------------------------------------------
-   8. PROGRAMAS QUE APARECEN EN "POPULARES"
+   9. PROGRAMAS QUE APARECEN EN "POPULARES"
    ------------------------------------------------------------ */
 const POPULARES = [
   "Single's Inferno",
@@ -609,6 +645,14 @@ const palette=[
   ["#7a5367","#d7a1bb"],["#4b4c79","#b2a6ee"]
 ];
 
+/* Se garantiza que todos los títulos del carrusel existan en el catálogo.
+   Los que falten se añaden al final, sin cambiar los IDs existentes. */
+CARRUSEL.forEach(item=>{
+  if(!rawShows.some(show=>show[0]===item.titulo)){
+    rawShows.push([item.titulo,"Otros realities"]);
+  }
+});
+
 const shows=rawShows.map(([title,genre],i)=>({
   id:"show-"+(i+1),
   title,
@@ -617,20 +661,25 @@ const shows=rawShows.map(([title,genre],i)=>({
   seasons:[],
   description:DESCRIPCIONES[title]||"Sinopsis pendiente de completar.",
   poster:POSTERS[title]||"",
+  background:BACKGROUNDS[title]||"",
+  logo:LOGOS[title]||"",
   colors:palette[i%palette.length]
 }));
 
-/* CORRECCIÓN: los nombres del carrusel se convierten a los campos
-   que utiliza renderHeroSlide. Así reaparecen título y descripción. */
-let featuredSlides=CARRUSEL.map(item=>({
-  ...item,
-  title:item.titulo||"",
-  description:item.descripcion||"",
-  image:item.fotoBackground||"",
-  kicker:item.fraseSubtitulo||"",
-  showTitle:item.titulo||"",
-  position:item.posicion||"center 35%"
-}));
+/* El carrusel obtiene el fondo desde el registro del KShow.
+   No necesita guardar una segunda copia de las URL. */
+let featuredSlides=CARRUSEL.map(item=>{
+  const show=shows.find(s=>s.title===item.titulo);
+  return {
+    ...item,
+    title:item.titulo||"",
+    description:item.descripcion||"",
+    image:show?.background||"",
+    kicker:item.fraseSubtitulo||"",
+    showTitle:item.titulo||"",
+    position:item.posicion||"center 35%"
+  };
+});
 
 let heroIndex=0,heroTimer=null,heroPaused=false;
 const STORE="kshows_progress_v1";
@@ -673,6 +722,8 @@ function esc(s){
 /* CARRUSEL */
 
 function renderHeroSlide(index){
+  if(!featuredSlides.length)return;
+
   heroIndex=(index+featuredSlides.length)%featuredSlides.length;
   const slide=featuredSlides[heroIndex];
   const slides=document.getElementById("heroSlides");
@@ -827,7 +878,7 @@ function render(){
   `).join("");
 }
 
-  function setView(view){
+function setView(view){
   currentView=view;
   if(view==="catalog"){currentFilter="all";currentCategory="all"}
   render();
@@ -856,21 +907,31 @@ function openShow(id){
   document.getElementById("modalTitle").textContent=show.title;
   document.getElementById("modalGenre").textContent=show.genre;
 
-  /* Usa la imagen horizontal del carrusel como portada si existe. */
-  const cover=CARRUSEL.find(item=>item.titulo===show.title)?.fotoBackground||"";
+  /* El fondo de la ficha se obtiene directamente del KShow. */
+  const cover=show.background||"";
   const coverEl=document.getElementById("modalCover");
   coverEl.hidden=!cover;
   coverEl.classList.toggle("hidden",!cover);
-  if(cover){coverEl.src=cover;coverEl.alt="Portada de "+show.title;}
-  else{coverEl.removeAttribute("src");coverEl.alt="";}
+  if(cover){
+    coverEl.src=cover;
+    coverEl.alt="Fondo de "+show.title;
+  }else{
+    coverEl.removeAttribute("src");
+    coverEl.alt="";
+  }
 
-  /* Si hay un logo oficial configurado, reemplaza el título de texto. */
-  const logo=LOGOS[show.title]||"";
+  /* El logo es independiente del póster y del fondo. */
+  const logo=show.logo||"";
   const logoEl=document.getElementById("modalLogo");
   logoEl.hidden=!logo;
   logoEl.classList.toggle("hidden",!logo);
-  if(logo){logoEl.src=logo;logoEl.alt="Logo de "+show.title;}
-  else{logoEl.removeAttribute("src");logoEl.alt="";}
+  if(logo){
+    logoEl.src=logo;
+    logoEl.alt="Logo de "+show.title;
+  }else{
+    logoEl.removeAttribute("src");
+    logoEl.alt="";
+  }
   document.getElementById("modalTitle").hidden=!!logo;
 
   const count=allEpisodes(show).length;
