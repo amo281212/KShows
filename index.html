@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,13 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101014">
 <title>KShows y Realities Coreanos</title>
+
 <style>
-:root{--bg:#101014;--panel:#19191f;--panel2:#22222b;--text:#f6f5fa;--muted:#aaa9b7;--accent:#c6a5ff;--pink:#ff8fc8;--green:#8ce4b1;--border:#30303a;--gold:#f5c96a}
+:root{
+  --bg:#101014;--panel:#19191f;--panel2:#22222b;
+  --text:#f6f5fa;--muted:#aaa9b7;--accent:#c6a5ff;
+  --pink:#ff8fc8;--green:#8ce4b1;--border:#30303a;--gold:#f5c96a
+}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at 80% -10%,#33234455,transparent 35%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif}
+body{
+  margin:0;background:radial-gradient(ellipse at 80% -10%,#33234455,transparent 35%),var(--bg);
+  color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif
+}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
-header{min-height:72px;display:flex;align-items:center;justify-content:space-between;padding:12px 5%;gap:18px;background:#101014ed;border-bottom:1px solid #ffffff0d;position:sticky;top:0;z-index:5;backdrop-filter:blur(16px)}
+header{
+  min-height:72px;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 5%;gap:18px;background:#101014ed;border-bottom:1px solid #ffffff0d;
+  position:sticky;top:0;z-index:5;backdrop-filter:blur(16px)
+}
 .brand{font-size:clamp(16px,2vw,25px);font-weight:950;letter-spacing:-1.1px;white-space:nowrap}
 .brand .k{color:var(--accent)}.brand .r{color:var(--pink)}.brand .c{color:var(--green)}
 .nav{display:flex;gap:18px}
@@ -23,13 +34,20 @@ header{min-height:72px;display:flex;align-items:center;justify-content:space-bet
 .search{width:min(250px,24vw);background:var(--panel);border:1px solid var(--border);border-radius:12px;color:white;padding:10px 12px;outline:none}
 .search:focus{border-color:var(--accent)}
 main{max-width:1440px;margin:auto;padding:24px 5% 60px}
-.hero{min-height:430px;border:1px solid #ffffff16;border-radius:24px;overflow:hidden;position:relative;display:flex;align-items:flex-end;background:#211b31;margin-bottom:38px;box-shadow:0 20px 55px #0005;isolation:isolate}
+.hero{
+  min-height:430px;border:1px solid #ffffff16;border-radius:24px;overflow:hidden;
+  position:relative;display:flex;align-items:flex-end;background:#211b31;
+  margin-bottom:38px;box-shadow:0 20px 55px #0005;isolation:isolate
+}
 .hero-slides,.hero-slide,.hero-shade{position:absolute;inset:0}
 .hero-slide{opacity:0;visibility:hidden;transition:opacity .9s ease;overflow:hidden}
 .hero-slide.active{opacity:1;visibility:visible}
 .hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center 35%;transform:scale(1.04);transition:transform 7s ease}
 .hero-slide.active img{transform:scale(1.12)}
-.hero-shade{z-index:0;background:linear-gradient(90deg,#101014f5 0%,#101014d9 34%,#1010147a 62%,#10101425 100%),linear-gradient(0deg,#101014a8,transparent 55%)}
+.hero-shade{
+  z-index:0;
+  background:linear-gradient(90deg,#101014f5 0%,#101014d9 34%,#1010147a 62%,#10101425 100%),linear-gradient(0deg,#101014a8,transparent 55%)
+}
 .hero-content{position:relative;padding:clamp(24px,5vw,54px);max-width:690px;z-index:1;padding-bottom:72px}
 .hero h1{max-width:590px}
 .hero p{color:#f0edf6;line-height:1.7;max-width:490px;text-shadow:0 1px 10px #0007}
@@ -39,9 +57,9 @@ main{max-width:1440px;margin:auto;padding:24px 5% 60px}
 .hero-dots{display:flex;gap:6px;align-items:center;margin:0 4px}
 .hero-dot{height:5px;width:20px;border:0;border-radius:8px;background:#ffffff66;padding:0;transition:width .25s,background .25s}
 .hero-dot.active{width:32px;background:var(--accent)}
-.hero-kicker{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:2px;font-weight:850;color:var(--pink);text-transform:uppercase}
+.hero-kicker,.eyebrow{font-size:11px;letter-spacing:2px;font-weight:850;color:var(--pink);text-transform:uppercase}
+.hero-kicker{display:inline-flex;align-items:center;gap:7px}
 .hero-kicker:before{content:"";width:18px;height:2px;background:var(--pink);border-radius:2px}
-.eyebrow{font-size:11px;letter-spacing:2.5px;font-weight:850;color:var(--pink);text-transform:uppercase}
 h1{font-size:clamp(34px,5.5vw,64px);line-height:1.04;letter-spacing:-2px;margin:12px 0}
 .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
 .btn{border:0;border-radius:10px;padding:11px 16px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:transform .18s,filter .18s}
@@ -57,9 +75,24 @@ h2{font-size:21px;margin:0;letter-spacing:-.5px}
 .catalog{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px 16px}
 .row-scroller{display:grid;grid-auto-columns:minmax(150px,1fr);grid-auto-flow:column;grid-template-rows:auto;gap:15px;overflow-x:auto;padding:3px 2px 14px;scrollbar-width:thin;scrollbar-color:#4a405b transparent}
 .card{min-width:0;cursor:pointer;position:relative}
-.poster{aspect-ratio:2/3;border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:flex-end;padding:15px;background:linear-gradient(145deg,var(--c1),var(--c2));isolation:isolate;transition:transform .22s,box-shadow .22s;box-shadow:0 8px 20px #0002}
-.poster:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 24%,#ffffff48,transparent 38%),linear-gradient(0deg,#09080cf0 0%,#09080c18 72%);z-index:-1}
-.poster:after{content:"";position:absolute;width:70%;height:58%;left:15%;top:12%;border:1px solid #ffffff30;border-radius:48% 48% 10% 10%;transform:rotate(-8deg);z-index:-1}
+.poster{
+  aspect-ratio:2/3;border-radius:14px;overflow:hidden;position:relative;
+  display:flex;align-items:flex-end;padding:15px;
+  background:linear-gradient(145deg,var(--c1),var(--c2));isolation:isolate;
+  transition:transform .22s,box-shadow .22s;box-shadow:0 8px 20px #0002
+}
+.poster:before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 24%,#ffffff48,transparent 38%),linear-gradient(0deg,#09080cf0 0%,#09080c18 72%);
+  z-index:0;pointer-events:none
+}
+.poster:after{
+  content:"";position:absolute;width:70%;height:58%;left:15%;top:12%;
+  border:1px solid #ffffff30;border-radius:48% 48% 10% 10%;
+  transform:rotate(-8deg);z-index:0;pointer-events:none
+}
+.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+.poster.has-image:after{display:none}
 .card:hover .poster{transform:translateY(-5px);box-shadow:0 16px 28px #0005}
 .poster-word{font-size:clamp(16px,1.7vw,24px);font-weight:950;line-height:1.02;letter-spacing:-.8px;text-shadow:0 3px 12px #0009;overflow-wrap:anywhere;position:relative;z-index:1}
 .fav{position:absolute;top:9px;right:9px;width:34px;height:34px;border-radius:50%;border:1px solid #ffffff55;background:#15131dbb;color:white;font-size:18px;z-index:2;backdrop-filter:blur(8px)}
@@ -92,369 +125,925 @@ dialog::backdrop{background:#000b;backdrop-filter:blur(5px)}
 .ep-actions{display:flex;gap:7px;align-items:center}
 .small-btn{border:1px solid var(--border);background:var(--panel);color:white;border-radius:8px;padding:8px;font-size:12px}
 .small-btn.watched{color:var(--green);border-color:#8ce4b144}
+textarea{width:100%;min-height:85px;resize:vertical;background:var(--panel);border:1px solid var(--border);border-radius:10px;color:white;padding:12px;outline:none}
+textarea:focus{border-color:var(--accent)}
 .rate{display:flex;gap:4px;margin:10px 0}
 .rate button{border:0;background:none;padding:2px;color:#555460;font-size:24px}
 .rate button.on{color:var(--gold)}
-textarea{width:100%;min-height:85px;resize:vertical;background:var(--panel);border:1px solid var(--border);border-radius:10px;color:white;padding:12px;outline:none}
-textarea:focus{border-color:var(--accent)}
 @media(max-width:950px){.catalog{grid-template-columns:repeat(4,minmax(0,1fr))}.row-scroller{grid-auto-columns:minmax(135px,1fr)}}
 @media(max-width:650px){
-header{padding:12px 4%;flex-wrap:wrap;gap:8px}
-.brand{font-size:19px;white-space:normal;max-width:100%}
-.nav{order:3;width:100%;justify-content:space-between;gap:6px}
-.nav button{font-size:12px}.nav button.active:after{bottom:-9px}
-.search{margin-left:auto;width:42%}
-main{padding:18px 4% 45px}
-.hero{min-height:420px;border-radius:17px}
-.hero-content{padding:24px 20px 82px}
-.hero-shade{background:linear-gradient(90deg,#101014ed 0%,#101014bf 48%,#10101445 100%),linear-gradient(0deg,#101014c7,transparent 65%)}
-.hero-controls{right:12px;bottom:14px;gap:6px}
-.hero-arrow{width:32px;height:32px}.hero-dot{width:14px}.hero-dot.active{width:25px}
-.catalog{grid-template-columns:repeat(3,minmax(0,1fr));gap:19px 10px}
-.row-scroller{grid-auto-columns:minmax(112px,37vw);gap:10px}
-.poster{border-radius:11px;padding:10px}
-.fav{top:5px;right:5px;width:29px;height:29px}
-.card-title{font-size:12px}.card-meta{font-size:11px}
-.ep-actions{flex-direction:column;align-items:stretch}.small-btn{padding:7px 8px}
+  header{padding:12px 4%;flex-wrap:wrap;gap:8px}
+  .brand{font-size:19px;white-space:normal;max-width:100%}
+  .nav{order:3;width:100%;justify-content:space-between;gap:6px}
+  .nav button{font-size:12px}.nav button.active:after{bottom:-9px}
+  .search{margin-left:auto;width:42%}
+  main{padding:18px 4% 45px}
+  .hero{min-height:420px;border-radius:17px}
+  .hero-content{padding:24px 20px 82px}
+  .hero-shade{background:linear-gradient(90deg,#101014ed 0%,#101014bf 48%,#10101445 100%),linear-gradient(0deg,#101014c7,transparent 65%)}
+  .hero-controls{right:12px;bottom:14px;gap:6px}
+  .hero-arrow{width:32px;height:32px}.hero-dot{width:14px}.hero-dot.active{width:25px}
+  .catalog{grid-template-columns:repeat(3,minmax(0,1fr));gap:19px 10px}
+  .row-scroller{grid-auto-columns:minmax(112px,37vw);gap:10px}
+  .poster{border-radius:11px;padding:10px}
+  .fav{top:5px;right:5px;width:29px;height:29px}
+  .card-title{font-size:12px}.card-meta{font-size:11px}
+  .ep-actions{flex-direction:column;align-items:stretch}.small-btn{padding:7px 8px}
 }
 @media(max-width:390px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}.brand{font-size:17px}}
 </style>
 </head>
+
 <body>
 <header>
-<div class="brand"><span class="k">K</span>SHOWS Y <span class="r">R</span>EALITIES <span class="c">C</span>OREANOS</div>
-<nav class="nav">
-<button class="active" data-view="home">Inicio</button>
-<button data-view="catalog">Explorar</button>
-<button data-view="favorites">Mi lista</button>
-<button data-view="activity">Mi actividad</button>
-</nav>
-<input id="search" class="search" placeholder="⌕ Buscar..." aria-label="Buscar programas">
+  <div class="brand"><span class="k">K</span>SHOWS Y <span class="r">R</span>EALITIES <span class="c">C</span>OREANOS</div>
+  <nav class="nav">
+    <button class="active" data-view="home">Inicio</button>
+    <button data-view="catalog">Explorar</button>
+    <button data-view="favorites">Mi lista</button>
+    <button data-view="activity">Mi actividad</button>
+  </nav>
+  <input id="search" class="search" placeholder="⌕ Buscar..." aria-label="Buscar programas">
 </header>
+
 <main>
-<section id="hero" class="hero" aria-label="Programas destacados">
-<div id="heroSlides" class="hero-slides" aria-hidden="true"></div>
-<div class="hero-shade"></div>
-<div class="hero-content">
-<div class="hero-kicker" id="heroKicker">DESTACADO EN KSHOWS</div>
-<h1 id="heroTitle">Tu mundo K.<br>Tu historia.</h1>
-<p id="heroDescription">Descubre programas, organiza tus episodios y lleva el registro de todo lo que ves.</p>
-<div class="actions">
-<button class="btn btn-primary" id="heroShowBtn">▶ Ver programa</button>
-<button class="btn btn-secondary" id="exploreBtn">⌕ Explorar catálogo</button>
-</div>
-</div>
-<div class="hero-controls">
-<button class="hero-arrow" id="heroPrev" aria-label="Programa anterior">‹</button>
-<div class="hero-dots" id="heroDots" aria-label="Elegir programa destacado"></div>
-<button class="hero-arrow" id="heroNext" aria-label="Programa siguiente">›</button>
-</div>
-</section>
-<section id="homeView">
-<div class="section" id="continueSection">
-<div class="section-head"><div><h2>Continuar viendo</h2><span class="muted">Aparecen automáticamente según tu progreso</span></div></div>
-<div id="continueGrid" class="row-scroller"></div>
-</div>
-<div class="section">
-<div class="section-head"><div><h2>Populares en tu catálogo</h2><span class="muted">Una selección para empezar</span></div><button class="text-link" data-explore-all>Ver todo →</button></div>
-<div id="popularGrid" class="row-scroller"></div>
-</div>
-<div id="homeCategories"></div>
-<div class="section">
-<div class="section-head"><div><h2>Próximamente</h2><span class="muted">Nuevos proyectos en preparación</span></div></div>
-<div class="empty">Aquí aparecerán los próximos programas que incorporemos al catálogo.</div>
-</div>
-</section>
-<section id="catalogView" class="hidden">
-<h2 id="viewTitle">Explorar catálogo</h2>
-<p class="muted" id="catalogIntro">Todos tus programas en un solo lugar.</p>
-<div class="filters" id="categoryFilters"></div>
-<div class="filters" id="statusFilters">
-<button class="filter active" data-filter="all">Todos</button>
-<button class="filter" data-filter="watching">Continuar viendo</button>
-<button class="filter" data-filter="completed">Terminados</button>
-<button class="filter" data-filter="planned">Sin empezar</button>
-</div>
-<div id="catalogGrid" class="catalog"></div>
-</section>
-<section id="favoritesView" class="hidden">
-<h2>Mi lista</h2><p class="muted">Los programas que guardaste para volver a ellos.</p>
-<div id="favoritesGrid" class="catalog" style="margin-top:20px"></div>
-</section>
-<section id="activityView" class="hidden">
-<h2>Mi actividad</h2><p class="muted">Tu pequeño diario de K-shows.</p>
-<div class="catalog" id="statsGrid" style="margin-top:20px"></div>
-<div class="section"><h2>Mis puntuaciones</h2><div id="ratedGrid" class="catalog" style="margin-top:16px"></div></div>
-</section>
+  <section id="hero" class="hero" aria-label="Programas destacados">
+    <div id="heroSlides" class="hero-slides" aria-hidden="true"></div>
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <div class="hero-kicker" id="heroKicker">DESTACADO EN KSHOWS</div>
+      <h1 id="heroTitle">Tu mundo K.<br>Tu historia.</h1>
+      <p id="heroDescription">Descubre programas, organiza tus episodios y lleva el registro de todo lo que ves.</p>
+      <div class="actions">
+        <button class="btn btn-primary" id="heroShowBtn">▶ Ver programa</button>
+        <button class="btn btn-secondary" id="exploreBtn">⌕ Explorar catálogo</button>
+      </div>
+    </div>
+    <div class="hero-controls">
+      <button class="hero-arrow" id="heroPrev" aria-label="Programa anterior">‹</button>
+      <div class="hero-dots" id="heroDots" aria-label="Elegir programa destacado"></div>
+      <button class="hero-arrow" id="heroNext" aria-label="Programa siguiente">›</button>
+    </div>
+  </section>
+
+  <section id="homeView">
+    <div class="section" id="continueSection">
+      <div class="section-head">
+        <div><h2 id="continueHeading"></h2><span class="muted">Aparecen automáticamente según tu progreso</span></div>
+      </div>
+      <div id="continueGrid" class="row-scroller"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div><h2 id="popularHeading"></h2><span class="muted">Una selección para empezar</span></div>
+        <button class="text-link" data-explore-all>Ver todo →</button>
+      </div>
+      <div id="popularGrid" class="row-scroller"></div>
+    </div>
+
+    <div id="homeCategories"></div>
+
+    <div class="section">
+      <div class="section-head">
+        <div><h2 id="comingHeading"></h2><span class="muted">Nuevos proyectos en preparación</span></div>
+      </div>
+      <div class="empty">Aquí aparecerán los próximos programas que incorporemos al catálogo.</div>
+    </div>
+  </section>
+
+  <section id="catalogView" class="hidden">
+    <h2 id="viewTitle">Explorar catálogo</h2>
+    <p class="muted" id="catalogIntro">Todos tus programas en un solo lugar.</p>
+    <div class="filters" id="categoryFilters"></div>
+    <div class="filters" id="statusFilters">
+      <button class="filter active" data-filter="all">Todos</button>
+      <button class="filter" data-filter="watching">Continuar viendo</button>
+      <button class="filter" data-filter="completed">Terminados</button>
+      <button class="filter" data-filter="planned">Sin empezar</button>
+    </div>
+    <div id="catalogGrid" class="catalog"></div>
+  </section>
+
+  <section id="favoritesView" class="hidden">
+    <h2>Mi lista</h2><p class="muted">Los programas que guardaste para volver a ellos.</p>
+    <div id="favoritesGrid" class="catalog" style="margin-top:20px"></div>
+  </section>
+
+  <section id="activityView" class="hidden">
+    <h2>Mi actividad</h2><p class="muted">Tu pequeño diario de K-shows.</p>
+    <div class="catalog" id="statsGrid" style="margin-top:20px"></div>
+    <div class="section"><h2>Mis puntuaciones</h2><div id="ratedGrid" class="catalog" style="margin-top:16px"></div></div>
+  </section>
 </main>
+
 <footer>KShows y Realities Coreanos · Hecho para disfrutar cada historia.</footer>
+
 <dialog id="showDialog">
-<div class="modal-top">
-<button class="close" id="closeDialog" aria-label="Cerrar">×</button>
-<div class="eyebrow" id="modalGenre">K-SHOW</div>
-<h2 id="modalTitle"></h2><div id="modalMeta" class="muted"></div>
-</div>
-<div class="modal-body">
-<p id="modalDesc" class="modal-desc"></p>
-<div class="modal-controls">
-<select id="seasonSelect" class="season-select" aria-label="Temporada" hidden></select>
-<button class="btn btn-secondary" id="modalFav">♡ Mi lista</button>
-<span class="muted">El progreso se actualiza al marcar episodios vistos.</span>
-</div>
-<div><strong>Mi puntuación</strong></div><div class="rate" id="ratingStars"></div>
-<div id="episodes"></div>
-<div class="section">
-<strong>Mi reseña</strong><p class="muted">Guarda tus impresiones para recordar qué te pareció.</p>
-<textarea id="review" placeholder="¿Qué te pareció este programa?"></textarea>
-<div class="actions"><button class="btn btn-primary" id="saveReview">Guardar reseña</button><span id="reviewMsg" class="muted"></span></div>
-</div>
-</div>
+  <div class="modal-top">
+    <button class="close" id="closeDialog" aria-label="Cerrar">×</button>
+    <div class="eyebrow" id="modalGenre">K-SHOW</div>
+    <h2 id="modalTitle"></h2><div id="modalMeta" class="muted"></div>
+  </div>
+  <div class="modal-body">
+    <p id="modalDesc" class="modal-desc"></p>
+    <div class="modal-controls">
+      <select id="seasonSelect" class="season-select" aria-label="Temporada" hidden></select>
+      <button class="btn btn-secondary" id="modalFav">♡ Mi lista</button>
+      <span class="muted">El progreso se actualiza al marcar episodios vistos.</span>
+    </div>
+    <div><strong>Mi puntuación</strong></div><div class="rate" id="ratingStars"></div>
+    <div id="episodes"></div>
+    <div class="section">
+      <strong>Mi reseña</strong><p class="muted">Guarda tus impresiones para recordar qué te pareció.</p>
+      <textarea id="review" placeholder="¿Qué te pareció este programa?"></textarea>
+      <div class="actions"><button class="btn btn-primary" id="saveReview">Guardar reseña</button><span id="reviewMsg" class="muted"></span></div>
+    </div>
+  </div>
 </dialog>
+
 <script>
-const CATEGORIES=["Citas y romance","Competencia y supervivencia","Variedades y entretenimiento","Cocina y gastronomía","Viajes y convivencia","Familia y vida cotidiana","Dramas y especiales","Música y K-pop","Otros realities"];
-const palette=[["#694d87","#cf779c"],["#9a456c","#e3a2b8"],["#355e77","#75b6ba"],["#75603b","#d4a76b"],["#45466e","#9b89ca"],["#426b5a","#9cc9a7"],["#7a5367","#d7a1bb"],["#4b4c79","#b2a6ee"]];
-const rawShows=[
-["19/20 Nineteen to Twenty","Citas y romance"],["60 Minutes to Love","Citas y romance"],["Abra-ca Empty","Variedades y entretenimiento"],["Agents of Mystery","Competencia y supervivencia"],["ALL or NOTHING","Competencia y supervivencia"],["Apartment 404","Variedades y entretenimiento"],["Are You Sure?!","Viajes y convivencia"],["Bake Your Dream","Cocina y gastronomía"],["Battle of Fates","Competencia y supervivencia"],["Better Late Than Single","Citas y romance"],["Bite Me Sweet","Citas y romance"],["Bloody Game","Competencia y supervivencia"],["Bloody Game X","Competencia y supervivencia"],["Bonjour Bakery","Cocina y gastronomía"],["BTS: THE COMEBACK LIVE | ARIRANG","Música y K-pop"],["BTS: THE RETURN","Música y K-pop"],["Cha's Family","Familia y vida cotidiana"],["Chef of Antarctica","Cocina y gastronomía"],["Closet Battle","Variedades y entretenimiento"],["Country Life of Gen-Z","Viajes y convivencia"],["Culinary Class Wars","Cocina y gastronomía"],["Curtain Up, Class!","Variedades y entretenimiento"],["Date My Friend","Citas y romance"],["Deadly Tag","Competencia y supervivencia"],["Director's Arena","Variedades y entretenimiento"],["EXchange","Citas y romance"],["Fresh off the Sea","Viajes y convivencia"],["Fresh off the Sea in Calape","Viajes y convivencia"],["GBRB: Farm Operation - Go Go Farm","Viajes y convivencia"],["GBRB: Joy Pops Laugh Pops","Variedades y entretenimiento"],["Guardian: The Lonely and Great God 10th Anniversary","Dramas y especiales"],["Heart Pairing","Citas y romance"],["Jae-seok's B&B Rules!","Variedades y entretenimiento"],["Kian's Bizarre B&B","Viajes y convivencia"],["Kumusta","Variedades y entretenimiento"],["Love Against Time","Dramas y especiales"],["Love in the Moonlight: Redrawn","Dramas y especiales"],["Match to Marry: With Parents","Citas y romance"],["Mind the Noona Gap","Citas y romance"],["Mr. Eo's Food World Tour","Cocina y gastronomía"],["Murder Club: Liar's Table","Competencia y supervivencia"],["My AI Partner: Strange Love","Citas y romance"],["My Grumpy Secretary","Dramas y especiales"],["My Name is Gabriel","Variedades y entretenimiento"],["NANA bnb with SEVENTEEN","Música y K-pop"],["Perfect Glow","Variedades y entretenimiento"],["Pink Lie","Citas y romance"],["Reply 1988 10th Anniversary","Dramas y especiales"],["Reply High School","Variedades y entretenimiento"],["Running Man","Variedades y entretenimiento"],["Single's Inferno","Citas y romance"],["Single's Inferno Reunion","Citas y romance"],["Six Singles under One Roof","Citas y romance"],["Space Rice Cake Shop","Variedades y entretenimiento"],["Stand BI Me","Variedades y entretenimiento"],["Street Restaurant Fighter","Cocina y gastronomía"],["Street World Fighter: Director's War","Competencia y supervivencia"],["Take a Hike!","Viajes y convivencia"],["The Love Lab","Citas y romance"],["The Manager","Familia y vida cotidiana"],["The Secret Friends Club","Variedades y entretenimiento"],["The Village Barber","Familia y vida cotidiana"],["The Wedding War","Competencia y supervivencia"],["This is Hyunmoo Road","Viajes y convivencia"],["Undercover Chef - Korea","Cocina y gastronomía"],["Unplanned Trip: Limited Edition","Viajes y convivencia"],["When Our Kids Fall in Love","Citas y romance"],["Whenever Possible","Variedades y entretenimiento"],["X The League","Competencia y supervivencia"],["YOO Got a Minute?","Variedades y entretenimiento"]
-];
-const descriptions={
-"19/20 Nineteen to Twenty":"Un reality que sigue a jóvenes en el paso de la adolescencia a la adultez, entre nuevas experiencias, amistad y romance.",
-"Running Man":"Un programa de variedades coreano con juegos, misiones, invitados y desafíos llenos de humor.",
-"Single's Inferno":"Solteros llegan a una isla remota para conocerse, crear conexiones y descubrir si la atracción puede convertirse en algo más."
+/* ============================================================
+   CONFIGURACIÓN GENERAL DE KSHOWS
+   Esta es la zona principal para editar el contenido del sitio.
+   El resto del código utiliza los datos que se escriben aquí.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. NOMBRES DE LAS SECCIONES DE INICIO
+   Cambia los textos entre comillas para cambiar los encabezados.
+   ------------------------------------------------------------ */
+
+const SECCIONES = {
+  continuarViendo: "Continuar viendo",
+  populares: "Populares en tu catálogo",
+  recienAgregados: "Recién añadidos",
+  proximamente: "Próximamente"
 };
+
+
+/* ------------------------------------------------------------
+   2. NOMBRES DE LAS CATEGORÍAS
+   Puedes cambiar los nombres sin modificar la lógica.
+   Mantén cada nombre entre comillas.
+   ------------------------------------------------------------ */
+
+const CATEGORIAS = [
+  "Citas y romance",
+  "Competencia y supervivencia",
+  "Variedades y entretenimiento",
+  "Cocina y gastronomía",
+  "Viajes y convivencia",
+  "Familia y vida cotidiana",
+  "Dramas y especiales",
+  "Música y K-pop",
+  "Otros realities"
+];
+
+
+/* ------------------------------------------------------------
+   3. CARRUSEL PRINCIPAL
+   Imágenes HORIZONTALES para el banner grande de Inicio.
+
+   fotoBackground: URL de la imagen horizontal.
+   descripcion: texto descriptivo del programa.
+   fraseSubtitulo: frase breve que aparece sobre el título.
+   posicion: permite ajustar qué parte de la imagen se ve.
+
+   Para agregar otro destacado, copia una ficha completa.
+   ------------------------------------------------------------ */
+
+const CARRUSEL = [
+  {
+    titulo: "Running Man",
+    fotoBackground: "https://1.vikiplatform.com/c/21511c/19ffaff961.jpg",
+    descripcion: "[DESDE EL EP.800] - Un clásico de las variedades coreanas en el que sus integrantes y sus invitados se enfrentan a juegos, misiones y desafíos llenos de humor.",
+    fraseSubtitulo: "VARIEDADES · JUEGOS · HUMOR",
+    posicion: "center 30%"
+  },
+  {
+    titulo: "Single's Inferno",
+    fotoBackground: "https://image.tmdb.org/t/p/original/jcYlROkKUj8kmDciaDSPSxQ0Ceh.jpg",
+    descripcion: "[CIELO PARA DOS] - Solteros se conocen en una isla y buscan conectar entre citas, decisiones difíciles y momentos de tensión romántica.",
+    fraseSubtitulo: "CITAS · ROMANCE · TENSIÓN",
+    posicion: "center 35%"
+  },
+  {
+    titulo: "Battle of Fates",
+    fotoBackground: "https://image.tmdb.org/t/p/original/od9yjz5gPZrb0Dqm1ErwE3u35rY.jpg",
+    descripcion: "[LA BATALLA DE LOS DESTINOS] - 49 de los videntes más famosos de Corea compiten por ser los mejores. ¿Qué técnica triunfará?",
+    fraseSubtitulo: "MISTERIO · TENSIÓN",
+    posicion: "center 35%"
+  },
+  {
+    titulo: "EXchange",
+    fotoBackground: "https://image.tmdb.org/t/p/original/mQjLqbnGWOVZwh7sqbePog9KV5l.jpg",
+    descripcion: "Exparejas que mantienen en secreto su relación pasada deciden convivir nuevamente en busca del amor. ¿Resurgirá la chispa o abrirán su corazón a nuevos amores?",
+    fraseSubtitulo: "CITAS · ROMANCE · TENSIÓN",
+    posicion: "center 35%"
+  },
+  {
+    titulo: "The Wedding War",
+    fotoBackground: "https://image.idn.media/post/20230706/photogrid-1688543898941-d5e0ce2f37e61fb6a771270052d08f52-42475ff3f2d83180e76f94c8c6d738d9.jpg",
+    descripcion: "Parejas ponen a prueba su relación y su compatibilidad mientras afrontan pruebas y desafíos vinculados con el matrimonio.",
+    fraseSubtitulo: "PAREJAS · COMPETENCIA · AMOR",
+    posicion: "center 35%"
+  }
+];
+
+
+/* ------------------------------------------------------------
+   4. POSTERS VERTICALES DE LOS KSHOWS
+   Aquí va la URL de la imagen VERTICAL de cada programa.
+
+   Ejemplo:
+   "Running Man": "https://sitio.com/running-man.jpg",
+
+   Deja "" mientras no tengas la imagen.
+   Los programas sin póster conservarán su fondo de color.
+   ------------------------------------------------------------ */
+
+const POSTERS = {
+  "19/20 Nineteen to Twenty": "https://image.tmdb.org/t/p/original/do5GXnBOctIBuyNR2LguGimveYc.jpg",
+  "60 Minutes to Love": "https://image.tmdb.org/t/p/original/aqGjGdoB8oB9YHW4knomxvPEbcd.jpg",
+  "Abra-ca Empty": "https://image.tmdb.org/t/p/original/xozHlLL6XSxoPW1Ox0kBA38P3Nw.jpg",
+  "Agents of Mystery": "https://image.tmdb.org/t/p/original/twj3DAacgdOekUXIgh5KH9kx1kz.jpg",
+  "ALL or NOTHING": "https://image.tmdb.org/t/p/original/AqBTyEGfKkQDsOpLwctxDO6aoVY.jpg",
+  "Apartment 404": "https://image.tmdb.org/t/p/original/ovtBb9ljq7LkTzFjKHhUSK7jEiT.jpg",
+  "Are You Sure?!": "https://image.tmdb.org/t/p/original/5NZzvgSnCBBxdDRmYJHRfBXVs43.jpg",
+  "Bake Your Dream": "https://image.tmdb.org/t/p/original/bX8puPJrauyHBTD59oohHyuUf5e.jpg",
+  "Battle of Fates": "https://image.tmdb.org/t/p/original/o4DOGStruvyfrfKhazBO9UbxRhR.jpg",
+  "Better Late Than Single": "",
+  "Bite Me Sweet": "",
+  "Bloody Game": "",
+  "Bloody Game X": "",
+  "Bonjour Bakery": "",
+  "BTS: THE COMEBACK LIVE | ARIRANG": "",
+  "BTS: THE RETURN": "",
+  "Cha's Family": "",
+  "Chef of Antarctica": "",
+  "Closet Battle": "",
+  "Country Life of Gen-Z": "",
+  "Culinary Class Wars": "",
+  "Curtain Up, Class!": "",
+  "Date My Friend": "",
+  "Deadly Tag": "",
+  "Director's Arena": "",
+  "EXchange": "",
+  "Fresh off the Sea": "",
+  "Fresh off the Sea in Calape": "",
+  "GBRB: Farm Operation - Go Go Farm": "",
+  "GBRB: Joy Pops Laugh Pops": "",
+  "Guardian: The Lonely and Great God 10th Anniversary": "",
+  "Heart Pairing": "",
+  "Jae-seok's B&B Rules!": "",
+  "Kian's Bizarre B&B": "",
+  "Kumusta": "",
+  "Love Against Time": "",
+  "Love in the Moonlight: Redrawn": "",
+  "Match to Marry: With Parents": "",
+  "Mind the Noona Gap": "",
+  "Mr. Eo's Food World Tour": "",
+  "Murder Club: Liar's Table": "",
+  "My AI Partner: Strange Love": "",
+  "My Grumpy Secretary": "",
+  "My Name is Gabriel": "",
+  "NANA bnb with SEVENTEEN": "",
+  "Perfect Glow": "",
+  "Pink Lie": "",
+  "Reply 1988 10th Anniversary": "",
+  "Reply High School": "",
+  "Running Man": "",
+  "Single's Inferno": "",
+  "Single's Inferno Reunion": "",
+  "Six Singles under One Roof": "",
+  "Space Rice Cake Shop": "",
+  "Stand BI Me": "",
+  "Street Restaurant Fighter": "",
+  "Street World Fighter: Director's War": "",
+  "Take a Hike!": "",
+  "The Love Lab": "",
+  "The Manager": "",
+  "The Secret Friends Club": "",
+  "The Village Barber": "",
+  "The Wedding War": "",
+  "This is Hyunmoo Road": "",
+  "Undercover Chef - Korea": "",
+  "Unplanned Trip: Limited Edition": "",
+  "When Our Kids Fall in Love": "",
+  "Whenever Possible": "",
+  "X The League": "",
+  "YOO Got a Minute?": ""
+};
+
+
+/* ------------------------------------------------------------
+   5. DESCRIPCIONES DE LOS KSHOWS
+   Cada título tiene su propio texto, que se muestra al abrirlo.
+
+   Las descripciones son borradores de trabajo. En los títulos
+   menos conocidos, comprueba la sinopsis antes de publicar.
+   Puedes reemplazar cualquier texto sin tocar otras funciones.
+   ------------------------------------------------------------ */
+
+const DESCRIPCIONES = {
+  "19/20 Nineteen to Twenty": "Un grupo de jóvenes comparte los últimos días de su adolescencia y el comienzo de la adultez. Entre nuevas responsabilidades, amistades y primeras experiencias románticas, descubren cómo quieren vivir esta nueva etapa.",
+  "60 Minutes to Love": "Un reality centrado en las citas y las primeras conexiones. Sus participantes tienen un tiempo limitado para conocerse y descubrir si existe una conexión que merezca una segunda oportunidad.",
+  "Abra-ca Empty": "Un programa de variedades cuyo concepto y formato específico están pendientes de verificación. Aquí podrás incorporar la sinopsis definitiva cuando confirmes los detalles de esta producción.",
+  "Agents of Mystery": "Un equipo de celebridades investiga misterios y situaciones extrañas, buscando pistas, resolviendo acertijos y trabajando en conjunto para descubrir qué está ocurriendo.",
+  "ALL or NOTHING": "Un reality competitivo en el que los participantes se enfrentan a decisiones y desafíos de alto riesgo. El formato y las reglas específicas están pendientes de confirmar.",
+  "Apartment 404": "Un programa de variedades en el que sus participantes investigan historias y pistas relacionadas con distintos espacios y épocas. La observación, la deducción y el trabajo en equipo son parte de la experiencia.",
+  "Are You Sure?!": "Jimin y Jung Kook, de BTS, emprenden un viaje juntos y disfrutan de experiencias, comidas y destinos mientras comparten momentos espontáneos lejos de su rutina habitual.",
+  "Bake Your Dream": "Un programa de cocina dedicado al mundo de la pastelería y la repostería. Los participantes muestran su creatividad y sus habilidades mientras preparan elaboraciones dulces.",
+  "Battle of Fates": "Un reality de competencia que reúne a participantes con distintas habilidades para afrontar pruebas y enfrentamientos. La premisa y los detalles específicos deben confirmarse con la información oficial del programa.",
+  "Better Late Than Single": "Personas que han tenido poca o ninguna experiencia sentimental participan en un proceso para conocerse, ganar confianza y explorar la posibilidad de iniciar una relación.",
+  "Bite Me Sweet": "Un programa de temática romántica en el que la comida y las relaciones se combinan como parte de la experiencia. La premisa exacta está pendiente de verificación.",
+  "Bloody Game": "Un reality de supervivencia estratégica en el que los participantes compiten por permanecer en el juego. Las alianzas, la negociación, el engaño y la toma de decisiones pueden cambiar el rumbo de la competencia.",
+  "Bloody Game X": "Una entrega relacionada con el universo de Bloody Game, centrada en la competencia y la estrategia. Los detalles particulares de esta edición están pendientes de confirmar.",
+  "Bonjour Bakery": "Un programa ambientado en una panadería de inspiración francesa, donde la preparación de productos horneados y la convivencia forman parte de la experiencia. Los detalles del formato deben verificarse.",
+  "BTS: THE COMEBACK LIVE | ARIRANG": "Presentación especial de BTS vinculada a su regreso musical y al proyecto ARIRANG. Una actuación para disfrutar de su música y de esta etapa del grupo.",
+  "BTS: THE RETURN": "Especial dedicado al regreso de BTS, con una mirada a su nueva etapa musical y a la reunión del grupo después de sus actividades individuales.",
+  "Cha's Family": "Un programa de convivencia centrado en la vida cotidiana de una familia, sus interacciones y las situaciones que surgen al compartir tiempo y responsabilidades.",
+  "Chef of Antarctica": "Un programa gastronómico ambientado en un entorno extremo, donde la preparación de comida y la vida diaria se combinan con las particularidades del lugar.",
+  "Closet Battle": "Un programa de entretenimiento centrado en la moda, los estilos personales y los desafíos relacionados con la ropa. El formato concreto está pendiente de confirmación.",
+  "Country Life of Gen-Z": "Jóvenes de una nueva generación experimentan la vida fuera de la ciudad, se acercan a las tareas cotidianas del campo y descubren otra forma de convivir.",
+  "Culinary Class Wars": "Chefs de distintos niveles y trayectorias se enfrentan en desafíos culinarios. La creatividad, la técnica y la capacidad de trabajar bajo presión determinan quién avanza en la competencia.",
+  "Curtain Up, Class!": "Un programa de variedades relacionado con el escenario, la interpretación o las actividades de grupo. La premisa específica está pendiente de verificar para evitar una sinopsis incorrecta.",
+  "Date My Friend": "Un reality de citas en el que la amistad participa en el proceso de encontrar pareja. Los participantes exploran posibles conexiones con la ayuda y las opiniones de personas cercanas.",
+  "Deadly Tag": "Un reality de competencia que utiliza persecuciones y juegos de estrategia como parte de sus desafíos. Los participantes deben reaccionar, colaborar y encontrar la forma de superar cada prueba.",
+  "Director's Arena": "Un programa competitivo vinculado con la creación y la dirección de contenidos. Los detalles del formato y de los participantes están pendientes de confirmación.",
+  "EXchange": "Personas que fueron pareja vuelven a convivir en un mismo espacio y conocen a otros solteros. Entre recuerdos, nuevas atracciones y decisiones difíciles, deben descubrir qué quieren hacer con sus relaciones.",
+  "Fresh off the Sea": "Un grupo de celebridades pasa tiempo en comunidades costeras y disfruta de la vida junto al mar. La convivencia, los paisajes y la comida local forman parte de la experiencia.",
+  "Fresh off the Sea in Calape": "Una entrega relacionada con Fresh off the Sea, ambientada en Calape. La experiencia combina convivencia, entorno costero y actividades cotidianas; los detalles de esta edición deben verificarse.",
+  "GBRB: Farm Operation - Go Go Farm": "Un programa de variedades en el que sus participantes se involucran en actividades agrícolas y en la gestión de una granja, con trabajo en equipo y situaciones espontáneas.",
+  "GBRB: Joy Pops Laugh Pops": "Un programa de variedades relacionado con el universo GBRB. La descripción concreta de esta entrega está pendiente de verificación para completar la ficha con información precisa.",
+  "Guardian: The Lonely and Great God 10th Anniversary": "Especial conmemorativo relacionado con Guardian, conocido también como Goblin. Celebra el aniversario de la serie y está pensado para quienes desean volver a disfrutar de su universo.",
+  "Heart Pairing": "Un reality de citas que reúne a participantes interesados en encontrar una conexión sentimental. Las conversaciones, la convivencia y las decisiones personales guían el desarrollo de las relaciones.",
+  "Jae-seok's B&B Rules!": "Un programa de variedades que gira en torno a la convivencia y a las actividades de un alojamiento gestionado por Yoo Jae-suk. Las reglas y situaciones del lugar generan encuentros y momentos de humor.",
+  "Kian's Bizarre B&B": "Kian84 recibe huéspedes en un alojamiento poco convencional. La convivencia, las actividades compartidas y su particular manera de atender a los visitantes dan forma al programa.",
+  "Kumusta": "Programa de entretenimiento cuyo formato y premisa necesitan confirmación. La ficha queda preparada para incorporar la sinopsis correcta y los detalles de esta producción.",
+  "Love Against Time": "Una historia de temática romántica en la que el tiempo y las relaciones tienen un papel central. La sinopsis argumental exacta está pendiente de confirmar.",
+  "Love in the Moonlight: Redrawn": "Especial o proyecto relacionado con Love in the Moonlight. La trama y el formato concreto de esta versión deben confirmarse antes de publicar una sinopsis definitiva.",
+  "Match to Marry: With Parents": "Un reality de citas que incorpora la perspectiva familiar al proceso de buscar pareja. Los participantes exploran posibles relaciones mientras el matrimonio y la opinión de sus familias forman parte de la experiencia.",
+  "Mind the Noona Gap": "Un programa de citas centrado en relaciones en las que existe una diferencia de edad entre la mujer y el hombre. Los participantes exploran sus afinidades y expectativas sentimentales.",
+  "Mr. Eo's Food World Tour": "Un recorrido gastronómico en el que la comida y los viajes se convierten en la forma de descubrir distintos lugares y culturas. Los destinos y el formato específico están pendientes de confirmar.",
+  "Murder Club: Liar's Table": "Un programa de misterio y deducción en el que los participantes deben interpretar pistas, descubrir engaños y averiguar quién está diciendo la verdad. La mecánica exacta debe verificarse.",
+  "My AI Partner: Strange Love": "Un programa de temática romántica que explora la relación entre las personas y la inteligencia artificial. La premisa y las dinámicas concretas están pendientes de confirmar.",
+  "My Grumpy Secretary": "Una historia de ficción centrada en la relación entre un superior y su secretaria, marcada por personalidades difíciles, situaciones laborales y posibles sentimientos románticos.",
+  "My Name is Gabriel": "Celebridades experimentan una vida diferente al asumir la identidad y la rutina de otra persona en un lugar nuevo. El programa combina inmersión cultural, convivencia y experiencias cotidianas.",
+  "NANA bnb with SEVENTEEN": "Los integrantes de SEVENTEEN comparten actividades y momentos de convivencia en un alojamiento organizado por Na Young-seok. Los juegos, las conversaciones y el humor muestran la dinámica del grupo.",
+  "Perfect Glow": "Un programa relacionado con la belleza, el cuidado personal o la transformación de imagen. Su formato exacto y sus participantes están pendientes de verificación.",
+  "Pink Lie": "Solteros conviven y buscan el amor mientras cada uno guarda una verdad personal que puede influir en las relaciones. La confianza y las revelaciones ponen a prueba las conexiones que se forman.",
+  "Reply 1988 10th Anniversary": "Especial conmemorativo dedicado a Reply 1988, que celebra el aniversario de la serie y reúne contenido relacionado con su legado y sus recuerdos.",
+  "Reply High School": "Un programa de entretenimiento relacionado con la vida escolar y las experiencias de jóvenes. La premisa exacta y el formato deben confirmarse.",
+  "Running Man": "Uno de los programas de variedades más conocidos de Corea. Sus integrantes y sus invitados participan en juegos, misiones, carreras y desafíos impredecibles llenos de humor.",
+  "Single's Inferno": "Solteros llegan a una isla aislada donde deben conocerse y formar conexiones románticas. Solo quienes encuentran una pareja pueden disfrutar de una escapada juntos fuera de la isla.",
+  "Single's Inferno Reunion": "Reencuentro relacionado con Single's Inferno, centrado en sus participantes y en las conversaciones sobre las conexiones que surgieron durante el programa. Los detalles de esta edición deben verificarse.",
+  "Six Singles under One Roof": "Seis solteros comparten un mismo espacio mientras se conocen y exploran posibles relaciones. La convivencia permite observar afinidades, tensiones y nuevas conexiones.",
+  "Space Rice Cake Shop": "Un programa de variedades ambientado en un local de comida con una temática espacial. La propuesta específica y las actividades de sus participantes están pendientes de confirmación.",
+  "Stand BI Me": "Programa de entretenimiento cuya premisa exacta está pendiente de verificar. La ficha está preparada para añadir información confirmada sobre sus participantes y su formato.",
+  "Street Restaurant Fighter": "Un programa gastronómico centrado en restaurantes y desafíos culinarios. Los participantes exploran sabores, técnicas y propuestas de comida; el formato específico debe confirmarse.",
+  "Street World Fighter: Director's War": "Proyecto relacionado con el universo de competencias de baile de Street Woman Fighter y Street Man Fighter. La descripción exacta de esta edición debe verificarse.",
+  "Take a Hike!": "Un programa de viajes y aventura en el que sus participantes salen a explorar rutas y paisajes, compartiendo caminatas y experiencias fuera de la rutina cotidiana.",
+  "The Love Lab": "Un reality de temática romántica que explora la compatibilidad y las relaciones entre sus participantes. Las reglas y la premisa específica están pendientes de confirmar.",
+  "The Manager": "Programa de variedades que muestra el día a día de celebridades desde la perspectiva de sus representantes y equipos de trabajo, con momentos espontáneos detrás de cámaras.",
+  "The Secret Friends Club": "Un programa de entretenimiento centrado en la amistad, los encuentros y las actividades compartidas. Su formato exacto está pendiente de confirmar.",
+  "The Village Barber": "Un programa de convivencia ambientado en una barbería de pueblo, donde sus participantes atienden a los vecinos y comparten experiencias de la vida cotidiana.",
+  "The Wedding War": "Parejas ponen a prueba su relación mediante retos físicos, emocionales y de convivencia relacionados con la preparación para el matrimonio. La competencia examina su compatibilidad y trabajo en equipo.",
+  "This is Hyunmoo Road": "Un programa de viajes y variedades vinculado con Jun Hyun-moo. Las experiencias, los destinos y las actividades del recorrido conforman su propuesta; el formato exacto debe verificarse.",
+  "Undercover Chef - Korea": "Un programa culinario con una propuesta de cocina y desafíos. La mecánica concreta, los participantes y el concepto de la edición coreana están pendientes de confirmar.",
+  "Unplanned Trip: Limited Edition": "Un programa de viajes en el que sus participantes afrontan una experiencia con planes limitados o inesperados. La convivencia y las decisiones sobre la marcha forman parte de la aventura.",
+  "When Our Kids Fall in Love": "Un reality que sigue las experiencias sentimentales de jóvenes mientras sus familias observan el proceso. Las relaciones, las diferencias generacionales y las reacciones familiares forman parte de la propuesta.",
+  "Whenever Possible": "Un programa de variedades en el que Yoo Jae-suk y sus compañeros aprovechan pequeños momentos de la vida cotidiana para encontrarse con personas y compartir juegos o actividades.",
+  "X The League": "Un programa competitivo cuyo formato exacto está pendiente de confirmar. La ficha queda lista para completar los detalles de sus participantes, reglas y desafíos."
+};
+
+
+/* ------------------------------------------------------------
+   6. CATÁLOGO COMPLETO
+   Para agregar un programa nuevo, añade una entrada aquí:
+   ["Nombre del programa", "Nombre de su categoría"]
+
+   Después agrega su URL en POSTERS y su sinopsis en
+   DESCRIPCIONES para completar su ficha.
+   ------------------------------------------------------------ */
+
+const rawShows = [
+  ["19/20 Nineteen to Twenty","Citas y romance"],
+  ["60 Minutes to Love","Citas y romance"],
+  ["Abra-ca Empty","Variedades y entretenimiento"],
+  ["Agents of Mystery","Competencia y supervivencia"],
+  ["ALL or NOTHING","Competencia y supervivencia"],
+  ["Apartment 404","Variedades y entretenimiento"],
+  ["Are You Sure?!","Viajes y convivencia"],
+  ["Bake Your Dream","Cocina y gastronomía"],
+  ["Battle of Fates","Competencia y supervivencia"],
+  ["Better Late Than Single","Citas y romance"],
+  ["Bite Me Sweet","Citas y romance"],
+  ["Bloody Game","Competencia y supervivencia"],
+  ["Bloody Game X","Competencia y supervivencia"],
+  ["Bonjour Bakery","Cocina y gastronomía"],
+  ["BTS: THE COMEBACK LIVE | ARIRANG","Música y K-pop"],
+  ["BTS: THE RETURN","Música y K-pop"],
+  ["Cha's Family","Familia y vida cotidiana"],
+  ["Chef of Antarctica","Cocina y gastronomía"],
+  ["Closet Battle","Variedades y entretenimiento"],
+  ["Country Life of Gen-Z","Viajes y convivencia"],
+  ["Culinary Class Wars","Cocina y gastronomía"],
+  ["Curtain Up, Class!","Variedades y entretenimiento"],
+  ["Date My Friend","Citas y romance"],
+  ["Deadly Tag","Competencia y supervivencia"],
+  ["Director's Arena","Variedades y entretenimiento"],
+  ["EXchange","Citas y romance"],
+  ["Fresh off the Sea","Viajes y convivencia"],
+  ["Fresh off the Sea in Calape","Viajes y convivencia"],
+  ["GBRB: Farm Operation - Go Go Farm","Viajes y convivencia"],
+  ["GBRB: Joy Pops Laugh Pops","Variedades y entretenimiento"],
+  ["Guardian: The Lonely and Great God 10th Anniversary","Dramas y especiales"],
+  ["Heart Pairing","Citas y romance"],
+  ["Jae-seok's B&B Rules!","Variedades y entretenimiento"],
+  ["Kian's Bizarre B&B","Viajes y convivencia"],
+  ["Kumusta","Variedades y entretenimiento"],
+  ["Love Against Time","Dramas y especiales"],
+  ["Love in the Moonlight: Redrawn","Dramas y especiales"],
+  ["Match to Marry: With Parents","Citas y romance"],
+  ["Mind the Noona Gap","Citas y romance"],
+  ["Mr. Eo's Food World Tour","Cocina y gastronomía"],
+  ["Murder Club: Liar's Table","Competencia y supervivencia"],
+  ["My AI Partner: Strange Love","Citas y romance"],
+  ["My Grumpy Secretary","Dramas y especiales"],
+  ["My Name is Gabriel","Variedades y entretenimiento"],
+  ["NANA bnb with SEVENTEEN","Música y K-pop"],
+  ["Perfect Glow","Variedades y entretenimiento"],
+  ["Pink Lie","Citas y romance"],
+  ["Reply 1988 10th Anniversary","Dramas y especiales"],
+  ["Reply High School","Variedades y entretenimiento"],
+  ["Running Man","Variedades y entretenimiento"],
+  ["Single's Inferno","Citas y romance"],
+  ["Single's Inferno Reunion","Citas y romance"],
+  ["Six Singles under One Roof","Citas y romance"],
+  ["Space Rice Cake Shop","Variedades y entretenimiento"],
+  ["Stand BI Me","Variedades y entretenimiento"],
+  ["Street Restaurant Fighter","Cocina y gastronomía"],
+  ["Street World Fighter: Director's War","Competencia y supervivencia"],
+  ["Take a Hike!","Viajes y convivencia"],
+  ["The Love Lab","Citas y romance"],
+  ["The Manager","Familia y vida cotidiana"],
+  ["The Secret Friends Club","Variedades y entretenimiento"],
+  ["The Village Barber","Familia y vida cotidiana"],
+  ["The Wedding War","Competencia y supervivencia"],
+  ["This is Hyunmoo Road","Viajes y convivencia"],
+  ["Undercover Chef - Korea","Cocina y gastronomía"],
+  ["Unplanned Trip: Limited Edition","Viajes y convivencia"],
+  ["When Our Kids Fall in Love","Citas y romance"],
+  ["Whenever Possible","Variedades y entretenimiento"],
+  ["X The League","Competencia y supervivencia"],
+  ["YOO Got a Minute?","Variedades y entretenimiento"]
+];
+
+
+/* ------------------------------------------------------------
+   7. PROGRAMAS QUE APARECEN EN "POPULARES"
+   Cambia el orden o los títulos cuando quieras.
+   Los nombres deben coincidir con los del catálogo.
+   ------------------------------------------------------------ */
+
+const POPULARES = [
+  "Single's Inferno",
+  "EXchange",
+  "Running Man",
+  "Agents of Mystery",
+  "Bloody Game",
+  "Are You Sure?!",
+  "19/20 Nineteen to Twenty",
+  "Culinary Class Wars",
+  "NANA bnb with SEVENTEEN",
+  "Apartment 404"
+];
+
+
+/* ============================================================
+   FIN DE LA ZONA DE CONFIGURACIÓN
+   Desde aquí comienza la lógica de la página.
+   Normalmente no necesitas modificar nada de lo que sigue.
+   ============================================================ */
+
+const palette=[
+  ["#694d87","#cf779c"],["#9a456c","#e3a2b8"],["#355e77","#75b6ba"],
+  ["#75603b","#d4a76b"],["#45466e","#9b89ca"],["#426b5a","#9cc9a7"],
+  ["#7a5367","#d7a1bb"],["#4b4c79","#b2a6ee"]
+];
+
 const shows=rawShows.map(([title,genre],i)=>({
-id:"show-"+(i+1),title,genre,year:"",seasons:[],
-description:descriptions[title]||"Ficha de "+title+". La sinopsis, las temporadas, los episodios y los enlaces se añadirán al completar esta ficha.",
-colors:palette[i%palette.length]
+  id:"show-"+(i+1),
+  title,
+  genre,
+  year:"",
+  seasons:[],
+  description:DESCRIPCIONES[title]||"Sinopsis pendiente de completar.",
+  poster:POSTERS[title]||"",
+  colors:palette[i%palette.length]
 }));
 
-/* Carrusel de programas destacados */
-const featuredSlides=[
-{
-title:"Single's Inferno",
-kicker:"CITAS · ROMANCE · TENSIÓN",
-description:"Solteros llegan a una isla remota para conocerse, crear conexiones y descubrir si la atracción puede convertirse en algo más.",
-image:"https://image.tmdb.org/t/p/original/bkz7rStamWJxC3lp9TUpU9GR18S.jpg",
-position:"center 35%",
-showTitle:"Single's Inferno"
-},
-{
-title:"Running Man",
-kicker:"VARIEDADES · JUEGOS · RISAS",
-description:"Estrellas coreanas se enfrentan a misiones, carreras y desafíos impredecibles en uno de los programas de variedades más queridos de Corea.",
-image:"https://image.tmdb.org/t/p/original/wsHj4oHQJoe7DMYaqNFwVoyLiAh.jpg",
-position:"center 30%",
-showTitle:"Running Man"
-},
-{
-title:"Single's Inferno",
-kicker:"UNA HISTORIA PARA MARATONEAR",
-description:"Nuevas miradas, decisiones difíciles y encuentros que pueden cambiarlo todo. Descubre el reality que pone el romance a prueba.",
-image:"https://image.tmdb.org/t/p/original/jcYlROkKUj8kmDciaDSPSxQ0Ceh.jpg",
-position:"center 38%",
-showTitle:"Single's Inferno"
-}
-];
+let featuredSlides=CARRUSEL.map(item=>({
+  ...item,
+  image:item.fotoBackground||"",
+  kicker:item.fraseSubtitulo||"",
+  showTitle:item.titulo,
+  position:item.posicion||"center 35%"
+}));
+
 let heroIndex=0,heroTimer=null,heroPaused=false;
-
-function renderHeroSlide(index){
-heroIndex=(index+featuredSlides.length)%featuredSlides.length;
-const slide=featuredSlides[heroIndex];
-const slides=document.getElementById("heroSlides");
-if(!slides.children.length){
-slides.innerHTML=featuredSlides.map((item,i)=>`
-<div class="hero-slide ${i===heroIndex?"active":""}">
-<img src="${item.image}" alt="" style="object-position:${item.position}" ${i===heroIndex?'fetchpriority="high"':'loading="lazy"'}>
-</div>`).join("");
-}
-Array.from(slides.children).forEach((el,i)=>el.classList.toggle("active",i===heroIndex));
-document.getElementById("heroKicker").textContent=slide.kicker;
-document.getElementById("heroTitle").textContent=slide.title;
-document.getElementById("heroDescription").textContent=slide.description;
-document.getElementById("heroShowBtn").dataset.heroShow=slide.showTitle;
-document.getElementById("heroDots").innerHTML=featuredSlides.map((item,i)=>`
-<button class="hero-dot ${i===heroIndex?"active":""}" data-hero-dot="${i}" aria-label="Mostrar destacado ${i+1}" aria-current="${i===heroIndex?"true":"false"}"></button>`).join("");
-}
-function stopHeroTimer(){if(heroTimer){clearInterval(heroTimer);heroTimer=null}}
-function startHeroTimer(){
-stopHeroTimer();
-if(!heroPaused&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-heroTimer=setInterval(()=>renderHeroSlide(heroIndex+1),6500);
-}
-}
-function moveHero(step){renderHeroSlide(heroIndex+step);startHeroTimer()}
-
-const popularTitles=["Single's Inferno","EXchange","Running Man","Agents of Mystery","Bloody Game","Are You Sure?!","19/20 Nineteen to Twenty","Culinary Class Wars","NANA bnb with SEVENTEEN","Apartment 404"];
 const STORE="kshows_progress_v1";
 let state={watched:[],favorites:[],ratings:{},reviews:{},lastOpened:{}};
-try{const saved=JSON.parse(localStorage.getItem(STORE)||"null");if(saved)state={...state,...saved};}catch(e){}
-let currentShow=null,currentSeason=0,currentView="home",currentFilter="all",currentCategory="all",query="";
+try{
+  const saved=JSON.parse(localStorage.getItem(STORE)||"null");
+  if(saved)state={...state,...saved};
+}catch(e){}
 
-function save(){try{localStorage.setItem(STORE,JSON.stringify(state));}catch(e){alert("No se pudo guardar en este navegador.");}}
+let currentShow=null,currentSeason=0,currentView="home";
+let currentFilter="all",currentCategory="all",query="";
+
+document.getElementById("continueHeading").textContent=SECCIONES.continuarViendo;
+document.getElementById("popularHeading").textContent=SECCIONES.populares;
+document.getElementById("comingHeading").textContent=SECCIONES.proximamente;
+const CATEGORIES=CATEGORIAS;
+
+
+/* FUNCIONES GENERALES */
+
+function save(){
+  try{localStorage.setItem(STORE,JSON.stringify(state))}
+  catch(e){alert("No se pudo guardar en este navegador.")}
+}
 function allEpisodes(show){return show.seasons.flatMap(s=>s.episodes||[])}
 function watchedCount(show){return allEpisodes(show).filter(e=>state.watched.includes(e.id)).length}
-function showStatus(show){const total=allEpisodes(show).length,done=watchedCount(show);if(total>0&&done>=total)return"completed";if(done>0)return"watching";return"planned"}
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function showStatus(show){
+  const total=allEpisodes(show).length,done=watchedCount(show);
+  if(total>0&&done>=total)return"completed";
+  if(done>0)return"watching";
+  return"planned";
+}
+function esc(s){
+  return String(s??"").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+
+/* CARRUSEL */
+
+function renderHeroSlide(index){
+  heroIndex=(index+featuredSlides.length)%featuredSlides.length;
+  const slide=featuredSlides[heroIndex];
+  const slides=document.getElementById("heroSlides");
+
+  slides.innerHTML=featuredSlides.map((item,i)=>`
+    <div class="hero-slide ${i===heroIndex?"active":""}">
+      ${item.image?`<img src="${esc(item.image)}" alt="" style="object-position:${esc(item.position)}" ${i===heroIndex?'fetchpriority="high"':'loading="lazy"'}>`:""}
+    </div>
+  `).join("");
+
+  document.getElementById("heroKicker").textContent=slide.kicker;
+  document.getElementById("heroTitle").textContent=slide.title;
+  document.getElementById("heroDescription").textContent=slide.description;
+  document.getElementById("heroShowBtn").dataset.heroShow=slide.showTitle;
+
+  document.getElementById("heroDots").innerHTML=featuredSlides.map((item,i)=>`
+    <button class="hero-dot ${i===heroIndex?"active":""}" data-hero-dot="${i}"
+      aria-label="Mostrar destacado ${i+1}" aria-current="${i===heroIndex?"true":"false"}"></button>
+  `).join("");
+}
+function stopHeroTimer(){
+  if(heroTimer){clearInterval(heroTimer);heroTimer=null}
+}
+function startHeroTimer(){
+  stopHeroTimer();
+  if(!heroPaused&&featuredSlides.length>1&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+    heroTimer=setInterval(()=>{
+      heroIndex=(heroIndex+1)%featuredSlides.length;
+      renderHeroSlide(heroIndex);
+    },6500);
+  }
+}
+function moveHero(step){
+  renderHeroSlide(heroIndex+step);
+  startHeroTimer();
+}
+
+
+/* TARJETAS DEL CATÁLOGO */
 
 function card(show){
-const total=allEpisodes(show).length,done=watchedCount(show),fav=state.favorites.includes(show.id),rating=state.ratings[show.id];
-return `<article class="card" data-open="${show.id}">
-<div class="poster" style="--c1:${show.colors[0]};--c2:${show.colors[1]}">
-<button class="fav ${fav?"on":""}" data-fav="${show.id}" aria-label="${fav?"Quitar de":"Añadir a"} Mi lista">${fav?"♥":"♡"}</button>
-<div class="poster-word">${esc(show.title)}</div>
-</div>
-<div class="card-title">${esc(show.title)}</div>
-<div class="card-meta">${esc(show.genre)}</div>
-${rating?`<div class="card-meta">★ ${rating}/5</div>`:""}
-${done&&done<total?`<div class="progress"><span style="width:${Math.round(done/total*100)}%"></span></div><div class="card-meta">${done} de ${total} episodios vistos</div>`:""}
-</article>`;
+  const total=allEpisodes(show).length;
+  const done=watchedCount(show);
+  const fav=state.favorites.includes(show.id);
+  const rating=state.ratings[show.id];
+
+  return `<article class="card" data-open="${show.id}">
+    <div class="poster ${show.poster?"has-image":""}" style="--c1:${show.colors[0]};--c2:${show.colors[1]}">
+      ${show.poster?`<img src="${esc(show.poster)}" alt="Póster de ${esc(show.title)}" loading="lazy" onerror="this.remove();this.parentElement.classList.remove('has-image')">`:""}
+      <button class="fav ${fav?"on":""}" data-fav="${show.id}" aria-label="${fav?"Quitar de":"Añadir a"} Mi lista">${fav?"♥":"♡"}</button>
+      <div class="poster-word">${esc(show.title)}</div>
+    </div>
+    <div class="card-title">${esc(show.title)}</div>
+    <div class="card-meta">${esc(show.genre)}</div>
+    ${rating?`<div class="card-meta">★ ${rating}/5</div>`:""}
+    ${done&&done<total?`<div class="progress"><span style="width:${Math.round(done/total*100)}%"></span></div><div class="card-meta">${done} de ${total} episodios vistos</div>`:""}
+  </article>`;
 }
 function empty(msg){return `<div class="empty" style="grid-column:1/-1">${esc(msg)}</div>`}
-function renderGrid(id,list,msg){const el=document.getElementById(id);el.innerHTML=list.length?list.map(card).join(""):empty(msg)}
-function matches(show){return(show.title+" "+show.genre+" "+show.description).toLowerCase().includes(query.toLowerCase())}
+function renderGrid(id,list,msg){
+  const el=document.getElementById(id);
+  el.innerHTML=list.length?list.map(card).join(""):empty(msg);
+}
+function matches(show){
+  return(show.title+" "+show.genre+" "+show.description).toLowerCase().includes(query.toLowerCase());
+}
+
+
+/* CATEGORÍAS DE INICIO Y FILTROS */
 
 function renderHomeCategories(found){
-const host=document.getElementById("homeCategories");
-host.innerHTML=CATEGORIES.map(category=>{
-const list=found.filter(s=>s.genre===category);
-if(list.length<2)return"";
-return `<section class="section"><div class="section-head"><div><h2>${esc(category)}</h2><span class="muted">${list.length} programas</span></div><button class="text-link" data-category-open="${esc(category)}">Ver todos →</button></div><div class="row-scroller">${list.map(card).join("")}</div></section>`;
-}).join("");
+  const host=document.getElementById("homeCategories");
+  host.innerHTML=CATEGORIES.map(category=>{
+    const list=found.filter(s=>s.genre===category);
+    if(list.length<2)return"";
+    return `<section class="section">
+      <div class="section-head">
+        <div><h2>${esc(category)}</h2><span class="muted">${list.length} programas</span></div>
+        <button class="text-link" data-category-open="${esc(category)}">Ver todos →</button>
+      </div>
+      <div class="row-scroller">${list.map(card).join("")}</div>
+    </section>`;
+  }).join("");
 }
 function renderCategoryFilters(){
-const host=document.getElementById("categoryFilters");
-host.innerHTML=[`<button class="filter ${currentCategory==="all"?"active":""}" data-category="all">Todas las categorías</button>`,...CATEGORIES.map(c=>`<button class="filter ${currentCategory===c?"active":""}" data-category="${esc(c)}">${esc(c)}</button>`)].join("");
+  const host=document.getElementById("categoryFilters");
+  host.innerHTML=[
+    `<button class="filter ${currentCategory==="all"?"active":""}" data-category="all">Todas las categorías</button>`,
+    ...CATEGORIES.map(c=>`<button class="filter ${currentCategory===c?"active":""}" data-category="${esc(c)}">${esc(c)}</button>`)
+  ].join("");
 }
+
+
+/* DIBUJAR LAS VISTAS */
+
 function render(){
-const home=document.getElementById("homeView"),catalog=document.getElementById("catalogView"),favs=document.getElementById("favoritesView"),activity=document.getElementById("activityView"),hero=document.getElementById("hero");
-home.classList.toggle("hidden",currentView!=="home");
-catalog.classList.toggle("hidden",currentView!=="catalog");
-favs.classList.toggle("hidden",currentView!=="favorites");
-activity.classList.toggle("hidden",currentView!=="activity");
-hero.classList.toggle("hidden",currentView!=="home");
-document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===currentView));
-const found=shows.filter(matches);
-const cont=found.filter(s=>{const total=allEpisodes(s).length,done=watchedCount(s);return total>0&&done>0&&done<total});
-renderGrid("continueGrid",cont,"Cuando marques tu primer episodio como visto, el programa aparecerá aquí automáticamente.");
-document.getElementById("continueSection").classList.toggle("hidden",cont.length===0);
-renderGrid("popularGrid",popularTitles.map(t=>shows.find(s=>s.title===t)).filter(s=>s&&matches(s)),"No hay resultados para esta búsqueda.");
-renderHomeCategories(found);
-let list=found;
-if(currentCategory!=="all")list=list.filter(s=>s.genre===currentCategory);
-if(currentFilter!=="all")list=list.filter(s=>showStatus(s)===currentFilter);
-renderGrid("catalogGrid",list,"No hay programas que coincidan con tu búsqueda.");
-renderGrid("favoritesGrid",found.filter(s=>state.favorites.includes(s.id)),"Todavía no has guardado programas. Pulsa ♡ en una portada.");
-renderGrid("ratedGrid",found.filter(s=>state.ratings[s.id]),"Aún no has puntuado ningún programa.");
-document.getElementById("viewTitle").textContent=query?`Resultados para «${query}»`:currentCategory!=="all"?currentCategory:"Explorar catálogo";
-renderCategoryFilters();
-document.querySelectorAll("[data-filter]").forEach(b=>b.classList.toggle("active",b.dataset.filter===currentFilter));
-const total=shows.reduce((n,s)=>n+allEpisodes(s).length,0),seen=shows.reduce((n,s)=>n+watchedCount(s),0);
-document.getElementById("statsGrid").innerHTML=[
-["Programas terminados",shows.filter(s=>showStatus(s)==="completed").length],
-["Episodios vistos",seen],
-["Mi lista",state.favorites.length],
-["Progreso registrado",total?Math.round(seen/total*100)+"%":"0%"]
-].map(([label,val])=>`<div style="background:var(--panel);padding:20px;border:1px solid var(--border);border-radius:14px"><div class="muted">${label}</div><div style="font-size:30px;font-weight:850;margin-top:8px">${val}</div></div>`).join("");
+  const home=document.getElementById("homeView");
+  const catalog=document.getElementById("catalogView");
+  const favs=document.getElementById("favoritesView");
+  const activity=document.getElementById("activityView");
+  const hero=document.getElementById("hero");
+
+  home.classList.toggle("hidden",currentView!=="home");
+  catalog.classList.toggle("hidden",currentView!=="catalog");
+  favs.classList.toggle("hidden",currentView!=="favorites");
+  activity.classList.toggle("hidden",currentView!=="activity");
+  hero.classList.toggle("hidden",currentView!=="home");
+
+  document.querySelectorAll(".nav button").forEach(b=>
+    b.classList.toggle("active",b.dataset.view===currentView)
+  );
+
+  const found=shows.filter(matches);
+  const cont=found.filter(s=>{
+    const total=allEpisodes(s).length,done=watchedCount(s);
+    return total>0&&done>0&&done<total;
+  });
+
+  renderGrid("continueGrid",cont,"Cuando marques tu primer episodio como visto, el programa aparecerá aquí automáticamente.");
+  document.getElementById("continueSection").classList.toggle("hidden",cont.length===0);
+
+  renderGrid("popularGrid",POPULARES.map(t=>shows.find(s=>s.title===t)).filter(s=>s&&matches(s)),"No hay resultados para esta búsqueda.");
+  renderHomeCategories(found);
+
+  let list=found;
+  if(currentCategory!=="all")list=list.filter(s=>s.genre===currentCategory);
+  if(currentFilter!=="all")list=list.filter(s=>showStatus(s)===currentFilter);
+
+  renderGrid("catalogGrid",list,"No hay programas que coincidan con tu búsqueda.");
+  renderGrid("favoritesGrid",found.filter(s=>state.favorites.includes(s.id)),"Todavía no has guardado programas. Pulsa ♡ en una portada.");
+  renderGrid("ratedGrid",found.filter(s=>state.ratings[s.id]),"Aún no has puntuado ningún programa.");
+
+  document.getElementById("viewTitle").textContent=
+    query?`Resultados para «${query}»`:currentCategory!=="all"?currentCategory:"Explorar catálogo";
+
+  renderCategoryFilters();
+  document.querySelectorAll("[data-filter]").forEach(b=>
+    b.classList.toggle("active",b.dataset.filter===currentFilter)
+  );
+
+  const total=shows.reduce((n,s)=>n+allEpisodes(s).length,0);
+  const seen=shows.reduce((n,s)=>n+watchedCount(s),0);
+
+  document.getElementById("statsGrid").innerHTML=[
+    ["Programas terminados",shows.filter(s=>showStatus(s)==="completed").length],
+    ["Episodios vistos",seen],
+    ["Mi lista",state.favorites.length],
+    ["Progreso registrado",total?Math.round(seen/total*100)+"%":"0%"]
+  ].map(([label,val])=>`
+    <div style="background:var(--panel);padding:20px;border:1px solid var(--border);border-radius:14px">
+      <div class="muted">${label}</div><div style="font-size:30px;font-weight:850;margin-top:8px">${val}</div>
+    </div>
+  `).join("");
 }
-function setView(view){currentView=view;if(view==="catalog"){currentFilter="all";currentCategory="all"}render();window.scrollTo({top:0,behavior:"smooth"})}
-function toggleFavorite(id){state.favorites=state.favorites.includes(id)?state.favorites.filter(x=>x!==id):[...state.favorites,id];save();render();if(currentShow&&currentShow.id===id)updateModalButtons()}
-function updateModalButtons(){if(!currentShow)return;document.getElementById("modalFav").textContent=state.favorites.includes(currentShow.id)?"♥ En Mi lista":"♡ Añadir a Mi lista"}
+
+function setView(view){
+  currentView=view;
+  if(view==="catalog"){currentFilter="all";currentCategory="all"}
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function toggleFavorite(id){
+  state.favorites=state.favorites.includes(id)
+    ?state.favorites.filter(x=>x!==id):[...state.favorites,id];
+  save();render();
+  if(currentShow&&currentShow.id===id)updateModalButtons();
+}
+function updateModalButtons(){
+  if(!currentShow)return;
+  document.getElementById("modalFav").textContent=
+    state.favorites.includes(currentShow.id)?"♥ En Mi lista":"♡ Añadir a Mi lista";
+}
+
+
+/* FICHA DETALLADA DEL PROGRAMA */
 
 function openShow(id){
-const show=shows.find(s=>s.id===id);if(!show)return;
-currentShow=show;
-document.getElementById("modalTitle").textContent=show.title;
-document.getElementById("modalGenre").textContent=show.genre;
-const count=allEpisodes(show).length;
-document.getElementById("modalMeta").textContent=show.seasons.length?`${show.seasons.length} temporada(s) · ${count} episodios`:"Ficha en preparación · Episodios por añadir";
-document.getElementById("modalDesc").textContent=show.description;
-const select=document.getElementById("seasonSelect");
-select.innerHTML=show.seasons.map((s,i)=>`<option value="${i}">${esc(s.name)}</option>`).join("");
-select.hidden=!show.seasons.length;currentSeason=0;select.value="0";
-document.getElementById("review").value=state.reviews[id]||"";
-document.getElementById("reviewMsg").textContent="";
-renderStars();renderEpisodes();updateModalButtons();
-document.getElementById("showDialog").showModal();
+  const show=shows.find(s=>s.id===id);
+  if(!show)return;
+  currentShow=show;
+
+  document.getElementById("modalTitle").textContent=show.title;
+  document.getElementById("modalGenre").textContent=show.genre;
+
+  const count=allEpisodes(show).length;
+  document.getElementById("modalMeta").textContent=show.seasons.length
+    ?`${show.seasons.length} temporada(s) · ${count} episodios`
+    :"Ficha en preparación · Episodios por añadir";
+
+  document.getElementById("modalDesc").textContent=show.description;
+
+  const select=document.getElementById("seasonSelect");
+  select.innerHTML=show.seasons.map((s,i)=>`<option value="${i}">${esc(s.name)}</option>`).join("");
+  select.hidden=!show.seasons.length;
+  currentSeason=0;select.value="0";
+
+  document.getElementById("review").value=state.reviews[id]||"";
+  document.getElementById("reviewMsg").textContent="";
+
+  renderStars();renderEpisodes();updateModalButtons();
+  document.getElementById("showDialog").showModal();
 }
 function renderStars(){
-const rating=state.ratings[currentShow.id]||0;
-document.getElementById("ratingStars").innerHTML=[1,2,3,4,5].map(n=>`<button class="${n<=rating?"on":""}" data-rate="${n}" aria-label="${n} estrellas">★</button>`).join("");
+  const rating=state.ratings[currentShow.id]||0;
+  document.getElementById("ratingStars").innerHTML=[1,2,3,4,5].map(n=>
+    `<button class="${n<=rating?"on":""}" data-rate="${n}" aria-label="${n} estrellas">★</button>`
+  ).join("");
 }
 function renderEpisodes(){
-const host=document.getElementById("episodes");
-if(!currentShow.seasons.length){
-host.innerHTML=`<div class="empty" style="margin-top:20px">Estamos preparando esta ficha. Aquí aparecerán las temporadas, los episodios y sus enlaces de Telegram cuando añadamos los datos.</div>`;
-return;
+  const host=document.getElementById("episodes");
+
+  if(!currentShow.seasons.length){
+    host.innerHTML=`<div class="empty" style="margin-top:20px">Estamos preparando esta ficha. Aquí aparecerán las temporadas, los episodios y sus enlaces de Telegram cuando añadamos los datos.</div>`;
+    return;
+  }
+
+  const season=currentShow.seasons[currentSeason];
+  if(!season||!season.episodes.length){
+    host.innerHTML=`<div class="empty" style="margin-top:20px">Todavía no se han añadido episodios a esta temporada.</div>`;
+    return;
+  }
+
+  host.innerHTML=`<h3 style="margin:22px 0 4px">${esc(season.name)}</h3>`+season.episodes.map((ep,i)=>{
+    const seen=state.watched.includes(ep.id);
+    const valid=ep.url&&ep.url!=="https://t.me/";
+    return `<div class="episode">
+      <div class="ep-num">${seen?"✓":String(i+1).padStart(2,"0")}</div>
+      <div class="ep-info"><div class="ep-name">${esc(ep.name)}</div><div class="ep-sub">${seen?"Episodio visto":"Episodio "+(i+1)}</div></div>
+      <div class="ep-actions">
+        <button class="small-btn ${seen?"watched":""}" data-seen="${ep.id}">${seen?"✓ Visto":"Marcar visto"}</button>
+        <button class="small-btn" data-play="${ep.id}" ${valid?"":"title='Enlace pendiente'"}>▶ Ver</button>
+      </div>
+    </div>`;
+  }).join("");
 }
-const season=currentShow.seasons[currentSeason];
-if(!season||!season.episodes.length){
-host.innerHTML=`<div class="empty" style="margin-top:20px">Todavía no se han añadido episodios a esta temporada.</div>`;
-return;
+function toggleWatched(id){
+  state.watched=state.watched.includes(id)
+    ?state.watched.filter(x=>x!==id):[...state.watched,id];
+  save();render();renderEpisodes();updateModalButtons();
 }
-host.innerHTML=`<h3 style="margin:22px 0 4px">${esc(season.name)}</h3>`+season.episodes.map((ep,i)=>{
-const seen=state.watched.includes(ep.id),valid=ep.url&&ep.url!=="https://t.me/";
-return `<div class="episode"><div class="ep-num">${seen?"✓":String(i+1).padStart(2,"0")}</div><div class="ep-info"><div class="ep-name">${esc(ep.name)}</div><div class="ep-sub">${seen?"Episodio visto":"Episodio "+(i+1)}</div></div><div class="ep-actions"><button class="small-btn ${seen?"watched":""}" data-seen="${ep.id}">${seen?"✓ Visto":"Marcar visto"}</button><button class="small-btn" data-play="${ep.id}" ${valid?"":"title='Enlace pendiente'"}>▶ Ver</button></div></div>`;
-}).join("");
-}
-function toggleWatched(id){state.watched=state.watched.includes(id)?state.watched.filter(x=>x!==id):[...state.watched,id];save();render();renderEpisodes();updateModalButtons()}
 function playEpisode(id){
-const ep=allEpisodes(currentShow).find(e=>e.id===id);if(!ep)return;
-if(!ep.url||ep.url==="https://t.me/"){alert("Todavía falta añadir el enlace real de Telegram para este episodio.");return}
-state.lastOpened[currentShow.id]=id;save();render();window.open(ep.url,"_blank","noopener,noreferrer");
+  const ep=allEpisodes(currentShow).find(e=>e.id===id);
+  if(!ep)return;
+  if(!ep.url||ep.url==="https://t.me/"){
+    alert("Todavía falta añadir el enlace real de Telegram para este episodio.");
+    return;
+  }
+  state.lastOpened[currentShow.id]=id;
+  save();render();
+  window.open(ep.url,"_blank","noopener,noreferrer");
 }
 
+
+/* EVENTOS DE LA PÁGINA */
+
 document.body.addEventListener("click",e=>{
-const fav=e.target.closest("[data-fav]");
-if(fav){e.stopPropagation();toggleFavorite(fav.dataset.fav);return}
-const open=e.target.closest("[data-open]");
-if(open){openShow(open.dataset.open);return}
-const seen=e.target.closest("[data-seen]");
-if(seen){toggleWatched(seen.dataset.seen);return}
-const play=e.target.closest("[data-play]");
-if(play){playEpisode(play.dataset.play);return}
-const rate=e.target.closest("[data-rate]");
-if(rate&&currentShow){state.ratings[currentShow.id]=Number(rate.dataset.rate);save();renderStars();render();return}
-const nav=e.target.closest("[data-view]");
-if(nav){setView(nav.dataset.view);return}
-const filter=e.target.closest("[data-filter]");
-if(filter){currentFilter=filter.dataset.filter;render();return}
-const cat=e.target.closest("[data-category]");
-if(cat){currentCategory=cat.dataset.category;currentView="catalog";currentFilter="all";render();window.scrollTo({top:0,behavior:"smooth"});return}
-const catOpen=e.target.closest("[data-category-open]");
-if(catOpen){currentCategory=catOpen.dataset.categoryOpen;currentView="catalog";currentFilter="all";render();window.scrollTo({top:0,behavior:"smooth"});return}
-if(e.target.closest("[data-explore-all]")){setView("catalog");return}
+  const fav=e.target.closest("[data-fav]");
+  if(fav){e.stopPropagation();toggleFavorite(fav.dataset.fav);return}
+
+  const open=e.target.closest("[data-open]");
+  if(open){openShow(open.dataset.open);return}
+
+  const seen=e.target.closest("[data-seen]");
+  if(seen){toggleWatched(seen.dataset.seen);return}
+
+  const play=e.target.closest("[data-play]");
+  if(play){playEpisode(play.dataset.play);return}
+
+  const rate=e.target.closest("[data-rate]");
+  if(rate&&currentShow){
+    state.ratings[currentShow.id]=Number(rate.dataset.rate);
+    save();renderStars();render();return;
+  }
+
+  const nav=e.target.closest("[data-view]");
+  if(nav){setView(nav.dataset.view);return}
+
+  const filter=e.target.closest("[data-filter]");
+  if(filter){currentFilter=filter.dataset.filter;render();return}
+
+  const cat=e.target.closest("[data-category]");
+  if(cat){
+    currentCategory=cat.dataset.category;
+    currentView="catalog";currentFilter="all";
+    render();window.scrollTo({top:0,behavior:"smooth"});return;
+  }
+
+  const catOpen=e.target.closest("[data-category-open]");
+  if(catOpen){
+    currentCategory=catOpen.dataset.categoryOpen;
+    currentView="catalog";currentFilter="all";
+    render();window.scrollTo({top:0,behavior:"smooth"});return;
+  }
+
+  if(e.target.closest("[data-explore-all]")){setView("catalog");return}
 });
 
 document.getElementById("search").addEventListener("input",e=>{
-query=e.target.value.trim();
-if(query)currentView="catalog";else if(currentView==="catalog")currentCategory="all";
-render();
+  query=e.target.value.trim();
+  if(query)currentView="catalog";
+  else if(currentView==="catalog")currentCategory="all";
+  render();
 });
+
 document.getElementById("exploreBtn").addEventListener("click",()=>setView("catalog"));
 document.getElementById("closeDialog").addEventListener("click",()=>document.getElementById("showDialog").close());
-document.getElementById("seasonSelect").addEventListener("change",e=>{currentSeason=Number(e.target.value);renderEpisodes()});
-document.getElementById("modalFav").addEventListener("click",()=>{if(currentShow)toggleFavorite(currentShow.id)});
-document.getElementById("saveReview").addEventListener("click",()=>{
-if(!currentShow)return;
-state.reviews[currentShow.id]=document.getElementById("review").value.trim();
-save();document.getElementById("reviewMsg").textContent="Reseña guardada.";
+
+document.getElementById("seasonSelect").addEventListener("change",e=>{
+  currentSeason=Number(e.target.value);renderEpisodes();
 });
-document.getElementById("showDialog").addEventListener("click",e=>{if(e.target===document.getElementById("showDialog"))document.getElementById("showDialog").close()});
+
+document.getElementById("modalFav").addEventListener("click",()=>{
+  if(currentShow)toggleFavorite(currentShow.id);
+});
+
+document.getElementById("saveReview").addEventListener("click",()=>{
+  if(!currentShow)return;
+  state.reviews[currentShow.id]=document.getElementById("review").value.trim();
+  save();document.getElementById("reviewMsg").textContent="Reseña guardada.";
+});
+
+document.getElementById("showDialog").addEventListener("click",e=>{
+  if(e.target===document.getElementById("showDialog"))document.getElementById("showDialog").close();
+});
 
 document.getElementById("heroPrev").addEventListener("click",()=>moveHero(-1));
 document.getElementById("heroNext").addEventListener("click",()=>moveHero(1));
+
 document.getElementById("heroDots").addEventListener("click",e=>{
-const dot=e.target.closest("[data-hero-dot]");
-if(dot){renderHeroSlide(Number(dot.dataset.heroDot));startHeroTimer()}
+  const dot=e.target.closest("[data-hero-dot]");
+  if(dot){renderHeroSlide(Number(dot.dataset.heroDot));startHeroTimer()}
 });
+
 document.getElementById("heroShowBtn").addEventListener("click",e=>{
-const show=shows.find(s=>s.title===e.currentTarget.dataset.heroShow);
-if(show)openShow(show.id);
+  const show=shows.find(s=>s.title===e.currentTarget.dataset.heroShow);
+  if(show)openShow(show.id);
 });
+
 const heroElement=document.getElementById("hero");
 heroElement.addEventListener("mouseenter",()=>{heroPaused=true;stopHeroTimer()});
 heroElement.addEventListener("mouseleave",()=>{heroPaused=false;startHeroTimer()});
 heroElement.addEventListener("focusin",()=>{heroPaused=true;stopHeroTimer()});
-heroElement.addEventListener("focusout",e=>{if(!heroElement.contains(e.relatedTarget)){heroPaused=false;startHeroTimer()}});
+heroElement.addEventListener("focusout",e=>{
+  if(!heroElement.contains(e.relatedTarget)){heroPaused=false;startHeroTimer()}
+});
+
+
+/* INICIO */
+
 renderHeroSlide(0);
 startHeroTimer();
 render();
