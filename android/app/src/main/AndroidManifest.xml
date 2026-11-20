@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:label="KShows"
+        android:label="MiKShow"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Material.NoActionBar">
 
